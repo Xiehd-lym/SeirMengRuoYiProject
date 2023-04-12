@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ruoyi-framework</artifactId>
+    <name>SeirMeng-framework</name>
+    <artifactId>SeirMeng-framework</artifactId>
 
     <description>
         framework框架核心
@@ -74,8 +75,9 @@
         <!-- 系统模块-->
         <dependency>
             <groupId>com.ruoyi</groupId>
-            <artifactId>ruoyi-system</artifactId>
+            <artifactId>SeirMeng-system</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>

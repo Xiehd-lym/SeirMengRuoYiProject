@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ruoyi-common</artifactId>
+    <artifactId>SeirMeng-common</artifactId>
+    <name>SeirMeng-common</name>
 
     <description>
         common通用工具

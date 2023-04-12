@@ -9,13 +9,20 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
-    <artifactId>ruoyi-admin</artifactId>
+
+    <name>SeirMeng-admin</name>
+    <artifactId>SeirMeng-admin</artifactId>
 
     <description>
         web服务入口
     </description>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 
         <!-- SpringBoot集成thymeleaf模板 -->
         <dependency>
@@ -52,19 +59,19 @@
         <!-- 核心模块-->
         <dependency>
             <groupId>com.ruoyi</groupId>
-            <artifactId>ruoyi-framework</artifactId>
+            <artifactId>SeirMeng-framework</artifactId>
         </dependency>
 
         <!-- 定时任务-->
         <dependency>
             <groupId>com.ruoyi</groupId>
-            <artifactId>ruoyi-quartz</artifactId>
+            <artifactId>SeirMeng-quartz</artifactId>
         </dependency>
 
         <!-- 代码生成-->
         <dependency>
             <groupId>com.ruoyi</groupId>
-            <artifactId>ruoyi-generator</artifactId>
+            <artifactId>SeirMeng-generator</artifactId>
         </dependency>
 
     </dependencies>

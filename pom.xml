@@ -7,17 +7,16 @@
     <artifactId>ruoyi</artifactId>
     <version>4.7.5</version>
 
-    <name>SeirMeng</name>
-    <description>管理系统</description>
+    <name>SeirMengRuoYiProject</name>
+    <description>SeirMengRuoYiProject管理系统</description>
 
     <modules>
-        <module>ruoyi-admin</module>
-        <module>ruoyi-framework</module>
-        <module>ruoyi-system</module>
-        <module>ruoyi-quartz</module>
-        <module>ruoyi-generator</module>
-        <module>ruoyi-common</module>
-        <module>SeirMeng-Domain</module>
+        <module>SeirMeng-admin</module>
+        <module>SeirMeng-framework</module>
+        <module>SeirMeng-system</module>
+        <module>SeirMeng-quartz</module>
+        <module>SeirMeng-generator</module>
+        <module>SeirMeng-common</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -193,35 +192,35 @@
             <!-- 定时任务-->
             <dependency>
                 <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-quartz</artifactId>
+                <artifactId>SeirMeng-quartz</artifactId>
                 <version>${ruoyi.version}</version>
             </dependency>
 
             <!-- 代码生成-->
             <dependency>
                 <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-generator</artifactId>
+                <artifactId>SeirMeng-generator</artifactId>
                 <version>${ruoyi.version}</version>
             </dependency>
 
             <!-- 核心模块-->
             <dependency>
                 <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-framework</artifactId>
+                <artifactId>SeirMeng-framework</artifactId>
                 <version>${ruoyi.version}</version>
             </dependency>
 
             <!-- 系统模块-->
             <dependency>
                 <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-system</artifactId>
+                <artifactId>SeirMeng-system</artifactId>
                 <version>${ruoyi.version}</version>
             </dependency>
 
             <!-- 通用工具-->
             <dependency>
                 <groupId>com.ruoyi</groupId>
-                <artifactId>ruoyi-common</artifactId>
+                <artifactId>SeirMeng-common</artifactId>
                 <version>${ruoyi.version}</version>
             </dependency>
 

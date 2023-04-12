@@ -1,5 +1,8 @@
-<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">RuoYi v4.7.5</h1>
-<h4 align="center">基于SpringBoot开发的轻量级Java快速开发框架</h4>
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">SeirMengRuoYiProject</h1>
+<h4 align="center">RuoYi v4.7.5——基于SpringBoot开发的轻量级Java快速开发框架</h4>
+
+
+##母版
 
 ## 内置功能
 
@@ -22,9 +25,3 @@
 17. 在线构建器：拖动表单元素生成相应的HTML代码。
 18. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
 
-## 在线体验
-
-- admin/admin123
-
-演示地址：http://ruoyi.vip  
-文档地址：http://doc.ruoyi.vip
