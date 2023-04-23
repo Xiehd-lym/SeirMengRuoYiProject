@@ -1,4 +1,4 @@
-<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">SeirMengRuoYiProject</h1>
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">SeirMeng</h1>
 <h4 align="center">RuoYi v4.7.5——基于SpringBoot开发的轻量级Java快速开发框架</h4>
 
 
