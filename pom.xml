@@ -7,8 +7,8 @@
     <artifactId>ruoyi</artifactId>
     <version>4.7.5</version>
 
-    <name>SeirMengRuoYiProject</name>
-    <description>SeirMengRuoYiProject管理系统</description>
+    <name>SeirMeng</name>
+    <description>SeirMeng管理系统</description>
 
     <modules>
         <module>SeirMeng-admin</module>
@@ -17,6 +17,7 @@
         <module>SeirMeng-quartz</module>
         <module>SeirMeng-generator</module>
         <module>SeirMeng-common</module>
+        <module>SeirMeng-business</module>
     </modules>
 
     <packaging>pom</packaging>

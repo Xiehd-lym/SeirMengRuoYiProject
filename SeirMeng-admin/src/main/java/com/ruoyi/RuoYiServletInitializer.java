@@ -13,6 +13,6 @@ public class RuoYiServletInitializer extends SpringBootServletInitializer
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application)
     {
-        return application.sources(SeirMengRuoYiProjectApplication.class);
+        return application.sources(SeirMengApplication.class);
     }
 }
