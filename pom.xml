@@ -17,7 +17,6 @@
         <module>SeirMeng-quartz</module>
         <module>SeirMeng-generator</module>
         <module>SeirMeng-common</module>
-        <module>SeirMeng-business</module>
     </modules>
 
     <packaging>pom</packaging>
