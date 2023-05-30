@@ -1,7 +1,7 @@
 # 项目相关配置
 ruoyi:
   # 名称
-  name: SeirMeng
+  name: SeirMengRuoYi
   # 版本
   version: 1.1.0
   # 版权年份
@@ -9,7 +9,7 @@ ruoyi:
   # 实例演示开关
   demoEnabled: false
   # 文件路径 示例（ Windows配置D:/ruoyi/uploadPath，Linux配置 /home/ruoyi/uploadPath）
-  profile: D:\Acode\若依代码\不分离\SeirMeng\uploadPath
+  profile: D:\Acode\若依代码\不分离\SeirMengRuoYi\uploadPath
   # 获取ip地址开关
   addressEnabled: false
 
@@ -19,7 +19,7 @@ server:
   port: 18090
   servlet:
     # 应用的访问路径
-    context-path: /SeirMeng
+    context-path: /SeirMengRuoYi
   tomcat:
     # tomcat的URI编码
     uri-encoding: UTF-8

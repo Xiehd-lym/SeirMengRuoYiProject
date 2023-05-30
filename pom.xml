@@ -7,8 +7,8 @@
     <artifactId>ruoyi</artifactId>
     <version>4.7.5</version>
 
-    <name>SeirMeng</name>
-    <description>SeirMeng管理系统</description>
+    <name>SeirMengRuoYi</name>
+    <description>SeirMengRuoYi管理系统</description>
 
     <modules>
         <module>SeirMeng-admin</module>
@@ -229,7 +229,6 @@
 
 
     <dependencies>
-
     </dependencies>
 
     <build>

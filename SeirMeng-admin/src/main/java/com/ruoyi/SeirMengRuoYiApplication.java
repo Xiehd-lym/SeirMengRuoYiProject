@@ -11,11 +11,11 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  * @author ruoyi
  */
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
-public class SeirMengApplication
+public class SeirMengRuoYiApplication
 {
     public static void main(String[] args)
     {
-        SpringApplication.run(SeirMengApplication.class, args);
+        SpringApplication.run(SeirMengRuoYiApplication.class, args);
         System.out.println("(♥◠‿◠)ﾉﾞ  我🐉🐎 ，主人！您的项目启动成功   ლ(´ڡ`ლ)ﾞ");
     }
 }

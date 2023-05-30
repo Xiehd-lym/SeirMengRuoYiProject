@@ -21,6 +21,7 @@ target/
 
 ### IntelliJ IDEA ###
 .idea
+/uploadPath
 *.iws
 *.iml
 *.ipr
