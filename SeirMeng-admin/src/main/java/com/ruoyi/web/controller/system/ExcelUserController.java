@@ -5,13 +5,16 @@ import com.ruoyi.common.config.RuoYiConfig;
 import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
+import com.ruoyi.common.core.domain.entity.SysUser;
 import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.file.FileUtils;
 import com.ruoyi.common.utils.poi.ExcelUtil;
+import com.ruoyi.framework.shiro.service.SysRegisterService;
 import com.ruoyi.system.domain.ExcelUser;
 import com.ruoyi.system.service.IExcelUserService;
+import org.apache.catalina.User;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +36,8 @@ import java.util.List;
 @RequestMapping("/system/excelUser")
 public class ExcelUserController extends BaseController
 {
+    @Autowired
+    private SysRegisterService registerService;
     private String prefix = "system/excelUser";
 
     @Autowired
@@ -79,6 +84,13 @@ public class ExcelUserController extends BaseController
         ExcelUtil<ExcelUser> util = new ExcelUtil<ExcelUser>(ExcelUser.class);
         List<ExcelUser> excelUserList = util.importExcel(file.getInputStream());
         for (ExcelUser excelUser : excelUserList) {
+            SysUser user = new SysUser();
+            user.setLoginName(excelUser.getUserName());
+            user.setPassword(excelUser.getPassword());
+            user.setRoleId(2l);
+            user.setDeptId(100l);
+            registerService.register(user);
+
             excelUserService.insertExcelUser(excelUser);
         }
         return AjaxResult.success();

@@ -10,6 +10,9 @@
                 <a class="btn btn-info" onclick="$.table.importExcel()">
                     <i class="fa fa-upload"></i> 导入
                 </a>
+                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:excelUser:export">
+                    <i class="fa fa-download"></i> 导出
+                </a>
             </div>
             <div class="col-sm-12 select-table table-striped">
                 <table id="bootstrap-table"></table>
