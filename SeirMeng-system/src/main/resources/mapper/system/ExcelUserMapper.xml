@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.ExcelUserMapper">
+    
+    <resultMap type="ExcelUser" id="ExcelUserResult">
+        <result property="id"    column="id"    />
+        <result property="userName"    column="user_name"    />
+        <result property="password"    column="password"    />
+    </resultMap>
+
+    <sql id="selectExcelUserVo">
+        select id, user_name, password from excel_user
+    </sql>
+
+    <select id="selectExcelUserList" parameterType="ExcelUser" resultMap="ExcelUserResult">
+        <include refid="selectExcelUserVo"/>
+        <where>  
+            <if test="userName != null  and userName != ''"> and user_name like concat('%', #{userName}, '%')</if>
+            <if test="password != null  and password != ''"> and password = #{password}</if>
+        </where>
+    </select>
+    
+    <select id="selectExcelUserById" parameterType="Long" resultMap="ExcelUserResult">
+        <include refid="selectExcelUserVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertExcelUser" parameterType="ExcelUser" useGeneratedKeys="true" keyProperty="id">
+        insert into excel_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName != null">user_name,</if>
+            <if test="password != null">password,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userName != null">#{userName},</if>
+            <if test="password != null">#{password},</if>
+         </trim>
+    </insert>
+
+    <update id="updateExcelUser" parameterType="ExcelUser">
+        update excel_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userName != null">user_name = #{userName},</if>
+            <if test="password != null">password = #{password},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteExcelUserById" parameterType="Long">
+        delete from excel_user where id = #{id}
+    </delete>
+
+    <delete id="deleteExcelUserByIds" parameterType="String">
+        delete from excel_user where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

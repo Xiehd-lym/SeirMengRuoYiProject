@@ -1,7 +1,7 @@
 # 项目相关配置
 ruoyi:
   # 名称
-  name: SeirMengRuoYi
+  name: SeirMengRuoYiExcelproject
   # 版本
   version: 1.1.0
   # 版权年份
@@ -16,10 +16,10 @@ ruoyi:
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为80
-  port: 18090
+  port: 18091
   servlet:
     # 应用的访问路径
-    context-path: /SeirMengRuoYi
+    context-path: /SeirMengRuoYiExcelproject
   tomcat:
     # tomcat的URI编码
     uri-encoding: UTF-8
@@ -98,7 +98,7 @@ shiro:
     # 首页地址
     indexUrl: /index
     # 验证码开关
-    captchaEnabled: true
+    captchaEnabled: false
     # 验证码类型 math 数组计算 char 字符
     captchaType: math
   cookie:

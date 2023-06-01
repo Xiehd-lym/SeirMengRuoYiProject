@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>下载专区</title>
+</head>
+<body class="gray-bg">
+
+    <div class="container-div">
+        <div class="row">
+            <div class="col-sm-12 select-table table-striped">
+                <div>
+                    <span>
+                        2.学生基本情况表.xlsx
+                        <button id="dowloadBtnexcelone" class="btn btn-info " type="button"><i class="fa fa-trash-o"></i>模板下载</button>
+                    </span>
+                    <br>
+                    <span>
+                        3.意向专业表.xlsx
+                        <button id="dowloadBtnexceltwo" class="btn btn-info " type="button"><i class="fa fa-trash-o"></i>模板下载</button>
+                    </span>
+                    <br>
+                    <span>
+                        4.大后台填报数据.xlsx
+                        <button id="dowloadBtnexcelthree" class="btn btn-info " type="button"><i class="fa fa-trash-o"></i>模板下载</button>
+                    </span>
+                    <br>
+                    <span>
+                        5.本省志愿表.xlsx
+                        <button id="dowloadBtnexcelfore" class="btn btn-info " type="button"><i class="fa fa-trash-o"></i>模板下载</button>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+
+        //模板下载按钮点击事件
+        $("#dowloadBtnexcelone").click(function () {
+            templateDowloadone()
+        });
+
+        //模板下载按钮点击事件
+        $("#dowloadBtnexceltwo").click(function () {
+            templateDowloadtwo()
+        });
+
+        //模板下载按钮点击事件
+        $("#dowloadBtnexcelthree").click(function () {
+            templateDowloadthree()
+        });
+
+        //模板下载按钮点击事件
+        $("#dowloadBtnexcelfour").click(function () {
+            templateDowloadfour()
+        });
+
+        //EXCel模板下载
+        function templateDowloadone(fileName){
+            window.location.href="/SeirMengRuoYiExcelproject/system/excelUser/common/download/resource?fileName=2.学生基本情况表.xlsx";
+        }
+        //EXCel模板下载
+        function templateDowloadtwo(fileName){
+            window.location.href="/SeirMengRuoYiExcelproject/system/excelUser/common/download/resource?fileName=3.意向专业表.xlsx";
+        }
+        //EXCel模板下载
+        function templateDowloadthree(fileName){
+            window.location.href="/SeirMengRuoYiExcelproject/system/excelUser/common/download/resource?fileName=4.大后台填报数据.xlsx";
+        }
+        //EXCel模板下载
+        function templateDowloadfour(fileName){
+            window.location.href="/SeirMengRuoYiExcelproject/system/excelUser/common/download/resource?fileName=5.本省志愿表.xlsx";
+        }
+
+    </script>
+
+</body>
+</html>

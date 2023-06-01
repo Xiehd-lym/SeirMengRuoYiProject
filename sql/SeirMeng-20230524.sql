@@ -5,7 +5,7 @@
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : localhost:3306
- Source Schema         : seirMeng
+ Source Schema         : seirMeng_excelproject
 
  Target Server Type    : MySQL
  Target Server Version : 50726
