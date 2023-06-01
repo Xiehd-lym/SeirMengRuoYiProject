@@ -8,12 +8,15 @@ import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.domain.entity.SysUser;
 import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.enums.BusinessType;
+import com.ruoyi.common.utils.ShiroUtils;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.file.FileUtils;
 import com.ruoyi.common.utils.poi.ExcelUtil;
+import com.ruoyi.framework.shiro.service.SysPasswordService;
 import com.ruoyi.framework.shiro.service.SysRegisterService;
 import com.ruoyi.system.domain.ExcelUser;
 import com.ruoyi.system.service.IExcelUserService;
+import com.ruoyi.system.service.ISysUserService;
 import org.apache.catalina.User;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -143,6 +146,11 @@ public class ExcelUserController extends BaseController
         return prefix + "/edit";
     }
 
+    @Autowired
+    private SysPasswordService passwordService;
+
+    @Autowired
+    private ISysUserService userService;
     /**
      * 修改保存用户表格
      */
@@ -152,6 +160,10 @@ public class ExcelUserController extends BaseController
     @ResponseBody
     public AjaxResult editSave(ExcelUser excelUser)
     {
+        SysUser user = userService.selectUserByLoginName(excelUser.getUserName());
+        user.setSalt(ShiroUtils.randomSalt());
+        user.setPassword(passwordService.encryptPassword(user.getLoginName(), excelUser.getPassword(), user.getSalt()));
+        userService.resetUserPwd(user);
         return toAjax(excelUserService.updateExcelUser(excelUser));
     }
 
