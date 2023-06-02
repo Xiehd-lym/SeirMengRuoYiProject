@@ -9,27 +9,37 @@
     <div class="container-div">
         <div class="row">
             <div class="col-sm-12 select-table table-striped">
-                <div>
-                    <span>
-                        2.学生基本情况表.xlsx
-                        <button id="dowloadBtnexcelone" class="btn btn-info " type="button"><i class="fa fa-trash-o"></i>模板下载</button>
-                    </span>
-                    <br>
-                    <span>
-                        3.意向专业表.xlsx
-                        <button id="dowloadBtnexceltwo" class="btn btn-info " type="button"><i class="fa fa-trash-o"></i>模板下载</button>
-                    </span>
-                    <br>
-                    <span>
-                        4.大后台填报数据.xlsx
-                        <button id="dowloadBtnexcelthree" class="btn btn-info " type="button"><i class="fa fa-trash-o"></i>模板下载</button>
-                    </span>
-                    <br>
-                    <span>
-                        5.本省志愿表.xlsx
-                        <button id="dowloadBtnexcelfore" class="btn btn-info " type="button"><i class="fa fa-trash-o"></i>模板下载</button>
-                    </span>
-
+                <div class="col-sm-12 select-table table-striped">
+                    <table id="bootstrap-table" th:width="1300" th:high="1000" th:border="1" th:cellpadding="0">
+                        <tr>
+                            <th>文件名</th>
+                            <th>模板下载</th>
+                        </tr>
+                        <tr>
+                            <td>2.学生基本情况表.xlsx</td>
+                            <td>
+                                <button id="dowloadBtnexcelone" class="btn btn-info " type="button"><i class="fa fa-trash-o"></i>模板下载</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3.意向专业表.xlsx</td>
+                            <td>
+                                <button id="dowloadBtnexceltwo" class="btn btn-info " type="button"><i class="fa fa-trash-o"></i>模板下载</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4.大后台填报数据.xlsx</td>
+                            <td>
+                                <button id="dowloadBtnexcelthree" class="btn btn-info " type="button"><i class="fa fa-trash-o"></i>模板下载</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5.本省志愿表.xlsx</td>
+                            <td>
+                                <button id="dowloadBtnexcelfore" class="btn btn-info " type="button"><i class="fa fa-trash-o"></i>模板下载</button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -73,6 +83,34 @@
         //EXCel模板下载
         function templateDowloadfour(fileName){
             window.location.href="/SeirMengRuoYiExcelproject/system/excelUser/common/download/resource?fileName=5.本省志愿表.xlsx";
+        }
+
+        function submitHandler() {
+            if ($.validate.form()) {
+                uploadFile();
+            }
+        }
+
+        function uploadFile() {
+            var formData = new FormData();
+            if ($('#filePath')[0].files[0] == null) {
+                $.modal.alertWarning("请先选择文件路径");
+                return false;
+            }
+            formData.append('fileName', $("input[name='fileName']").val());
+            formData.append('file', $('#filePath')[0].files[0]);
+            $.ajax({
+                url: prefix + "/addStudent",
+                type: 'post',
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function(result) {
+                    $.operate.successCallback(result);
+                }
+            });
         }
 
     </script>

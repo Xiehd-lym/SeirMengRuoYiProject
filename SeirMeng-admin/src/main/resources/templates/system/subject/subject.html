@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('意向专业列表')" />
+</head>
+<body class="gray-bg">
+     <div class="container-div">
+        <div class="row">
+            <div class="col-sm-12 search-collapse">
+                <form id="formId">
+                    <div class="select-list">
+                        <ul>
+                            <li>
+                                <label>门类：</label>
+                                <input type="text" name="majorClass"/>
+                            </li>
+                            <li>
+                                <label>专业：</label>
+                                <input type="text" name="majorName"/>
+                            </li>
+                            <li>
+                                <label>专业代码：</label>
+                                <input type="text" name="majorCode"/>
+                            </li>
+                            <li>
+                                <label>专业名称：</label>
+                                <input type="text" name="yuanyiFlag"/>
+                            </li>
+                            <li>
+                                <label>是否选择为意向专业：</label>
+                                <input type="text" name="majorSubjectClass"/>
+                            </li>
+                            <li>
+                                <label>学位授予门类：</label>
+                                <input type="text" name="studyYear"/>
+                            </li>
+                            <li>
+                                <label>修业年限：</label>
+                                <input type="text" name="createYear"/>
+                            </li>
+                            <li>
+                                <label>增设年度：</label>
+                                <input type="text" name="userName"/>
+                            </li>
+                            <li>
+                                <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                                <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+
+            <div class="btn-group-sm" id="toolbar" role="group">
+                <span>
+                    <input id="filePath" name="filePath" class="form-control" type="file">
+                </span>
+                <a class="btn btn-warning" onclick="$.table.exportExcel()">
+                    <i class="fa fa-download"></i> 导出
+                </a>
+            </div>
+            <div class="col-sm-12 select-table table-striped">
+                <table id="bootstrap-table"></table>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('system:subject:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('system:subject:remove')}]];
+        var prefix = ctx + "system/subject";
+
+
+        function submitHandler() {
+            if ($.validate.form()) {
+                uploadFile();
+            }
+        }
+
+        function uploadFile() {
+            var formData = new FormData();
+            if ($('#filePath')[0].files[0] == null) {
+                $.modal.alertWarning("请先选择文件路径");
+                return false;
+            }
+            formData.append('fileName', $("input[name='fileName']").val());
+            formData.append('file', $('#filePath')[0].files[0]);
+            $.ajax({
+                url: prefix + "/add",
+                type: 'post',
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function(result) {
+                    $.operate.successCallback(result);
+                }
+            });
+        }
+
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                exportUrl: prefix + "/export",
+                modalName: "意向专业",
+                columns: [
+                {
+                    field: 'id',
+                    title: '',
+                    visible: false
+                },
+                {
+                    field: 'majorNo',
+                    title: '序号'
+                },
+                {
+                    field: 'majorClass',
+                    title: '门类'
+                },
+                {
+                    field: 'majorName',
+                    title: '专业'
+                },
+                {
+                    field: 'majorCode',
+                    title: '专业代码'
+                },
+                {
+                    field: 'yuanyiFlag',
+                    title: '专业名称'
+                },
+                {
+                    field: 'majorSubjectClass',
+                    title: '是否选择为意向专业'
+                },
+                {
+                    field: 'studyYear',
+                    title: '学位授予门类'
+                },
+                {
+                    field: 'createYear',
+                    title: '修业年限'
+                },
+                {
+                    field: 'userName',
+                    title: '增设年度'
+                }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

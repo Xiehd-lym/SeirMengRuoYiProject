@@ -27,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -93,11 +94,22 @@ public class ExcelUserController extends BaseController
             user.setRoleId(2l);
             user.setDeptId(100l);
             registerService.register(user);
-
             excelUserService.insertExcelUser(excelUser);
         }
         return AjaxResult.success();
     }
+
+//    @PostMapping("/addStudent")
+//    @ResponseBody
+//    public AjaxResult addSave(@RequestParam("file") MultipartFile file, SysFileInfo fileInfo) throws IOException
+//    {
+//        // 上传文件路径
+//        String filePath = RuoYiConfig.getUploadPath();
+//        // 上传并返回新文件名称
+//        String fileName = FileUploadUtils.upload(filePath, file);
+//        fileInfo.setFilePath(fileName);
+//        return toAjax(sysFileInfoService.insertSysFileInfo(fileInfo));
+//    }
 
     /**
      * 导出用户表格列表

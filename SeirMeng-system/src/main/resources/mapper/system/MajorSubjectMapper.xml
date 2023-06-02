@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.MajorSubjectMapper">
+    
+    <resultMap type="MajorSubject" id="MajorSubjectResult">
+        <result property="id"    column="id"    />
+        <result property="excelUserName"    column="excel_user_name"    />
+        <result property="majorNo"    column="major_no"    />
+        <result property="majorClass"    column="major_class"    />
+        <result property="majorName"    column="major_name"    />
+        <result property="majorCode"    column="major_code"    />
+        <result property="yuanyiFlag"    column="yuanyi_flag"    />
+        <result property="majorSubjectClass"    column="major_subject_class"    />
+        <result property="studyYear"    column="study_year"    />
+        <result property="createYear"    column="create_year"    />
+        <result property="userName"    column="user_name"    />
+    </resultMap>
+
+    <sql id="selectMajorSubjectVo">
+        select id, excel_user_name, major_no, major_class, major_name, major_code, yuanyi_flag, major_subject_class, study_year, create_year, user_name from major_subject
+    </sql>
+
+    <select id="selectMajorSubjectList" parameterType="MajorSubject" resultMap="MajorSubjectResult">
+        <include refid="selectMajorSubjectVo"/>
+        <where>  
+            <if test="excelUserName != null  and excelUserName != ''"> and excel_user_name like concat('%', #{excelUserName}, '%')</if>
+            <if test="majorNo != null "> and major_no = #{majorNo}</if>
+            <if test="majorClass != null  and majorClass != ''"> and major_class = #{majorClass}</if>
+            <if test="majorName != null  and majorName != ''"> and major_name like concat('%', #{majorName}, '%')</if>
+            <if test="majorCode != null  and majorCode != ''"> and major_code = #{majorCode}</if>
+            <if test="yuanyiFlag != null  and yuanyiFlag != ''"> and yuanyi_flag = #{yuanyiFlag}</if>
+            <if test="majorSubjectClass != null  and majorSubjectClass != ''"> and major_subject_class = #{majorSubjectClass}</if>
+            <if test="studyYear != null  and studyYear != ''"> and study_year = #{studyYear}</if>
+            <if test="createYear != null  and createYear != ''"> and create_year = #{createYear}</if>
+            <if test="userName != null  and userName != ''"> and user_name like concat('%', #{userName}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectMajorSubjectById" parameterType="Long" resultMap="MajorSubjectResult">
+        <include refid="selectMajorSubjectVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertMajorSubject" parameterType="MajorSubject" useGeneratedKeys="true" keyProperty="id">
+        insert into major_subject
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="excelUserName != null">excel_user_name,</if>
+            <if test="majorNo != null">major_no,</if>
+            <if test="majorClass != null">major_class,</if>
+            <if test="majorName != null">major_name,</if>
+            <if test="majorCode != null">major_code,</if>
+            <if test="yuanyiFlag != null">yuanyi_flag,</if>
+            <if test="majorSubjectClass != null">major_subject_class,</if>
+            <if test="studyYear != null">study_year,</if>
+            <if test="createYear != null">create_year,</if>
+            <if test="userName != null">user_name,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="excelUserName != null">#{excelUserName},</if>
+            <if test="majorNo != null">#{majorNo},</if>
+            <if test="majorClass != null">#{majorClass},</if>
+            <if test="majorName != null">#{majorName},</if>
+            <if test="majorCode != null">#{majorCode},</if>
+            <if test="yuanyiFlag != null">#{yuanyiFlag},</if>
+            <if test="majorSubjectClass != null">#{majorSubjectClass},</if>
+            <if test="studyYear != null">#{studyYear},</if>
+            <if test="createYear != null">#{createYear},</if>
+            <if test="userName != null">#{userName},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMajorSubject" parameterType="MajorSubject">
+        update major_subject
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="excelUserName != null">excel_user_name = #{excelUserName},</if>
+            <if test="majorNo != null">major_no = #{majorNo},</if>
+            <if test="majorClass != null">major_class = #{majorClass},</if>
+            <if test="majorName != null">major_name = #{majorName},</if>
+            <if test="majorCode != null">major_code = #{majorCode},</if>
+            <if test="yuanyiFlag != null">yuanyi_flag = #{yuanyiFlag},</if>
+            <if test="majorSubjectClass != null">major_subject_class = #{majorSubjectClass},</if>
+            <if test="studyYear != null">study_year = #{studyYear},</if>
+            <if test="createYear != null">create_year = #{createYear},</if>
+            <if test="userName != null">user_name = #{userName},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMajorSubjectById" parameterType="Long">
+        delete from major_subject where id = #{id}
+    </delete>
+
+    <delete id="deleteMajorSubjectByIds" parameterType="String">
+        delete from major_subject where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
