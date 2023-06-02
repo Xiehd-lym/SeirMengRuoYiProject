@@ -1,15 +1,12 @@
 package com.ruoyi.web.controller.system;
 
-import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.page.TableDataInfo;
-import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.common.utils.ShiroUtils;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.system.domain.MajorSubject;
 import com.ruoyi.system.service.IMajorSubjectService;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +30,7 @@ public class MajorSubjectController extends BaseController
     @Autowired
     private IMajorSubjectService majorSubjectService;
 
-    @RequiresPermissions("system:subject:view")
+//    @RequiresPermissions("system:subject:view")
     @GetMapping()
     public String subject()
     {
@@ -61,7 +58,7 @@ public class MajorSubjectController extends BaseController
     /**
      * 查询意向专业列表
      */
-    @RequiresPermissions("system:subject:list")
+//    @RequiresPermissions("system:subject:list")
     @PostMapping("/list")
     @ResponseBody
     public TableDataInfo list(MajorSubject majorSubject)
@@ -75,19 +72,40 @@ public class MajorSubjectController extends BaseController
     /**
      * 导出意向专业列表
      */
-    @RequiresPermissions("system:subject:export")
-    @Log(title = "意向专业", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     @ResponseBody
     public AjaxResult export(MajorSubject majorSubject)
     {
         majorSubject.setExcelUserName(ShiroUtils.getLoginName());
+        List<MajorSubject> list = majorSubjectService.selectMajorSubjectList(majorSubject);
+        ExcelUtil<MajorSubject> util = new ExcelUtil<MajorSubject>(MajorSubject.class);
+        return util.exportExcel(list, "意向专业数据");
+    }
+
+    /**
+     * 导ru意向专业列表
+     */
+
+    @PostMapping("/importData")
+    @ResponseBody
+    public AjaxResult importData(MultipartFile file) throws Exception
+    {
+        MajorSubject majorSubject = new MajorSubject();
+        majorSubject.setExcelUserName(ShiroUtils.getLoginName());
         if (majorSubjectService.selectMajorSubjectList(majorSubject).size()>0){
             return new AjaxResult(AjaxResult.Type.ERROR,"您已存在志愿数据，无法进行导入操作");
         }
-        List<MajorSubject> list = majorSubjectService.selectMajorSubjectList(majorSubject);
+//        List<MajorSubject> list = majorSubjectService.selectMajorSubjectList(majorSubject);
+
         ExcelUtil<MajorSubject> util = new ExcelUtil<MajorSubject>(MajorSubject.class);
-        return util.exportExcel(list, ShiroUtils.getLoginName()+"意向专业数据");
+
+        List<MajorSubject> excelUserList = util.importExcel(file.getInputStream());
+
+        for (MajorSubject subject : excelUserList) {
+            subject.setExcelUserName(ShiroUtils.getLoginName());
+            majorSubjectService.insertMajorSubject(subject);
+        }
+        return AjaxResult.success();
     }
 //
 //    /**

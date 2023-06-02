@@ -20,7 +20,7 @@ public class MajorSubject extends BaseEntity
     private Long id;
 
     /** 用户名 */
-    @Excel(name = "用户名")
+//    @Excel(name = "用户名")
     private String excelUserName;
 
     /** 序号 */
