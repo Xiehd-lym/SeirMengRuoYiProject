@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.PartOrderMapper">
+    
+    <resultMap type="PartOrder" id="PartOrderResult">
+        <result property="id"    column="id"    />
+        <result property="partUserName"    column="part_user_name"    />
+        <result property="partName"    column="part_name"    />
+        <result property="demandNum"    column="demand_num"    />
+        <result property="orderTime"    column="order_time"    />
+        <result property="payTime"    column="pay_time"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="orderShouldWay"    column="order_should_way"    />
+    </resultMap>
+
+    <sql id="selectPartOrderVo">
+        select id, part_user_name, part_name, demand_num, order_time, pay_time, create_time, order_should_way from part_order
+    </sql>
+
+    <select id="selectPartOrderList" parameterType="PartOrder" resultMap="PartOrderResult">
+        <include refid="selectPartOrderVo"/>
+        <where>  
+            <if test="partUserName != null  and partUserName != ''"> and part_user_name like concat('%', #{partUserName}, '%')</if>
+            <if test="partName != null  and partName != ''"> and part_name like concat('%', #{partName}, '%')</if>
+            <if test="demandNum != null  and demandNum != ''"> and demand_num = #{demandNum}</if>
+            <if test="orderTime != null "> and order_time = #{orderTime}</if>
+            <if test="payTime != null "> and pay_time = #{payTime}</if>
+            <if test="orderShouldWay != null  and orderShouldWay != ''"> and order_should_way = #{orderShouldWay}</if>
+        </where>
+    </select>
+    
+    <select id="selectPartOrderById" parameterType="Long" resultMap="PartOrderResult">
+        <include refid="selectPartOrderVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertPartOrder" parameterType="PartOrder" useGeneratedKeys="true" keyProperty="id">
+        insert into part_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="partUserName != null">part_user_name,</if>
+            <if test="partName != null">part_name,</if>
+            <if test="demandNum != null">demand_num,</if>
+            <if test="orderTime != null">order_time,</if>
+            <if test="payTime != null">pay_time,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="orderShouldWay != null">order_should_way,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="partUserName != null">#{partUserName},</if>
+            <if test="partName != null">#{partName},</if>
+            <if test="demandNum != null">#{demandNum},</if>
+            <if test="orderTime != null">#{orderTime},</if>
+            <if test="payTime != null">#{payTime},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="orderShouldWay != null">#{orderShouldWay},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePartOrder" parameterType="PartOrder">
+        update part_order
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="partUserName != null">part_user_name = #{partUserName},</if>
+            <if test="partName != null">part_name = #{partName},</if>
+            <if test="demandNum != null">demand_num = #{demandNum},</if>
+            <if test="orderTime != null">order_time = #{orderTime},</if>
+            <if test="payTime != null">pay_time = #{payTime},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="orderShouldWay != null">order_should_way = #{orderShouldWay},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deletePartOrderById" parameterType="Long">
+        delete from part_order where id = #{id}
+    </delete>
+
+    <delete id="deletePartOrderByIds" parameterType="String">
+        delete from part_order where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

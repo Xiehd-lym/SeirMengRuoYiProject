@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.PartMapper">
+    
+    <resultMap type="Part" id="PartResult">
+        <result property="id"    column="id"    />
+        <result property="partCode"    column="part_code"    />
+        <result property="partName"    column="part_name"    />
+        <result property="partSpecification"    column="part_specification"    />
+        <result property="partOriginPlace"    column="part_origin_place"    />
+        <result property="partOriginTime"    column="part_origin_time"    />
+        <result property="partInventory"    column="part_inventory"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="updateBy"    column="update_by"    />
+    </resultMap>
+
+    <sql id="selectPartVo">
+        select id, part_code, part_name, part_specification, part_origin_place, part_origin_time, part_inventory, create_time, create_by, update_time, update_by from part
+    </sql>
+
+    <select id="selectPartList" parameterType="Part" resultMap="PartResult">
+        <include refid="selectPartVo"/>
+        <where>  
+            <if test="partCode != null  and partCode != ''"> and part_code = #{partCode}</if>
+            <if test="partName != null  and partName != ''"> and part_name like concat('%', #{partName}, '%')</if>
+            <if test="partSpecification != null  and partSpecification != ''"> and part_specification = #{partSpecification}</if>
+            <if test="partOriginPlace != null  and partOriginPlace != ''"> and part_origin_place = #{partOriginPlace}</if>
+            <if test="partOriginTime != null "> and part_origin_time = #{partOriginTime}</if>
+            <if test="partInventory != null "> and part_inventory = #{partInventory}</if>
+        </where>
+    </select>
+    
+    <select id="selectPartById" parameterType="Long" resultMap="PartResult">
+        <include refid="selectPartVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertPart" parameterType="Part" useGeneratedKeys="true" keyProperty="id">
+        insert into part
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="partCode != null">part_code,</if>
+            <if test="partName != null">part_name,</if>
+            <if test="partSpecification != null">part_specification,</if>
+            <if test="partOriginPlace != null">part_origin_place,</if>
+            <if test="partOriginTime != null">part_origin_time,</if>
+            <if test="partInventory != null">part_inventory,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="updateBy != null">update_by,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="partCode != null">#{partCode},</if>
+            <if test="partName != null">#{partName},</if>
+            <if test="partSpecification != null">#{partSpecification},</if>
+            <if test="partOriginPlace != null">#{partOriginPlace},</if>
+            <if test="partOriginTime != null">#{partOriginTime},</if>
+            <if test="partInventory != null">#{partInventory},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePart" parameterType="Part">
+        update part
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="partCode != null">part_code = #{partCode},</if>
+            <if test="partName != null">part_name = #{partName},</if>
+            <if test="partSpecification != null">part_specification = #{partSpecification},</if>
+            <if test="partOriginPlace != null">part_origin_place = #{partOriginPlace},</if>
+            <if test="partOriginTime != null">part_origin_time = #{partOriginTime},</if>
+            <if test="partInventory != null">part_inventory = #{partInventory},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deletePartById" parameterType="Long">
+        delete from part where id = #{id}
+    </delete>
+
+    <delete id="deletePartByIds" parameterType="String">
+        delete from part where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

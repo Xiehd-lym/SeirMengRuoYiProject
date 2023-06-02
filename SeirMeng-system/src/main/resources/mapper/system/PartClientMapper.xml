@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.PartClientMapper">
+    
+    <resultMap type="PartClient" id="PartClientResult">
+        <result property="id"    column="id"    />
+        <result property="clientCode"    column="client_code"    />
+        <result property="clientName"    column="client_name"    />
+        <result property="clientDebtTime"    column="client_debt_time"    />
+    </resultMap>
+
+    <sql id="selectPartClientVo">
+        select id, client_code, client_name, client_debt_time from part_client
+    </sql>
+
+    <select id="selectPartClientList" parameterType="PartClient" resultMap="PartClientResult">
+        <include refid="selectPartClientVo"/>
+        <where>  
+            <if test="clientCode != null  and clientCode != ''"> and client_code = #{clientCode}</if>
+            <if test="clientName != null  and clientName != ''"> and client_name like concat('%', #{clientName}, '%')</if>
+            <if test="clientDebtTime != null "> and client_debt_time = #{clientDebtTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectPartClientById" parameterType="Long" resultMap="PartClientResult">
+        <include refid="selectPartClientVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertPartClient" parameterType="PartClient">
+        insert into part_client
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="clientCode != null">client_code,</if>
+            <if test="clientName != null">client_name,</if>
+            <if test="clientDebtTime != null">client_debt_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="clientCode != null">#{clientCode},</if>
+            <if test="clientName != null">#{clientName},</if>
+            <if test="clientDebtTime != null">#{clientDebtTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePartClient" parameterType="PartClient">
+        update part_client
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="clientCode != null">client_code = #{clientCode},</if>
+            <if test="clientName != null">client_name = #{clientName},</if>
+            <if test="clientDebtTime != null">client_debt_time = #{clientDebtTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deletePartClientById" parameterType="Long">
+        delete from part_client where id = #{id}
+    </delete>
+
+    <delete id="deletePartClientByIds" parameterType="String">
+        delete from part_client where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

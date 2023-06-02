@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50726
  Source Host           : localhost:3306
- Source Schema         : seirMeng
+ Source Schema         : seirmeng_part
 
  Target Server Type    : MySQL
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 24/05/2023 10:33:44
+ Date: 02/06/2023 21:15:05
 */
 
 SET NAMES utf8mb4;
@@ -43,7 +43,14 @@ CREATE TABLE `gen_table`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`table_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of gen_table
+-- ----------------------------
+INSERT INTO `gen_table` VALUES (1, 'part', '零件', '', NULL, 'Part', 'crud', 'com.ruoyi.system', 'system', 'part', '零件', 'Xiehd', '0', '/', '{\"parentMenuId\":\"2000\",\"treeName\":\"\",\"treeParentCode\":\"\",\"parentMenuName\":\"零件\",\"treeCode\":\"\"}', 'admin', '2023-06-02 20:04:38', '', '2023-06-02 20:06:36', '');
+INSERT INTO `gen_table` VALUES (4, 'part_client', '客户', '', NULL, 'PartClient', 'crud', 'com.ruoyi.system', 'system', 'client', '客户', 'Xiehd', '0', '/', '{\"parentMenuId\":\"2002\",\"treeName\":\"\",\"treeParentCode\":\"\",\"parentMenuName\":\"客户信息\",\"treeCode\":\"\"}', 'admin', '2023-06-02 20:23:54', '', '2023-06-02 20:24:18', '');
+INSERT INTO `gen_table` VALUES (7, 'part_order', '订货', '', NULL, 'PartOrder', 'crud', 'com.ruoyi.system', 'system', 'order', '订货', 'Xiehd', '0', '/', '{\"parentMenuId\":\"2004\",\"treeName\":\"\",\"treeParentCode\":\"\",\"parentMenuName\":\"订货信息\",\"treeCode\":\"\"}', 'admin', '2023-06-02 20:40:32', '', '2023-06-02 20:42:17', '');
 
 -- ----------------------------
 -- Table structure for gen_table_column
@@ -73,7 +80,86 @@ CREATE TABLE `gen_table_column`  (
   `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`column_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 59 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of gen_table_column
+-- ----------------------------
+INSERT INTO `gen_table_column` VALUES (1, '1', 'id', '', 'int(11)', 'Long', 'id', '1', '1', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-06-02 20:04:38', NULL, '2023-06-02 20:06:36');
+INSERT INTO `gen_table_column` VALUES (2, '1', 'part_code', '零件代码', 'varchar(255)', 'String', 'partCode', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 2, 'admin', '2023-06-02 20:04:38', NULL, '2023-06-02 20:06:36');
+INSERT INTO `gen_table_column` VALUES (3, '1', 'part_name', '零件名称', 'varchar(255)', 'String', 'partName', '0', '0', NULL, '1', '1', '1', '1', 'LIKE', 'input', '', 3, 'admin', '2023-06-02 20:04:38', NULL, '2023-06-02 20:06:36');
+INSERT INTO `gen_table_column` VALUES (4, '1', 'part_specification', '零件规格', 'varchar(255)', 'String', 'partSpecification', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 4, 'admin', '2023-06-02 20:04:38', NULL, '2023-06-02 20:06:36');
+INSERT INTO `gen_table_column` VALUES (5, '1', 'part_origin_place', '零件产地', 'varchar(255)', 'String', 'partOriginPlace', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 5, 'admin', '2023-06-02 20:04:38', NULL, '2023-06-02 20:06:36');
+INSERT INTO `gen_table_column` VALUES (6, '1', 'part_origin_time', '零件生产日期', 'datetime', 'Date', 'partOriginTime', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'datetime', '', 6, 'admin', '2023-06-02 20:04:38', NULL, '2023-06-02 20:06:36');
+INSERT INTO `gen_table_column` VALUES (7, '1', 'part_inventory', '零件库存量', 'int(10)', 'Integer', 'partInventory', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 7, 'admin', '2023-06-02 20:04:38', NULL, '2023-06-02 20:06:36');
+INSERT INTO `gen_table_column` VALUES (8, '1', 'create_time', '信息创建时间', 'datetime', 'Date', 'createTime', '0', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'datetime', '', 8, 'admin', '2023-06-02 20:04:38', NULL, '2023-06-02 20:06:36');
+INSERT INTO `gen_table_column` VALUES (9, '1', 'create_by', '信息创建人', 'varchar(255)', 'String', 'createBy', '0', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 9, 'admin', '2023-06-02 20:04:38', NULL, '2023-06-02 20:06:36');
+INSERT INTO `gen_table_column` VALUES (10, '1', 'update_time', '信息修改时间', 'datetime', 'Date', 'updateTime', '0', '0', NULL, '1', '1', NULL, NULL, 'EQ', 'datetime', '', 10, 'admin', '2023-06-02 20:04:38', NULL, '2023-06-02 20:06:36');
+INSERT INTO `gen_table_column` VALUES (11, '1', 'update_by', '信息修改人', 'varchar(255)', 'String', 'updateBy', '0', '0', NULL, '1', '1', NULL, NULL, 'EQ', 'input', '', 11, 'admin', '2023-06-02 20:04:38', NULL, '2023-06-02 20:06:36');
+INSERT INTO `gen_table_column` VALUES (26, '4', 'id', '', 'int(11)', 'Long', 'id', '1', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-06-02 20:23:54', NULL, '2023-06-02 20:24:18');
+INSERT INTO `gen_table_column` VALUES (27, '4', 'client_code', '用户代码', 'varchar(255)', 'String', 'clientCode', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 2, 'admin', '2023-06-02 20:23:54', NULL, '2023-06-02 20:24:18');
+INSERT INTO `gen_table_column` VALUES (28, '4', 'client_name', '用户名称', 'varchar(255)', 'String', 'clientName', '0', '0', NULL, '1', '1', '1', '1', 'LIKE', 'input', '', 3, 'admin', '2023-06-02 20:23:54', NULL, '2023-06-02 20:24:18');
+INSERT INTO `gen_table_column` VALUES (29, '4', 'client_debt_time', '用户欠款时间', 'datetime', 'Date', 'clientDebtTime', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'datetime', '', 4, 'admin', '2023-06-02 20:23:54', NULL, '2023-06-02 20:24:18');
+INSERT INTO `gen_table_column` VALUES (51, '7', 'id', '', 'int(11)', 'Long', 'id', '1', '1', NULL, '1', NULL, NULL, NULL, 'EQ', 'input', '', 1, 'admin', '2023-06-02 20:40:32', NULL, '2023-06-02 20:42:17');
+INSERT INTO `gen_table_column` VALUES (52, '7', 'part_user_name', '用户名称', 'varchar(255)', 'String', 'partUserName', '0', '0', NULL, '1', '1', '1', '1', 'LIKE', 'input', '', 2, 'admin', '2023-06-02 20:40:32', NULL, '2023-06-02 20:42:17');
+INSERT INTO `gen_table_column` VALUES (53, '7', 'part_name', '零件名称', 'varchar(255)', 'String', 'partName', '0', '0', NULL, '1', '1', '1', '1', 'LIKE', 'input', '', 3, 'admin', '2023-06-02 20:40:32', NULL, '2023-06-02 20:42:17');
+INSERT INTO `gen_table_column` VALUES (54, '7', 'demand_num', '需求量', 'varchar(255)', 'String', 'demandNum', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 4, 'admin', '2023-06-02 20:40:32', NULL, '2023-06-02 20:42:17');
+INSERT INTO `gen_table_column` VALUES (55, '7', 'order_time', '订单日期', 'datetime', 'Date', 'orderTime', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'datetime', '', 5, 'admin', '2023-06-02 20:40:32', NULL, '2023-06-02 20:42:17');
+INSERT INTO `gen_table_column` VALUES (56, '7', 'pay_time', '付款日期', 'datetime', 'Date', 'payTime', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'datetime', '', 6, 'admin', '2023-06-02 20:40:32', NULL, '2023-06-02 20:42:17');
+INSERT INTO `gen_table_column` VALUES (57, '7', 'create_time', '订单创建时间', 'datetime', 'Date', 'createTime', '0', '0', NULL, '1', NULL, NULL, NULL, 'EQ', 'datetime', '', 7, 'admin', '2023-06-02 20:40:32', NULL, '2023-06-02 20:42:17');
+INSERT INTO `gen_table_column` VALUES (58, '7', 'order_should_way', '应采取的行动', 'varchar(255)', 'String', 'orderShouldWay', '0', '0', NULL, '1', '1', '1', '1', 'EQ', 'input', '', 8, 'admin', '2023-06-02 20:40:32', NULL, '2023-06-02 20:42:17');
+
+-- ----------------------------
+-- Table structure for part
+-- ----------------------------
+DROP TABLE IF EXISTS `part`;
+CREATE TABLE `part`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `part_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '零件代码',
+  `part_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '零件名称',
+  `part_specification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '零件规格',
+  `part_origin_place` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '零件产地',
+  `part_origin_time` datetime(0) NULL DEFAULT NULL COMMENT '零件生产日期',
+  `part_inventory` int(10) NULL DEFAULT NULL COMMENT '零件库存量',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '信息创建时间',
+  `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '信息创建人',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '信息修改时间',
+  `update_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '信息修改人',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '零件' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for part_client
+-- ----------------------------
+DROP TABLE IF EXISTS `part_client`;
+CREATE TABLE `part_client`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `client_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户代码',
+  `client_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户名称',
+  `client_debt_time` datetime(0) NULL DEFAULT NULL COMMENT '用户欠款时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '客户' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of part_client
+-- ----------------------------
+INSERT INTO `part_client` VALUES (1, 'ewr', '隔热隔热', '2023-06-15 00:00:00');
+
+-- ----------------------------
+-- Table structure for part_order
+-- ----------------------------
+DROP TABLE IF EXISTS `part_order`;
+CREATE TABLE `part_order`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `part_user_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户名称',
+  `part_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '零件名称',
+  `demand_num` int(10) NULL DEFAULT NULL COMMENT '需求量',
+  `order_time` datetime(0) NULL DEFAULT NULL COMMENT '订单日期',
+  `pay_time` datetime(0) NULL DEFAULT NULL COMMENT '付款日期',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '订单创建时间',
+  `order_should_way` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '应采取的行动',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '订货' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for qrtz_blob_triggers
@@ -306,15 +392,6 @@ CREATE TABLE `sys_dept`  (
 -- Records of sys_dept
 -- ----------------------------
 INSERT INTO `sys_dept` VALUES (100, 0, '0', 'Seirmeng公司总部', 0, 'Seirmeng', '15888888888', 'ry@qq.com', '0', '0', 'admin', '2023-05-24 10:28:20', '', NULL);
--- INSERT INTO `sys_dept` VALUES (101, 100, '0,100', '深圳总公司', 1, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', '2023-05-24 10:28:20', '', NULL);
--- INSERT INTO `sys_dept` VALUES (102, 100, '0,100', '长沙分公司', 2, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', '2023-05-24 10:28:20', '', NULL);
--- INSERT INTO `sys_dept` VALUES (103, 101, '0,100,101', '研发部门', 1, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', '2023-05-24 10:28:20', '', NULL);
--- INSERT INTO `sys_dept` VALUES (104, 101, '0,100,101', '市场部门', 2, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', '2023-05-24 10:28:20', '', NULL);
--- INSERT INTO `sys_dept` VALUES (105, 101, '0,100,101', '测试部门', 3, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', '2023-05-24 10:28:20', '', NULL);
--- INSERT INTO `sys_dept` VALUES (106, 101, '0,100,101', '财务部门', 4, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', '2023-05-24 10:28:20', '', NULL);
--- INSERT INTO `sys_dept` VALUES (107, 101, '0,100,101', '运维部门', 5, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', '2023-05-24 10:28:20', '', NULL);
--- INSERT INTO `sys_dept` VALUES (108, 102, '0,100,102', '市场部门', 1, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', '2023-05-24 10:28:20', '', NULL);
--- INSERT INTO `sys_dept` VALUES (109, 102, '0,100,102', '财务部门', 2, '若依', '15888888888', 'ry@qq.com', '0', '0', 'admin', '2023-05-24 10:28:20', '', NULL);
 
 -- ----------------------------
 -- Table structure for sys_dict_data
@@ -462,7 +539,30 @@ CREATE TABLE `sys_logininfor`  (
   `msg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '提示消息',
   `login_time` datetime(0) NULL DEFAULT NULL COMMENT '访问时间',
   PRIMARY KEY (`info_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 119 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_logininfor
+-- ----------------------------
+INSERT INTO `sys_logininfor` VALUES (100, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-02 20:01:46');
+INSERT INTO `sys_logininfor` VALUES (101, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-02 20:03:02');
+INSERT INTO `sys_logininfor` VALUES (102, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-02 20:09:54');
+INSERT INTO `sys_logininfor` VALUES (103, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-02 20:17:57');
+INSERT INTO `sys_logininfor` VALUES (104, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-02 20:23:43');
+INSERT INTO `sys_logininfor` VALUES (105, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-02 20:27:46');
+INSERT INTO `sys_logininfor` VALUES (106, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-06-02 20:36:23');
+INSERT INTO `sys_logininfor` VALUES (107, '张三', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2023-06-02 20:36:26');
+INSERT INTO `sys_logininfor` VALUES (108, '张三', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2023-06-02 20:36:30');
+INSERT INTO `sys_logininfor` VALUES (109, '张三', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2023-06-02 20:36:33');
+INSERT INTO `sys_logininfor` VALUES (110, 'zhangsan', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-02 20:36:38');
+INSERT INTO `sys_logininfor` VALUES (111, 'zhangsan', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-06-02 20:38:16');
+INSERT INTO `sys_logininfor` VALUES (112, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-02 20:38:18');
+INSERT INTO `sys_logininfor` VALUES (113, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-02 20:44:56');
+INSERT INTO `sys_logininfor` VALUES (114, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-02 21:12:50');
+INSERT INTO `sys_logininfor` VALUES (115, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-06-02 21:13:03');
+INSERT INTO `sys_logininfor` VALUES (116, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-02 21:13:05');
+INSERT INTO `sys_logininfor` VALUES (117, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-06-02 21:13:08');
+INSERT INTO `sys_logininfor` VALUES (118, 'zhangsan', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-06-02 21:13:11');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -486,7 +586,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2000 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2006 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -494,7 +594,6 @@ CREATE TABLE `sys_menu`  (
 INSERT INTO `sys_menu` VALUES (1, '系统管理', 0, 1, '#', '', 'M', '0', '1', '', 'fa fa-gear', 'admin', '2023-05-24 10:28:20', '', NULL, '系统管理目录');
 INSERT INTO `sys_menu` VALUES (2, '系统监控', 0, 2, '#', '', 'M', '0', '1', '', 'fa fa-video-camera', 'admin', '2023-05-24 10:28:20', '', NULL, '系统监控目录');
 INSERT INTO `sys_menu` VALUES (3, '系统工具', 0, 3, '#', '', 'M', '0', '1', '', 'fa fa-bars', 'admin', '2023-05-24 10:28:20', '', NULL, '系统工具目录');
--- INSERT INTO `sys_menu` VALUES (4, '若依官网', 0, 4, 'http://ruoyi.vip', 'menuBlank', 'C', '0', '1', '', 'fa fa-location-arrow', 'admin', '2023-05-24 10:28:20', '', NULL, '若依官网地址');
 INSERT INTO `sys_menu` VALUES (100, '用户管理', 1, 1, '/system/user', '', 'C', '0', '1', 'system:user:view', 'fa fa-user-o', 'admin', '2023-05-24 10:28:20', '', NULL, '用户管理菜单');
 INSERT INTO `sys_menu` VALUES (101, '角色管理', 1, 2, '/system/role', '', 'C', '0', '1', 'system:role:view', 'fa fa-user-secret', 'admin', '2023-05-24 10:28:20', '', NULL, '角色管理菜单');
 INSERT INTO `sys_menu` VALUES (102, '菜单管理', 1, 3, '/system/menu', '', 'C', '0', '1', 'system:menu:view', 'fa fa-th-list', 'admin', '2023-05-24 10:28:20', '', NULL, '菜单管理菜单');
@@ -576,6 +675,12 @@ INSERT INTO `sys_menu` VALUES (1058, '生成修改', 115, 2, '#', '', 'F', '0', 
 INSERT INTO `sys_menu` VALUES (1059, '生成删除', 115, 3, '#', '', 'F', '0', '1', 'tool:gen:remove', '#', 'admin', '2023-05-24 10:28:20', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1060, '预览代码', 115, 4, '#', '', 'F', '0', '1', 'tool:gen:preview', '#', 'admin', '2023-05-24 10:28:20', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (1061, '生成代码', 115, 5, '#', '', 'F', '0', '1', 'tool:gen:code', '#', 'admin', '2023-05-24 10:28:20', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2000, '零件信息', 0, 1, '#', 'menuItem', 'M', '0', '1', '', 'fa fa-navicon', 'admin', '2023-06-02 20:06:21', 'admin', '2023-06-02 20:10:59', '');
+INSERT INTO `sys_menu` VALUES (2001, '零件管理', 2000, 1, '/system/part', 'menuItem', 'C', '0', '1', NULL, 'fa fa-gears', 'admin', '2023-06-02 20:10:49', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2002, '客户信息', 0, 2, '#', 'menuItem', 'M', '0', '1', NULL, 'fa fa-street-view', 'admin', '2023-06-02 20:19:47', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2003, '客户管理', 2002, 1, '/system/client', 'menuItem', 'C', '0', '1', '', 'fa fa-address-book-o', 'admin', '2023-06-02 20:20:11', 'admin', '2023-06-02 20:28:09', '');
+INSERT INTO `sys_menu` VALUES (2004, '订货信息', 0, 3, '#', 'menuItem', 'M', '0', '1', NULL, 'fa fa-money', 'admin', '2023-06-02 20:41:30', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2005, '订货管理', 2004, 1, '/system/order', 'menuItem', 'C', '0', '1', '', 'fa fa-balance-scale', 'admin', '2023-06-02 20:42:01', 'admin', '2023-06-02 20:45:27', '');
 
 -- ----------------------------
 -- Table structure for sys_notice
@@ -594,12 +699,6 @@ CREATE TABLE `sys_notice`  (
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`notice_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '通知公告表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of sys_notice
--- ----------------------------
--- INSERT INTO `sys_notice` VALUES (1, '温馨提醒：2018-07-01 若依新版本发布啦', '2', '新版本内容', '0', 'admin', '2023-05-24 10:28:20', '', NULL, '管理员');
--- INSERT INTO `sys_notice` VALUES (2, '维护通知：2018-07-01 若依系统凌晨维护', '1', '维护内容', '0', 'admin', '2023-05-24 10:28:20', '', NULL, '管理员');
 
 -- ----------------------------
 -- Table structure for sys_oper_log
@@ -623,7 +722,49 @@ CREATE TABLE `sys_oper_log`  (
   `error_msg` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '错误消息',
   `oper_time` datetime(0) NULL DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`oper_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 138 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_oper_log
+-- ----------------------------
+INSERT INTO `sys_oper_log` VALUES (100, '代码生成', 6, 'com.ruoyi.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/importTable', '127.0.0.1', '内网IP', '{\"tables\":[\"part_order,part_user,part\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:04:38');
+INSERT INTO `sys_oper_log` VALUES (101, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.addSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/menu/add', '127.0.0.1', '内网IP', '{\"parentId\":[\"0\"],\"menuType\":[\"M\"],\"menuName\":[\"零件\"],\"url\":[\"\"],\"target\":[\"menuItem\"],\"perms\":[\"\"],\"orderNum\":[\"1\"],\"icon\":[\"fa fa-navicon\"],\"visible\":[\"0\"],\"isRefresh\":[\"1\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:06:21');
+INSERT INTO `sys_oper_log` VALUES (102, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/edit', '127.0.0.1', '内网IP', '{\"tableId\":[\"1\"],\"tableName\":[\"part\"],\"tableComment\":[\"零件\"],\"className\":[\"Part\"],\"functionAuthor\":[\"Xiehd\"],\"remark\":[\"\"],\"columns[0].columnId\":[\"1\"],\"columns[0].sort\":[\"1\"],\"columns[0].columnComment\":[\"\"],\"columns[0].javaType\":[\"Long\"],\"columns[0].javaField\":[\"id\"],\"columns[0].isInsert\":[\"1\"],\"columns[0].queryType\":[\"EQ\"],\"columns[0].htmlType\":[\"input\"],\"columns[0].dictType\":[\"\"],\"columns[1].columnId\":[\"2\"],\"columns[1].sort\":[\"2\"],\"columns[1].columnComment\":[\"零件代码\"],\"columns[1].javaType\":[\"String\"],\"columns[1].javaField\":[\"partCode\"],\"columns[1].isInsert\":[\"1\"],\"columns[1].isEdit\":[\"1\"],\"columns[1].isList\":[\"1\"],\"columns[1].isQuery\":[\"1\"],\"columns[1].queryType\":[\"EQ\"],\"columns[1].htmlType\":[\"input\"],\"columns[1].dictType\":[\"\"],\"columns[2].columnId\":[\"3\"],\"columns[2].sort\":[\"3\"],\"columns[2].columnComment\":[\"零件名称\"],\"columns[2].javaType\":[\"String\"],\"columns[2].javaField\":[\"partName\"],\"columns[2].isInsert\":[\"1\"],\"columns[2].isEdit\":[\"1\"],\"columns[2].isList\":[\"1\"],\"columns[2].isQuery\":[\"1\"],\"columns[2].queryType\":[\"LIKE\"],\"columns[2].htmlType\":[\"input\"],\"columns[2].dictType\":[\"\"],\"columns[3].columnId\":[\"4\"],\"columns[3].sort\":[\"4\"],\"columns[3].columnComment\":[\"零件规格\"],\"columns[3].javaType\":[\"String\"],\"columns[3].javaField\":[\"partSpecification\"],\"columns[3].isInsert\":[\"1\"],\"columns[3].isEdit\":[\"1\"],\"columns[3].isList\":[\"1\"],\"columns[3].isQuery\":[\"1\"],\"columns[3].queryType\":[\"EQ\"],\"columns[3].htmlType\":[\"input\"],\"columns[3].dictType\":[\"\"],\"columns[4].columnId\":[\"5\"],\"columns[4].sort\":[\"5\"],\"columns[4].columnComment\":[\"零件产地\"],\"columns[4].javaType\":[\"String\"],\"columns[4].javaField\":[\"partOriginPlace\"],\"columns[4].isInsert\":[\"1\"],\"columns[4].isEdit\":[\"1\"],\"columns[4].isList\":[\"1\"],\"columns[4].isQuery\":[\"1\"],\"columns[4].queryType\":[\"EQ\"],\"columns[4].htmlType\":[\"input\"],\"columns[4].dictType\":[\"\"],\"columns[5].columnId\":[\"6\"],\"columns[5].sort\":[\"6\"],\"columns[5].columnComment\":[\"零件生产日期\"],\"columns[5].javaType\":[\"Date\"],\"columns[5].javaField\":[\"partOriginTime\"],\"columns[5].isInsert\":[', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:06:36');
+INSERT INTO `sys_oper_log` VALUES (103, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.download()', 'GET', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/download/part', '127.0.0.1', '内网IP', '\"part\"', NULL, 0, NULL, '2023-06-02 20:06:40');
+INSERT INTO `sys_oper_log` VALUES (104, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.download()', 'GET', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/download/part', '127.0.0.1', '内网IP', '\"part\"', NULL, 0, NULL, '2023-06-02 20:06:44');
+INSERT INTO `sys_oper_log` VALUES (105, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.addSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/menu/add', '127.0.0.1', '内网IP', '{\"parentId\":[\"2000\"],\"menuType\":[\"C\"],\"menuName\":[\"零件管理\"],\"url\":[\"/system/part\"],\"target\":[\"menuItem\"],\"perms\":[\"\"],\"orderNum\":[\"1\"],\"icon\":[\"fa fa-gears\"],\"visible\":[\"0\"],\"isRefresh\":[\"1\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:10:49');
+INSERT INTO `sys_oper_log` VALUES (106, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.editSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/menu/edit', '127.0.0.1', '内网IP', '{\"menuId\":[\"2000\"],\"parentId\":[\"0\"],\"menuType\":[\"M\"],\"menuName\":[\"零件信息\"],\"url\":[\"#\"],\"target\":[\"menuItem\"],\"perms\":[\"\"],\"orderNum\":[\"1\"],\"icon\":[\"fa fa-navicon\"],\"visible\":[\"0\"],\"isRefresh\":[\"1\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:10:59');
+INSERT INTO `sys_oper_log` VALUES (107, '零件', 1, 'com.ruoyi.web.controller.system.PartController.addSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/part/add', '127.0.0.1', '内网IP', '{\"partCode\":[\"wef\"],\"partName\":[\"饿了吧\"],\"partSpecification\":[\"俄铝\"],\"partOriginPlace\":[\"我的期待\"],\"partOriginTime\":[\"2023-06-08\"],\"partInventory\":[\"2\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:16:03');
+INSERT INTO `sys_oper_log` VALUES (108, '零件', 3, 'com.ruoyi.web.controller.system.PartController.remove()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/part/remove', '127.0.0.1', '内网IP', '{\"ids\":[\"1\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:16:18');
+INSERT INTO `sys_oper_log` VALUES (109, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.addSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/menu/add', '127.0.0.1', '内网IP', '{\"parentId\":[\"0\"],\"menuType\":[\"M\"],\"menuName\":[\"客户信息\"],\"url\":[\"\"],\"target\":[\"menuItem\"],\"perms\":[\"\"],\"orderNum\":[\"2\"],\"icon\":[\"fa fa-street-view\"],\"visible\":[\"0\"],\"isRefresh\":[\"1\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:19:47');
+INSERT INTO `sys_oper_log` VALUES (110, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.addSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/menu/add', '127.0.0.1', '内网IP', '{\"parentId\":[\"2002\"],\"menuType\":[\"C\"],\"menuName\":[\"客户管理\"],\"url\":[\"\"],\"target\":[\"menuItem\"],\"perms\":[\"\"],\"orderNum\":[\"1\"],\"icon\":[\"fa fa-address-book-o\"],\"visible\":[\"0\"],\"isRefresh\":[\"1\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:20:11');
+INSERT INTO `sys_oper_log` VALUES (111, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/edit', '127.0.0.1', '内网IP', '{\"tableId\":[\"3\"],\"tableName\":[\"part_user\"],\"tableComment\":[\"客户\"],\"className\":[\"PartUser\"],\"functionAuthor\":[\"Xiehd\"],\"remark\":[\"\"],\"columns[0].columnId\":[\"22\"],\"columns[0].sort\":[\"1\"],\"columns[0].columnComment\":[\"\"],\"columns[0].javaType\":[\"Long\"],\"columns[0].javaField\":[\"id\"],\"columns[0].isInsert\":[\"1\"],\"columns[0].queryType\":[\"EQ\"],\"columns[0].htmlType\":[\"input\"],\"columns[0].dictType\":[\"\"],\"columns[1].columnId\":[\"23\"],\"columns[1].sort\":[\"2\"],\"columns[1].columnComment\":[\"用户代码\"],\"columns[1].javaType\":[\"String\"],\"columns[1].javaField\":[\"userCode\"],\"columns[1].isInsert\":[\"1\"],\"columns[1].isEdit\":[\"1\"],\"columns[1].isList\":[\"1\"],\"columns[1].isQuery\":[\"1\"],\"columns[1].queryType\":[\"EQ\"],\"columns[1].htmlType\":[\"input\"],\"columns[1].dictType\":[\"\"],\"columns[2].columnId\":[\"24\"],\"columns[2].sort\":[\"3\"],\"columns[2].columnComment\":[\"用户名称\"],\"columns[2].javaType\":[\"String\"],\"columns[2].javaField\":[\"userName\"],\"columns[2].isInsert\":[\"1\"],\"columns[2].isEdit\":[\"1\"],\"columns[2].isList\":[\"1\"],\"columns[2].isQuery\":[\"1\"],\"columns[2].queryType\":[\"LIKE\"],\"columns[2].htmlType\":[\"input\"],\"columns[2].dictType\":[\"\"],\"columns[3].columnId\":[\"25\"],\"columns[3].sort\":[\"4\"],\"columns[3].columnComment\":[\"用户欠款时间\"],\"columns[3].javaType\":[\"Date\"],\"columns[3].javaField\":[\"userDebtTime\"],\"columns[3].isInsert\":[\"1\"],\"columns[3].isEdit\":[\"1\"],\"columns[3].isList\":[\"1\"],\"columns[3].isQuery\":[\"1\"],\"columns[3].queryType\":[\"EQ\"],\"columns[3].htmlType\":[\"datetime\"],\"columns[3].dictType\":[\"\"],\"tplCategory\":[\"crud\"],\"packageName\":[\"com.ruoyi.system\"],\"moduleName\":[\"system\"],\"businessName\":[\"user\"],\"functionName\":[\"客户\"],\"params[parentMenuId]\":[\"2002\"],\"params[parentMenuName]\":[\"客户信息\"],\"genType\":[\"0\"],\"genPath\":[\"/\"],\"subTableName\":[\"\"],\"params[treeCode]\":[\"\"],\"params[treeParentCode]\":[\"\"],\"params[treeName]\":[\"\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:20:41');
+INSERT INTO `sys_oper_log` VALUES (112, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.download()', 'GET', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/download/part_user', '127.0.0.1', '内网IP', '\"part_user\"', NULL, 0, NULL, '2023-06-02 20:20:49');
+INSERT INTO `sys_oper_log` VALUES (113, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.download()', 'GET', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/download/part_user', '127.0.0.1', '内网IP', '\"part_user\"', NULL, 0, NULL, '2023-06-02 20:20:52');
+INSERT INTO `sys_oper_log` VALUES (114, '代码生成', 6, 'com.ruoyi.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/importTable', '127.0.0.1', '内网IP', '{\"tables\":[\"part_client\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:23:55');
+INSERT INTO `sys_oper_log` VALUES (115, '代码生成', 3, 'com.ruoyi.generator.controller.GenController.remove()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/remove', '127.0.0.1', '内网IP', '{\"ids\":[\"3\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:24:01');
+INSERT INTO `sys_oper_log` VALUES (116, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/edit', '127.0.0.1', '内网IP', '{\"tableId\":[\"4\"],\"tableName\":[\"part_client\"],\"tableComment\":[\"客户\"],\"className\":[\"PartClient\"],\"functionAuthor\":[\"Xiehd\"],\"remark\":[\"\"],\"columns[0].columnId\":[\"26\"],\"columns[0].sort\":[\"1\"],\"columns[0].columnComment\":[\"\"],\"columns[0].javaType\":[\"Long\"],\"columns[0].javaField\":[\"id\"],\"columns[0].isInsert\":[\"1\"],\"columns[0].queryType\":[\"EQ\"],\"columns[0].htmlType\":[\"input\"],\"columns[0].dictType\":[\"\"],\"columns[1].columnId\":[\"27\"],\"columns[1].sort\":[\"2\"],\"columns[1].columnComment\":[\"用户代码\"],\"columns[1].javaType\":[\"String\"],\"columns[1].javaField\":[\"clientCode\"],\"columns[1].isInsert\":[\"1\"],\"columns[1].isEdit\":[\"1\"],\"columns[1].isList\":[\"1\"],\"columns[1].isQuery\":[\"1\"],\"columns[1].queryType\":[\"EQ\"],\"columns[1].htmlType\":[\"input\"],\"columns[1].dictType\":[\"\"],\"columns[2].columnId\":[\"28\"],\"columns[2].sort\":[\"3\"],\"columns[2].columnComment\":[\"用户名称\"],\"columns[2].javaType\":[\"String\"],\"columns[2].javaField\":[\"clientName\"],\"columns[2].isInsert\":[\"1\"],\"columns[2].isEdit\":[\"1\"],\"columns[2].isList\":[\"1\"],\"columns[2].isQuery\":[\"1\"],\"columns[2].queryType\":[\"LIKE\"],\"columns[2].htmlType\":[\"input\"],\"columns[2].dictType\":[\"\"],\"columns[3].columnId\":[\"29\"],\"columns[3].sort\":[\"4\"],\"columns[3].columnComment\":[\"用户欠款时间\"],\"columns[3].javaType\":[\"Date\"],\"columns[3].javaField\":[\"clientDebtTime\"],\"columns[3].isInsert\":[\"1\"],\"columns[3].isEdit\":[\"1\"],\"columns[3].isList\":[\"1\"],\"columns[3].isQuery\":[\"1\"],\"columns[3].queryType\":[\"EQ\"],\"columns[3].htmlType\":[\"datetime\"],\"columns[3].dictType\":[\"\"],\"tplCategory\":[\"crud\"],\"packageName\":[\"com.ruoyi.system\"],\"moduleName\":[\"system\"],\"businessName\":[\"client\"],\"functionName\":[\"客户\"],\"params[parentMenuId]\":[\"2002\"],\"params[parentMenuName]\":[\"客户信息\"],\"genType\":[\"0\"],\"genPath\":[\"/\"],\"subTableName\":[\"\"],\"params[treeCode]\":[\"\"],\"params[treeParentCode]\":[\"\"],\"params[treeName]\":[\"\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:24:18');
+INSERT INTO `sys_oper_log` VALUES (117, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.download()', 'GET', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/download/part_client', '127.0.0.1', '内网IP', '\"part_client\"', NULL, 0, NULL, '2023-06-02 20:24:23');
+INSERT INTO `sys_oper_log` VALUES (118, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.download()', 'GET', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/download/part_client', '127.0.0.1', '内网IP', '\"part_client\"', NULL, 0, NULL, '2023-06-02 20:24:26');
+INSERT INTO `sys_oper_log` VALUES (119, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.editSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/menu/edit', '127.0.0.1', '内网IP', '{\"menuId\":[\"2003\"],\"parentId\":[\"2002\"],\"menuType\":[\"C\"],\"menuName\":[\"客户管理\"],\"url\":[\"/system/client\"],\"target\":[\"menuItem\"],\"perms\":[\"\"],\"orderNum\":[\"1\"],\"icon\":[\"fa fa-address-book-o\"],\"visible\":[\"0\"],\"isRefresh\":[\"1\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:28:09');
+INSERT INTO `sys_oper_log` VALUES (120, '客户', 1, 'com.ruoyi.web.controller.system.PartClientController.addSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/client/add', '127.0.0.1', '内网IP', '{\"clientCode\":[\"ewr\"],\"clientName\":[\"隔热隔热\"],\"clientDebtTime\":[\"2023-06-15\"]}', NULL, 1, '\r\n### Error updating database.  Cause: java.sql.SQLException: Field \'id\' doesn\'t have a default value\r\n### The error may exist in file [D:\\Acode\\若依代码\\不分离\\SeirMengRuoYi\\SeirMeng-system\\target\\classes\\mapper\\system\\PartClientMapper.xml]\r\n### The error may involve com.ruoyi.system.mapper.PartClientMapper.insertPartClient-Inline\r\n### The error occurred while setting parameters\r\n### SQL: insert into part_client          ( client_code,             client_name,             client_debt_time )           values ( ?,             ?,             ? )\r\n### Cause: java.sql.SQLException: Field \'id\' doesn\'t have a default value\n; Field \'id\' doesn\'t have a default value; nested exception is java.sql.SQLException: Field \'id\' doesn\'t have a default value', '2023-06-02 20:29:35');
+INSERT INTO `sys_oper_log` VALUES (121, '客户', 1, 'com.ruoyi.web.controller.system.PartClientController.addSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/client/add', '127.0.0.1', '内网IP', '{\"clientCode\":[\"ewr\"],\"clientName\":[\"隔热隔热\"],\"clientDebtTime\":[\"2023-06-15\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:30:16');
+INSERT INTO `sys_oper_log` VALUES (122, '用户管理', 1, 'com.ruoyi.web.controller.system.SysUserController.addSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/user/add', '127.0.0.1', '内网IP', '{\"deptId\":[\"100\"],\"userName\":[\"张三\"],\"deptName\":[\"Seirmeng公司总部\"],\"phonenumber\":[\"15666666661\"],\"email\":[\"xiehdwork@163.com\"],\"loginName\":[\"zhangsan\"],\"sex\":[\"0\"],\"role\":[\"2\"],\"remark\":[\"\"],\"status\":[\"0\"],\"roleIds\":[\"2\"],\"postIds\":[\"4\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:35:54');
+INSERT INTO `sys_oper_log` VALUES (123, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.editSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/role/edit', '127.0.0.1', '内网IP', '{\"roleId\":[\"2\"],\"roleName\":[\"普通角色\"],\"roleKey\":[\"common\"],\"roleSort\":[\"2\"],\"status\":[\"0\"],\"remark\":[\"普通角色\"],\"menuIds\":[\"2000,2001,2002,2003\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:36:20');
+INSERT INTO `sys_oper_log` VALUES (124, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.synchDb()', 'GET', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/synchDb/part_order', '127.0.0.1', '内网IP', '\"part_order\"', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:38:28');
+INSERT INTO `sys_oper_log` VALUES (125, '代码生成', 3, 'com.ruoyi.generator.controller.GenController.remove()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/remove', '127.0.0.1', '内网IP', '{\"ids\":[\"2\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:38:42');
+INSERT INTO `sys_oper_log` VALUES (126, '代码生成', 6, 'com.ruoyi.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/importTable', '127.0.0.1', '内网IP', '{\"tables\":[\"part_order\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:38:48');
+INSERT INTO `sys_oper_log` VALUES (127, '代码生成', 3, 'com.ruoyi.generator.controller.GenController.remove()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/remove', '127.0.0.1', '内网IP', '{\"ids\":[\"5\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:39:43');
+INSERT INTO `sys_oper_log` VALUES (128, '代码生成', 6, 'com.ruoyi.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/importTable', '127.0.0.1', '内网IP', '{\"tables\":[\"part_order\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:39:50');
+INSERT INTO `sys_oper_log` VALUES (129, '代码生成', 3, 'com.ruoyi.generator.controller.GenController.remove()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/remove', '127.0.0.1', '内网IP', '{\"ids\":[\"6\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:40:28');
+INSERT INTO `sys_oper_log` VALUES (130, '代码生成', 6, 'com.ruoyi.generator.controller.GenController.importTableSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/importTable', '127.0.0.1', '内网IP', '{\"tables\":[\"part_order\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:40:32');
+INSERT INTO `sys_oper_log` VALUES (131, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.addSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/menu/add', '127.0.0.1', '内网IP', '{\"parentId\":[\"0\"],\"menuType\":[\"M\"],\"menuName\":[\"订货信息\"],\"url\":[\"\"],\"target\":[\"menuItem\"],\"perms\":[\"\"],\"orderNum\":[\"3\"],\"icon\":[\"fa fa-money\"],\"visible\":[\"0\"],\"isRefresh\":[\"1\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:41:30');
+INSERT INTO `sys_oper_log` VALUES (132, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.addSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/menu/add', '127.0.0.1', '内网IP', '{\"parentId\":[\"2004\"],\"menuType\":[\"C\"],\"menuName\":[\"订货管理\"],\"url\":[\"\"],\"target\":[\"menuItem\"],\"perms\":[\"\"],\"orderNum\":[\"1\"],\"icon\":[\"fa fa-balance-scale\"],\"visible\":[\"0\"],\"isRefresh\":[\"1\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:42:01');
+INSERT INTO `sys_oper_log` VALUES (133, '代码生成', 2, 'com.ruoyi.generator.controller.GenController.editSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/edit', '127.0.0.1', '内网IP', '{\"tableId\":[\"7\"],\"tableName\":[\"part_order\"],\"tableComment\":[\"订货\"],\"className\":[\"PartOrder\"],\"functionAuthor\":[\"Xiehd\"],\"remark\":[\"\"],\"columns[0].columnId\":[\"51\"],\"columns[0].sort\":[\"1\"],\"columns[0].columnComment\":[\"\"],\"columns[0].javaType\":[\"Long\"],\"columns[0].javaField\":[\"id\"],\"columns[0].isInsert\":[\"1\"],\"columns[0].queryType\":[\"EQ\"],\"columns[0].htmlType\":[\"input\"],\"columns[0].dictType\":[\"\"],\"columns[1].columnId\":[\"52\"],\"columns[1].sort\":[\"2\"],\"columns[1].columnComment\":[\"用户名称\"],\"columns[1].javaType\":[\"String\"],\"columns[1].javaField\":[\"partUserName\"],\"columns[1].isInsert\":[\"1\"],\"columns[1].isEdit\":[\"1\"],\"columns[1].isList\":[\"1\"],\"columns[1].isQuery\":[\"1\"],\"columns[1].queryType\":[\"LIKE\"],\"columns[1].htmlType\":[\"input\"],\"columns[1].dictType\":[\"\"],\"columns[2].columnId\":[\"53\"],\"columns[2].sort\":[\"3\"],\"columns[2].columnComment\":[\"零件名称\"],\"columns[2].javaType\":[\"String\"],\"columns[2].javaField\":[\"partName\"],\"columns[2].isInsert\":[\"1\"],\"columns[2].isEdit\":[\"1\"],\"columns[2].isList\":[\"1\"],\"columns[2].isQuery\":[\"1\"],\"columns[2].queryType\":[\"LIKE\"],\"columns[2].htmlType\":[\"input\"],\"columns[2].dictType\":[\"\"],\"columns[3].columnId\":[\"54\"],\"columns[3].sort\":[\"4\"],\"columns[3].columnComment\":[\"需求量\"],\"columns[3].javaType\":[\"String\"],\"columns[3].javaField\":[\"demandNum\"],\"columns[3].isInsert\":[\"1\"],\"columns[3].isEdit\":[\"1\"],\"columns[3].isList\":[\"1\"],\"columns[3].isQuery\":[\"1\"],\"columns[3].queryType\":[\"EQ\"],\"columns[3].htmlType\":[\"input\"],\"columns[3].dictType\":[\"\"],\"columns[4].columnId\":[\"55\"],\"columns[4].sort\":[\"5\"],\"columns[4].columnComment\":[\"订单日期\"],\"columns[4].javaType\":[\"Date\"],\"columns[4].javaField\":[\"orderTime\"],\"columns[4].isInsert\":[\"1\"],\"columns[4].isEdit\":[\"1\"],\"columns[4].isList\":[\"1\"],\"columns[4].isQuery\":[\"1\"],\"columns[4].queryType\":[\"EQ\"],\"columns[4].htmlType\":[\"datetime\"],\"columns[4].dictType\":[\"\"],\"columns[5].columnId\":[\"56\"],\"columns[5].sort\":[\"6\"],\"columns[5].columnComment\":[\"付款日期\"],\"columns[5].javaType\":[\"Date\"],\"columns[5].javaField\":[\"payTime\"],\"columns[5].isInsert\":[', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:42:17');
+INSERT INTO `sys_oper_log` VALUES (134, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.download()', 'GET', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/download/part_order', '127.0.0.1', '内网IP', '\"part_order\"', NULL, 0, NULL, '2023-06-02 20:42:21');
+INSERT INTO `sys_oper_log` VALUES (135, '代码生成', 8, 'com.ruoyi.generator.controller.GenController.download()', 'GET', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/tool/gen/download/part_order', '127.0.0.1', '内网IP', '\"part_order\"', NULL, 0, NULL, '2023-06-02 20:42:26');
+INSERT INTO `sys_oper_log` VALUES (136, '菜单管理', 2, 'com.ruoyi.web.controller.system.SysMenuController.editSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/menu/edit', '127.0.0.1', '内网IP', '{\"menuId\":[\"2005\"],\"parentId\":[\"2004\"],\"menuType\":[\"C\"],\"menuName\":[\"订货管理\"],\"url\":[\"/system/order\"],\"target\":[\"menuItem\"],\"perms\":[\"\"],\"orderNum\":[\"1\"],\"icon\":[\"fa fa-balance-scale\"],\"visible\":[\"0\"],\"isRefresh\":[\"1\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 20:45:27');
+INSERT INTO `sys_oper_log` VALUES (137, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.editSave()', 'POST', 1, 'admin', 'Seirmeng公司总部', '/SeirMengRuoYiPart/system/role/edit', '127.0.0.1', '内网IP', '{\"roleId\":[\"2\"],\"roleName\":[\"普通角色\"],\"roleKey\":[\"common\"],\"roleSort\":[\"2\"],\"status\":[\"0\"],\"remark\":[\"普通角色\"],\"menuIds\":[\"2000,2001,2002,2003,2004,2005\"]}', '{\"msg\":\"操作成功\",\"code\":0}', 0, NULL, '2023-06-02 21:13:01');
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -675,7 +816,7 @@ CREATE TABLE `sys_role`  (
 -- Records of sys_role
 -- ----------------------------
 INSERT INTO `sys_role` VALUES (1, '超级管理员', 'admin', 1, '1', '0', '0', 'admin', '2023-05-24 10:28:20', '', NULL, '超级管理员');
-INSERT INTO `sys_role` VALUES (2, '普通角色', 'common', 2, '2', '0', '0', 'admin', '2023-05-24 10:28:20', '', NULL, '普通角色');
+INSERT INTO `sys_role` VALUES (2, '普通角色', 'common', 2, '2', '0', '0', 'admin', '2023-05-24 10:28:20', 'admin', '2023-06-02 21:13:00', '普通角色');
 
 -- ----------------------------
 -- Table structure for sys_role_dept
@@ -707,91 +848,12 @@ CREATE TABLE `sys_role_menu`  (
 -- ----------------------------
 -- Records of sys_role_menu
 -- ----------------------------
-INSERT INTO `sys_role_menu` VALUES (2, 1);
-INSERT INTO `sys_role_menu` VALUES (2, 2);
-INSERT INTO `sys_role_menu` VALUES (2, 3);
-INSERT INTO `sys_role_menu` VALUES (2, 4);
-INSERT INTO `sys_role_menu` VALUES (2, 100);
-INSERT INTO `sys_role_menu` VALUES (2, 101);
-INSERT INTO `sys_role_menu` VALUES (2, 102);
-INSERT INTO `sys_role_menu` VALUES (2, 103);
-INSERT INTO `sys_role_menu` VALUES (2, 104);
-INSERT INTO `sys_role_menu` VALUES (2, 105);
-INSERT INTO `sys_role_menu` VALUES (2, 106);
-INSERT INTO `sys_role_menu` VALUES (2, 107);
-INSERT INTO `sys_role_menu` VALUES (2, 108);
-INSERT INTO `sys_role_menu` VALUES (2, 109);
-INSERT INTO `sys_role_menu` VALUES (2, 110);
-INSERT INTO `sys_role_menu` VALUES (2, 111);
-INSERT INTO `sys_role_menu` VALUES (2, 112);
-INSERT INTO `sys_role_menu` VALUES (2, 113);
-INSERT INTO `sys_role_menu` VALUES (2, 114);
-INSERT INTO `sys_role_menu` VALUES (2, 115);
-INSERT INTO `sys_role_menu` VALUES (2, 116);
-INSERT INTO `sys_role_menu` VALUES (2, 500);
-INSERT INTO `sys_role_menu` VALUES (2, 501);
-INSERT INTO `sys_role_menu` VALUES (2, 1000);
-INSERT INTO `sys_role_menu` VALUES (2, 1001);
-INSERT INTO `sys_role_menu` VALUES (2, 1002);
-INSERT INTO `sys_role_menu` VALUES (2, 1003);
-INSERT INTO `sys_role_menu` VALUES (2, 1004);
-INSERT INTO `sys_role_menu` VALUES (2, 1005);
-INSERT INTO `sys_role_menu` VALUES (2, 1006);
-INSERT INTO `sys_role_menu` VALUES (2, 1007);
-INSERT INTO `sys_role_menu` VALUES (2, 1008);
-INSERT INTO `sys_role_menu` VALUES (2, 1009);
-INSERT INTO `sys_role_menu` VALUES (2, 1010);
-INSERT INTO `sys_role_menu` VALUES (2, 1011);
-INSERT INTO `sys_role_menu` VALUES (2, 1012);
-INSERT INTO `sys_role_menu` VALUES (2, 1013);
-INSERT INTO `sys_role_menu` VALUES (2, 1014);
-INSERT INTO `sys_role_menu` VALUES (2, 1015);
-INSERT INTO `sys_role_menu` VALUES (2, 1016);
-INSERT INTO `sys_role_menu` VALUES (2, 1017);
-INSERT INTO `sys_role_menu` VALUES (2, 1018);
-INSERT INTO `sys_role_menu` VALUES (2, 1019);
-INSERT INTO `sys_role_menu` VALUES (2, 1020);
-INSERT INTO `sys_role_menu` VALUES (2, 1021);
-INSERT INTO `sys_role_menu` VALUES (2, 1022);
-INSERT INTO `sys_role_menu` VALUES (2, 1023);
-INSERT INTO `sys_role_menu` VALUES (2, 1024);
-INSERT INTO `sys_role_menu` VALUES (2, 1025);
-INSERT INTO `sys_role_menu` VALUES (2, 1026);
-INSERT INTO `sys_role_menu` VALUES (2, 1027);
-INSERT INTO `sys_role_menu` VALUES (2, 1028);
-INSERT INTO `sys_role_menu` VALUES (2, 1029);
-INSERT INTO `sys_role_menu` VALUES (2, 1030);
-INSERT INTO `sys_role_menu` VALUES (2, 1031);
-INSERT INTO `sys_role_menu` VALUES (2, 1032);
-INSERT INTO `sys_role_menu` VALUES (2, 1033);
-INSERT INTO `sys_role_menu` VALUES (2, 1034);
-INSERT INTO `sys_role_menu` VALUES (2, 1035);
-INSERT INTO `sys_role_menu` VALUES (2, 1036);
-INSERT INTO `sys_role_menu` VALUES (2, 1037);
-INSERT INTO `sys_role_menu` VALUES (2, 1038);
-INSERT INTO `sys_role_menu` VALUES (2, 1039);
-INSERT INTO `sys_role_menu` VALUES (2, 1040);
-INSERT INTO `sys_role_menu` VALUES (2, 1041);
-INSERT INTO `sys_role_menu` VALUES (2, 1042);
-INSERT INTO `sys_role_menu` VALUES (2, 1043);
-INSERT INTO `sys_role_menu` VALUES (2, 1044);
-INSERT INTO `sys_role_menu` VALUES (2, 1045);
-INSERT INTO `sys_role_menu` VALUES (2, 1046);
-INSERT INTO `sys_role_menu` VALUES (2, 1047);
-INSERT INTO `sys_role_menu` VALUES (2, 1048);
-INSERT INTO `sys_role_menu` VALUES (2, 1049);
-INSERT INTO `sys_role_menu` VALUES (2, 1050);
-INSERT INTO `sys_role_menu` VALUES (2, 1051);
-INSERT INTO `sys_role_menu` VALUES (2, 1052);
-INSERT INTO `sys_role_menu` VALUES (2, 1053);
-INSERT INTO `sys_role_menu` VALUES (2, 1054);
-INSERT INTO `sys_role_menu` VALUES (2, 1055);
-INSERT INTO `sys_role_menu` VALUES (2, 1056);
-INSERT INTO `sys_role_menu` VALUES (2, 1057);
-INSERT INTO `sys_role_menu` VALUES (2, 1058);
-INSERT INTO `sys_role_menu` VALUES (2, 1059);
-INSERT INTO `sys_role_menu` VALUES (2, 1060);
-INSERT INTO `sys_role_menu` VALUES (2, 1061);
+INSERT INTO `sys_role_menu` VALUES (2, 2000);
+INSERT INTO `sys_role_menu` VALUES (2, 2001);
+INSERT INTO `sys_role_menu` VALUES (2, 2002);
+INSERT INTO `sys_role_menu` VALUES (2, 2003);
+INSERT INTO `sys_role_menu` VALUES (2, 2004);
+INSERT INTO `sys_role_menu` VALUES (2, 2005);
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -820,13 +882,13 @@ CREATE TABLE `sys_user`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 100, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '29c67a30398638269fe600f73a054934', '111111', '0', '0', '127.0.0.1', '2023-05-24 10:28:20', '2023-05-24 10:28:20', 'admin', '2023-05-24 10:28:20', '', NULL, '管理员');
--- INSERT INTO `sys_user` VALUES (2, 105, 'ry', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '8e6d98b90472783cc73c17047ddccf36', '222222', '0', '0', '127.0.0.1', '2023-05-24 10:28:20', '2023-05-24 10:28:20', 'admin', '2023-05-24 10:28:20', '', NULL, '测试员');
+INSERT INTO `sys_user` VALUES (1, 100, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '29c67a30398638269fe600f73a054934', '111111', '0', '0', '127.0.0.1', '2023-06-02 21:13:05', '2023-05-24 10:28:20', 'admin', '2023-05-24 10:28:20', '', '2023-06-02 21:13:05', '管理员');
+INSERT INTO `sys_user` VALUES (100, 100, 'zhangsan', '张三', '00', 'xiehdwork@163.com', '15666666661', '0', '', '46e17f0e53fac7832cddada63744513a', '46e501', '0', '0', '127.0.0.1', '2023-06-02 21:13:12', NULL, 'admin', '2023-06-02 20:35:54', '', '2023-06-02 21:13:11', NULL);
 
 -- ----------------------------
 -- Table structure for sys_user_online
@@ -848,6 +910,11 @@ CREATE TABLE `sys_user_online`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '在线用户记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of sys_user_online
+-- ----------------------------
+INSERT INTO `sys_user_online` VALUES ('0a2e3f8c-bef5-4a31-8d43-919e3fd4df37', 'zhangsan', 'Seirmeng公司总部', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', 'on_line', '2023-06-02 21:13:12', '2023-06-02 21:13:12', 1800000);
+
+-- ----------------------------
 -- Table structure for sys_user_post
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_post`;
@@ -862,6 +929,7 @@ CREATE TABLE `sys_user_post`  (
 -- ----------------------------
 INSERT INTO `sys_user_post` VALUES (1, 1);
 INSERT INTO `sys_user_post` VALUES (2, 2);
+INSERT INTO `sys_user_post` VALUES (100, 4);
 
 -- ----------------------------
 -- Table structure for sys_user_role
@@ -878,5 +946,6 @@ CREATE TABLE `sys_user_role`  (
 -- ----------------------------
 INSERT INTO `sys_user_role` VALUES (1, 1);
 INSERT INTO `sys_user_role` VALUES (2, 2);
+INSERT INTO `sys_user_role` VALUES (100, 2);
 
 SET FOREIGN_KEY_CHECKS = 1;
