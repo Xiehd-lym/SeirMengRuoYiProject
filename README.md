@@ -1,6 +1,12 @@
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">SeirMeng</h1>
 <h4 align="center">SeirMeng——基于SpringBoot开发的轻量级Java快速开发框架</h4>
 
+
+说明：
+基于Rouyi[不分离版本thymleaf]搭建的多分支系统，包括志愿填报系统[excel导入导出]、工业决策系统、慢性病管理系统等
+
+
+
 ##母版
 
 ## 内置功能
