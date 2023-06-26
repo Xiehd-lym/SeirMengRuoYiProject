@@ -14,8 +14,6 @@
         <module>SeirMeng-admin</module>
         <module>SeirMeng-framework</module>
         <module>SeirMeng-system</module>
-        <module>SeirMeng-quartz</module>
-        <module>SeirMeng-generator</module>
         <module>SeirMeng-common</module>
     </modules>
 
