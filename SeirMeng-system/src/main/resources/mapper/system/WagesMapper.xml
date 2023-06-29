@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.WagesMapper">
+    
+    <resultMap type="Wages" id="WagesResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="age"    column="age"    />
+        <result property="workId"    column="work_id"    />
+        <result property="genera"    column="genera"    />
+        <result property="workSDay"    column="work_s_day"    />
+        <result property="workFlag"    column="work_flag"    />
+        <result property="jibenMoney"    column="jiben_money"    />
+        <result property="kaoqing"    column="kaoqing"    />
+        <result property="buzhu"    column="buzhu"    />
+        <result property="koukuan"    column="koukuan"    />
+        <result property="wxyj"    column="wxyj"    />
+        <result property="geshui"    column="geshui"    />
+        <result property="shifa"    column="shifa"    />
+        <result property="moneyDay"    column="money_day"    />
+    </resultMap>
+
+    <sql id="selectWagesVo">
+        select id, name, age, work_id, genera, work_s_day, work_flag, jiben_money, kaoqing, buzhu, koukuan, wxyj, geshui, shifa, money_day from wages
+    </sql>
+
+    <select id="selectWagesList" parameterType="Wages" resultMap="WagesResult">
+        <include refid="selectWagesVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="age != null "> and age = #{age}</if>
+            <if test="workId != null  and workId != ''"> and work_id = #{workId}</if>
+            <if test="genera != null  and genera != ''"> and genera = #{genera}</if>
+            <if test="workSDay != null "> and work_s_day = #{workSDay}</if>
+            <if test="workFlag != null  and workFlag != ''"> and work_flag = #{workFlag}</if>
+            <if test="jibenMoney != null "> and jiben_money = #{jibenMoney}</if>
+            <if test="kaoqing != null "> and kaoqing = #{kaoqing}</if>
+            <if test="buzhu != null "> and buzhu = #{buzhu}</if>
+            <if test="koukuan != null "> and koukuan = #{koukuan}</if>
+            <if test="wxyj != null "> and wxyj = #{wxyj}</if>
+            <if test="geshui != null "> and geshui = #{geshui}</if>
+            <if test="shifa != null "> and shifa = #{shifa}</if>
+            <if test="moneyDay != null "> and money_day = #{moneyDay}</if>
+        </where>
+    </select>
+    
+    <select id="selectWagesById" parameterType="Long" resultMap="WagesResult">
+        <include refid="selectWagesVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertWages" parameterType="Wages" useGeneratedKeys="true" keyProperty="id">
+        insert into wages
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="age != null">age,</if>
+            <if test="workId != null">work_id,</if>
+            <if test="genera != null">genera,</if>
+            <if test="workSDay != null">work_s_day,</if>
+            <if test="workFlag != null">work_flag,</if>
+            <if test="jibenMoney != null">jiben_money,</if>
+            <if test="kaoqing != null">kaoqing,</if>
+            <if test="buzhu != null">buzhu,</if>
+            <if test="koukuan != null">koukuan,</if>
+            <if test="wxyj != null">wxyj,</if>
+            <if test="geshui != null">geshui,</if>
+            <if test="shifa != null">shifa,</if>
+            <if test="moneyDay != null">money_day,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="age != null">#{age},</if>
+            <if test="workId != null">#{workId},</if>
+            <if test="genera != null">#{genera},</if>
+            <if test="workSDay != null">#{workSDay},</if>
+            <if test="workFlag != null">#{workFlag},</if>
+            <if test="jibenMoney != null">#{jibenMoney},</if>
+            <if test="kaoqing != null">#{kaoqing},</if>
+            <if test="buzhu != null">#{buzhu},</if>
+            <if test="koukuan != null">#{koukuan},</if>
+            <if test="wxyj != null">#{wxyj},</if>
+            <if test="geshui != null">#{geshui},</if>
+            <if test="shifa != null">#{shifa},</if>
+            <if test="moneyDay != null">#{moneyDay},</if>
+         </trim>
+    </insert>
+
+    <update id="updateWages" parameterType="Wages">
+        update wages
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="workId != null">work_id = #{workId},</if>
+            <if test="genera != null">genera = #{genera},</if>
+            <if test="workSDay != null">work_s_day = #{workSDay},</if>
+            <if test="workFlag != null">work_flag = #{workFlag},</if>
+            <if test="jibenMoney != null">jiben_money = #{jibenMoney},</if>
+            <if test="kaoqing != null">kaoqing = #{kaoqing},</if>
+            <if test="buzhu != null">buzhu = #{buzhu},</if>
+            <if test="koukuan != null">koukuan = #{koukuan},</if>
+            <if test="wxyj != null">wxyj = #{wxyj},</if>
+            <if test="geshui != null">geshui = #{geshui},</if>
+            <if test="shifa != null">shifa = #{shifa},</if>
+            <if test="moneyDay != null">money_day = #{moneyDay},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteWagesById" parameterType="Long">
+        delete from wages where id = #{id}
+    </delete>
+
+    <delete id="deleteWagesByIds" parameterType="String">
+        delete from wages where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
