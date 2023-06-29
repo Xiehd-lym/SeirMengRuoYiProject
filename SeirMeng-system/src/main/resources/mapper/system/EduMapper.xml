@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.EduMapper">
+    
+    <resultMap type="Edu" id="EduResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="eduGrage"    column="edu_grage"    />
+        <result property="eduClazz"    column="edu_clazz"    />
+        <result property="eduSubject"    column="edu_subject"    />
+        <result property="eduGenerate"    column="edu_generate"    />
+        <result property="eduStudyFlag"    column="edu_study_flag"    />
+        <result property="eduKeguanti"    column="edu_keguanti"    />
+        <result property="eduPduan"    column="edu_pduan"    />
+        <result property="eduZhuguan"    column="edu_zhuguan"    />
+        <result property="eduJiafenti"    column="edu_jiafenti"    />
+    </resultMap>
+
+    <sql id="selectEduVo">
+        select id, name, edu_grage, edu_clazz, edu_subject, edu_generate, edu_study_flag, edu_keguanti, edu_pduan, edu_zhuguan, edu_jiafenti from edu
+    </sql>
+
+    <select id="selectEduList" parameterType="Edu" resultMap="EduResult">
+        <include refid="selectEduVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="eduGrage != null  and eduGrage != ''"> and edu_grage = #{eduGrage}</if>
+            <if test="eduClazz != null  and eduClazz != ''"> and edu_clazz = #{eduClazz}</if>
+            <if test="eduSubject != null  and eduSubject != ''"> and edu_subject = #{eduSubject}</if>
+            <if test="eduGenerate != null  and eduGenerate != ''"> and edu_generate = #{eduGenerate}</if>
+            <if test="eduStudyFlag != null  and eduStudyFlag != ''"> and edu_study_flag = #{eduStudyFlag}</if>
+            <if test="eduKeguanti != null "> and edu_keguanti = #{eduKeguanti}</if>
+            <if test="eduPduan != null "> and edu_pduan = #{eduPduan}</if>
+            <if test="eduZhuguan != null "> and edu_zhuguan = #{eduZhuguan}</if>
+            <if test="eduJiafenti != null "> and edu_jiafenti = #{eduJiafenti}</if>
+        </where>
+    </select>
+    
+    <select id="selectEduById" parameterType="Long" resultMap="EduResult">
+        <include refid="selectEduVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertEdu" parameterType="Edu">
+        insert into edu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="name != null">name,</if>
+            <if test="eduGrage != null">edu_grage,</if>
+            <if test="eduClazz != null">edu_clazz,</if>
+            <if test="eduSubject != null">edu_subject,</if>
+            <if test="eduGenerate != null">edu_generate,</if>
+            <if test="eduStudyFlag != null">edu_study_flag,</if>
+            <if test="eduKeguanti != null">edu_keguanti,</if>
+            <if test="eduPduan != null">edu_pduan,</if>
+            <if test="eduZhuguan != null">edu_zhuguan,</if>
+            <if test="eduJiafenti != null">edu_jiafenti,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="name != null">#{name},</if>
+            <if test="eduGrage != null">#{eduGrage},</if>
+            <if test="eduClazz != null">#{eduClazz},</if>
+            <if test="eduSubject != null">#{eduSubject},</if>
+            <if test="eduGenerate != null">#{eduGenerate},</if>
+            <if test="eduStudyFlag != null">#{eduStudyFlag},</if>
+            <if test="eduKeguanti != null">#{eduKeguanti},</if>
+            <if test="eduPduan != null">#{eduPduan},</if>
+            <if test="eduZhuguan != null">#{eduZhuguan},</if>
+            <if test="eduJiafenti != null">#{eduJiafenti},</if>
+         </trim>
+    </insert>
+
+    <update id="updateEdu" parameterType="Edu">
+        update edu
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="eduGrage != null">edu_grage = #{eduGrage},</if>
+            <if test="eduClazz != null">edu_clazz = #{eduClazz},</if>
+            <if test="eduSubject != null">edu_subject = #{eduSubject},</if>
+            <if test="eduGenerate != null">edu_generate = #{eduGenerate},</if>
+            <if test="eduStudyFlag != null">edu_study_flag = #{eduStudyFlag},</if>
+            <if test="eduKeguanti != null">edu_keguanti = #{eduKeguanti},</if>
+            <if test="eduPduan != null">edu_pduan = #{eduPduan},</if>
+            <if test="eduZhuguan != null">edu_zhuguan = #{eduZhuguan},</if>
+            <if test="eduJiafenti != null">edu_jiafenti = #{eduJiafenti},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteEduById" parameterType="Long">
+        delete from edu where id = #{id}
+    </delete>
+
+    <delete id="deleteEduByIds" parameterType="String">
+        delete from edu where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
