@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('修改心脏性猝死')" />
+    <th:block th:include="include :: datetimepicker-css" />
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-xzb-edit" th:object="${diseaseXzb}">
+            <input name="id" th:field="*{id}" type="hidden">
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">患者姓名：</label>
+                <div class="col-sm-8">
+                    <input name="name" th:field="*{name}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">性别：</label>
+                <div class="col-sm-8">
+                    <select name="genarter" class="form-control m-b" th:with="type=${@dict.getType('sys_user_sex')}">
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}" th:field="*{genarter}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">出生日期：</label>
+                <div class="col-sm-8">
+                    <div class="input-group date">
+                        <input name="birday" th:value="${#dates.format(diseaseXzb.birday, 'yyyy-MM-dd')}" class="form-control" placeholder="yyyy-MM-dd" type="text">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">身份证件号：</label>
+                <div class="col-sm-8">
+                    <input name="cardNo" th:field="*{cardNo}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">民族：</label>
+                <div class="col-sm-8">
+                    <input name="minzu" th:field="*{minzu}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">国籍：</label>
+                <div class="col-sm-8">
+                    <input name="guojia" th:field="*{guojia}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">学历：</label>
+                <div class="col-sm-8">
+                    <input name="edu" th:field="*{edu}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">婚姻状况：</label>
+                <div class="col-sm-8">
+                    <input name="marrey" th:field="*{marrey}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">职业类型：</label>
+                <div class="col-sm-8">
+                    <input name="jobType" th:field="*{jobType}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">工作单位名称：</label>
+                <div class="col-sm-8">
+                    <input name="workUnitName" th:field="*{workUnitName}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">联系人：</label>
+                <div class="col-sm-8">
+                    <input name="connectorName" th:field="*{connectorName}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">联系人/监护人与本人关系：</label>
+                <div class="col-sm-8">
+                    <input name="connectorGuanxi" th:field="*{connectorGuanxi}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">联系电话(手机)：</label>
+                <div class="col-sm-8">
+                    <input name="connectorPhone" th:field="*{connectorPhone}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">联系电话(座机)：</label>
+                <div class="col-sm-8">
+                    <input name="connectorLandline" th:field="*{connectorLandline}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">现住址类型：</label>
+                <div class="col-sm-8">
+                    <input name="addressType" th:field="*{addressType}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">现住址(编码)：</label>
+                <div class="col-sm-8">
+                    <input name="addressCode" th:field="*{addressCode}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">现住详细地址：</label>
+                <div class="col-sm-8">
+                    <input name="nowDetailedAddress" th:field="*{nowDetailedAddress}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">本县区居住6个月以上：</label>
+                <div class="col-sm-8">
+                    <select name="sexAddressFlag" class="form-control m-b" th:with="type=${@dict.getType('sys_yes_no')}">
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}" th:field="*{sexAddressFlag}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">户籍地址类型：</label>
+                <div class="col-sm-8">
+                    <input name="registeredResidenceAddressType" th:field="*{registeredResidenceAddressType}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">户籍地址(编码)：</label>
+                <div class="col-sm-8">
+                    <input name="registeredResidenceAddressCode" th:field="*{registeredResidenceAddressCode}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">户籍详细地址：</label>
+                <div class="col-sm-8">
+                    <input name="registeredDetailAddress" th:field="*{registeredDetailAddress}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">疾病icd：</label>
+                <div class="col-sm-8">
+                    <input name="icd" th:field="*{icd}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">首次诊断日期：</label>
+                <div class="col-sm-8">
+                    <div class="input-group date">
+                        <input name="firstDiagnosisDate" th:value="${#dates.format(diseaseXzb.firstDiagnosisDate, 'yyyy-MM-dd')}" class="form-control" placeholder="yyyy-MM-dd" type="text">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">确诊时间：</label>
+                <div class="col-sm-8">
+                    <div class="input-group date">
+                        <input name="diagnosisTime" th:value="${#dates.format(diseaseXzb.diagnosisTime, 'yyyy-MM-dd')}" class="form-control" placeholder="yyyy-MM-dd" type="text">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">住院号：</label>
+                <div class="col-sm-8">
+                    <input name="admissionNumber" th:field="*{admissionNumber}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">门诊号：</label>
+                <div class="col-sm-8">
+                    <input name="outpatientNumber" th:field="*{outpatientNumber}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">是否首次发病：</label>
+                <div class="col-sm-8">
+                    <input name="firstOnsetOfDiseaseFlag" th:field="*{firstOnsetOfDiseaseFlag}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">死亡日期：</label>
+                <div class="col-sm-8">
+                    <div class="input-group date">
+                        <input name="deathDate" th:value="${#dates.format(diseaseXzb.deathDate, 'yyyy-MM-dd')}" class="form-control" placeholder="yyyy-MM-dd" type="text">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">死亡原因：</label>
+                <div class="col-sm-8">
+                    <input name="deathCause" th:field="*{deathCause}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">具体死亡原因：</label>
+                <div class="col-sm-8">
+                    <input name="deathCauseDetail" th:field="*{deathCauseDetail}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">诊断依据：</label>
+                <div class="col-sm-8">
+                    <input name="diagnosticBasis" th:field="*{diagnosticBasis}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">最高诊断单位：</label>
+                <div class="col-sm-8">
+                    <input name="highestDiagnosticUnit" th:field="*{highestDiagnosticUnit}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">报告医师：</label>
+                <div class="col-sm-8">
+                    <input name="reportingPhysician" th:field="*{reportingPhysician}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">家族史：</label>
+                <div class="col-sm-8">
+                    <select name="familyHistory" class="form-control m-b" th:with="type=${@dict.getType('sys_have_without')}">
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}" th:field="*{familyHistory}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">与患者关系：</label>
+                <div class="col-sm-8">
+                    <input name="relationshipWithPatients" th:field="*{relationshipWithPatients}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">病情转归：</label>
+                <div class="col-sm-8">
+                    <input name="outcomeOfTheCondition" th:field="*{outcomeOfTheCondition}" class="form-control" type="text">
+                </div>
+            </div>
+        </form>
+    </div>
+    <th:block th:include="include :: footer" />
+    <th:block th:include="include :: datetimepicker-js" />
+    <script th:inline="javascript">
+        var prefix = ctx + "system/xzb";
+        $("#form-xzb-edit").validate({
+            focusCleanup: true
+        });
+
+        function submitHandler() {
+            if ($.validate.form()) {
+                $.operate.save(prefix + "/edit", $('#form-xzb-edit').serialize());
+            }
+        }
+
+        $("input[name='birday']").datetimepicker({
+            format: "yyyy-mm-dd",
+            minView: "month",
+            autoclose: true
+        });
+
+        $("input[name='firstDiagnosisDate']").datetimepicker({
+            format: "yyyy-mm-dd",
+            minView: "month",
+            autoclose: true
+        });
+
+        $("input[name='diagnosisTime']").datetimepicker({
+            format: "yyyy-mm-dd",
+            minView: "month",
+            autoclose: true
+        });
+
+        $("input[name='deathDate']").datetimepicker({
+            format: "yyyy-mm-dd",
+            minView: "month",
+            autoclose: true
+        });
+    </script>
+</body>
+</html>
