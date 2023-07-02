@@ -141,4 +141,10 @@ public class EduController extends BaseController
     {
         return toAjax(eduService.deleteEduByIds(ids));
     }
+
+
+
+    public void getTest(){
+
+    }
 }
