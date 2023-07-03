@@ -187,6 +187,7 @@
         var mingzuDatas = [[${@dict.getType('mingzu')}]];
         var eduDatas = [[${@dict.getType('xueli')}]];
         var merryDatas = [[${@dict.getType('hunuying')}]];
+        var icdDatas = [[${@dict.getType('fqz_icd')}]];
         var workTypeDatas = [[${@dict.getType('zhuyeleixing')}]];
         var changzhuAddressDatas = [[${@dict.getType('changzhuleixing')}]];
         var hujiAddressTypeDatas = [[${@dict.getType('hujileixing')}]];
@@ -302,10 +303,13 @@
                     field: 'hujiAddress',
                     title: '户籍详细地址'
                 },
-                {
-                    field: 'icd',
-                    title: '疾病icd'
-                },
+                    {
+                        field: 'icd',
+                        title: '疾病icd',
+                        formatter: function(value, row, index) {
+                            return $.table.selectDictLabel(icdDatas, value);
+                        }
+                    },
                 {
                     field: 'zhengduanshijian',
                     title: '诊断日期'
