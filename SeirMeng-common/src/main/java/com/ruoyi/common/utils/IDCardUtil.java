@@ -32,17 +32,17 @@ public class IDCardUtil{
             //15位身份证号
             if (IDCard.length() == FIFTEEN_ID_CARD){
                 if (Integer.parseInt(IDCard.substring(14, 15)) % 2 == 0) {
-                    sex = "女";
+                    sex = "女性";
                 } else {
-                    sex = "男";
+                    sex = "男性";
                 }
                 //18位身份证号
             }else if(IDCard.length() == EIGHTEEN_ID_CARD){
                 // 判断性别
                 if (Integer.parseInt(IDCard.substring(16).substring(0, 1)) % 2 == 0) {
-                    sex = "女";
+                    sex = "女性";
                 } else {
-                    sex = "男";
+                    sex = "男性";
                 }
             }
         }
