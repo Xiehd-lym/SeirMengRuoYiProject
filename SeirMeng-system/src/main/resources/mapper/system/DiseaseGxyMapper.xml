@@ -58,10 +58,67 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="zhiliao"    column="zhiliao"    />
         <result property="zhijiaojigou"    column="zhijiaojigou"    />
         <result property="baogao"    column="baogao"    />
+        <result property="connectNumber"    column="connect_number"    />
     </resultMap>
 
     <sql id="selectDiseaseGxyVo">
-        select id, name, generate, birthday, card_type, card_no, mingzu, guoji, edu, merry, work_type, work_address, connector_guanxi, connect_phone, connect_number, changzhu_address, changzhu_address_code, changzhu_detail, liugeyue, huji_address_type, huji_address_code, huji_address, icd, zhengduanshijian, quezh_time, jiazushi, yuhuanzheguanzi, zhuyuan, menzheng, shousuo, shuzhang, guizhuan, dead_date, disease_dead_reason, juti, zuigaoyiju, zhengzhuang, zd_area_code, zd_unit_code, zhiliaoshijian, kaishi, zhilaioleix, buliangchuxian, buliangquezh, buliangfany, buliangyaowu, tingzhizhiliaoshijian, tingzhizhikiaoyuany, yuyuejiancha, shijiancha, zhiliao, zhijiaojigou, baogao from disease_gxy
+        SELECT
+            id,
+            NAME,
+            generate,
+            birthday,
+            card_type,
+            card_no,
+            mingzu,
+            guoji,
+            edu,
+            merry,
+            work_type,
+            work_address,
+            connector_name,
+            connector_guanxi,
+            connect_phone,
+            connect_number,
+            changzhu_address,
+            changzhu_address_code,
+            changzhu_detail,
+            liugeyue,
+            huji_address_type,
+            huji_address_code,
+            huji_address,
+            icd,
+            zhengduanshijian,
+            quezh_time,
+            jiazushi,
+            yuhuanzheguanzi,
+            zhuyuan,
+            menzheng,
+            shousuo,
+            shuzhang,
+            guizhuan,
+            dead_date,
+            disease_dead_reason,
+            juti,
+            zuigaoyiju,
+            zhengzhuang,
+            zd_area_code,
+            zd_unit_code,
+            zhiliaoshijian,
+            kaishi,
+            zhilaioleix,
+            buliangchuxian,
+            buliangquezh,
+            buliangfany,
+            buliangyaowu,
+            tingzhizhiliaoshijian,
+            tingzhizhikiaoyuany,
+            yuyuejiancha,
+            shijiancha,
+            zhiliao,
+            zhijiaojigou,
+            baogao
+        FROM
+            disease_gxy
     </sql>
 
     <select id="selectDiseaseGxyList" parameterType="DiseaseGxy" resultMap="DiseaseGxyResult">
@@ -126,7 +183,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectDiseaseGxyVo"/>
         where id = #{id}
     </select>
-        
+
     <insert id="insertDiseaseGxy" parameterType="DiseaseGxy" useGeneratedKeys="true" keyProperty="id">
         insert into disease_gxy
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -141,6 +198,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="merry != null">merry,</if>
             <if test="workType != null">work_type,</if>
             <if test="workAddress != null">work_address,</if>
+            <if test="connectorName != null">connector_name,</if>
             <if test="connectorGuanxi != null">connector_guanxi,</if>
             <if test="connectPhone != null">connect_phone,</if>
             <if test="connectNumber != null">connect_number,</if>
@@ -182,7 +240,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="zhiliao != null">zhiliao,</if>
             <if test="zhijiaojigou != null">zhijiaojigou,</if>
             <if test="baogao != null">baogao,</if>
-         </trim>
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="name != null">#{name},</if>
             <if test="generate != null">#{generate},</if>
@@ -195,6 +253,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="merry != null">#{merry},</if>
             <if test="workType != null">#{workType},</if>
             <if test="workAddress != null">#{workAddress},</if>
+            <if test="connectorName != null">#{connectorName},</if>
             <if test="connectorGuanxi != null">#{connectorGuanxi},</if>
             <if test="connectPhone != null">#{connectPhone},</if>
             <if test="connectNumber != null">#{connectNumber},</if>
@@ -236,7 +295,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="zhiliao != null">#{zhiliao},</if>
             <if test="zhijiaojigou != null">#{zhijiaojigou},</if>
             <if test="baogao != null">#{baogao},</if>
-         </trim>
+        </trim>
     </insert>
 
     <update id="updateDiseaseGxy" parameterType="DiseaseGxy">
@@ -253,6 +312,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="merry != null">merry = #{merry},</if>
             <if test="workType != null">work_type = #{workType},</if>
             <if test="workAddress != null">work_address = #{workAddress},</if>
+            <if test="connectorName != null">connector_name = #{connectorName},</if>
             <if test="connectorGuanxi != null">connector_guanxi = #{connectorGuanxi},</if>
             <if test="connectPhone != null">connect_phone = #{connectPhone},</if>
             <if test="connectNumber != null">connect_number = #{connectNumber},</if>
@@ -303,7 +363,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteDiseaseGxyByIds" parameterType="String">
-        delete from disease_gxy where id in 
+        delete from disease_gxy where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

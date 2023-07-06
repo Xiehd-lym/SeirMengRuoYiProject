@@ -65,6 +65,20 @@ public class DiseaseGxy extends BaseEntity
     @Excel(name = "工作单位名称")
     private String workAddress;
 
+    /** 联系人 */
+    @Excel(name = "联系人")
+    private String connectorName;
+
+    public void setConnectorName(String connectorName)
+    {
+        this.connectorName = connectorName;
+    }
+
+    public String getConnectorName()
+    {
+        return connectorName;
+    }
+
     /** 联系人/监护人与本人关系 */
     @Excel(name = "联系人/监护人与本人关系")
     private String connectorGuanxi;

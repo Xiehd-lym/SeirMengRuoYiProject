@@ -1,6 +1,11 @@
 package com.ruoyi.system.service.impl;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+
+import com.ruoyi.common.utils.IDCardUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.system.mapper.DiseaseGxyMapper;
@@ -53,6 +58,18 @@ public class DiseaseGxyServiceImpl implements IDiseaseGxyService
     @Override
     public int insertDiseaseGxy(DiseaseGxy diseaseGxy)
     {
+
+        String birthday = IDCardUtil.getBirthday(diseaseGxy.getCardNo());
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            diseaseGxy.setBirthday(sdf.parse(birthday));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        //
+        diseaseGxy.setGenerate(IDCardUtil.getSex(diseaseGxy.getCardNo()));
+
         return diseaseGxyMapper.insertDiseaseGxy(diseaseGxy);
     }
 
@@ -65,6 +82,17 @@ public class DiseaseGxyServiceImpl implements IDiseaseGxyService
     @Override
     public int updateDiseaseGxy(DiseaseGxy diseaseGxy)
     {
+
+        String birthday = IDCardUtil.getBirthday(diseaseGxy.getCardNo());
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            diseaseGxy.setBirthday(sdf.parse(birthday));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        //
+        diseaseGxy.setGenerate(IDCardUtil.getSex(diseaseGxy.getCardNo()));
         return diseaseGxyMapper.updateDiseaseGxy(diseaseGxy);
     }
 
