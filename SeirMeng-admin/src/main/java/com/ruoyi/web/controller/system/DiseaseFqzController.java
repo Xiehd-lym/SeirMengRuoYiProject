@@ -5,6 +5,7 @@ import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.enums.BusinessType;
+import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.system.domain.DiseaseFqz;
 import com.ruoyi.system.service.IDiseaseFqzService;
@@ -78,6 +79,11 @@ public class DiseaseFqzController extends BaseController
     @ResponseBody
     public AjaxResult addSave(DiseaseFqz diseaseFqz)
     {
+        String connectNumber = diseaseFqz.getConnectNumber();
+        String connectPhone = diseaseFqz.getConnectPhone();
+        if (StringUtils.isEmpty(connectPhone)||StringUtils.isEmpty(connectPhone)){
+            return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
+        }
         return toAjax(diseaseFqzService.insertDiseaseFqz(diseaseFqz));
     }
 
@@ -100,6 +106,11 @@ public class DiseaseFqzController extends BaseController
     @ResponseBody
     public AjaxResult editSave(DiseaseFqz diseaseFqz)
     {
+        String connectNumber = diseaseFqz.getConnectNumber();
+        String connectPhone = diseaseFqz.getConnectPhone();
+        if (StringUtils.isEmpty(connectPhone)||StringUtils.isEmpty(connectPhone)){
+            return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
+        }
         return toAjax(diseaseFqzService.updateDiseaseFqz(diseaseFqz));
     }
 

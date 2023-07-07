@@ -1,6 +1,8 @@
 package com.ruoyi.web.controller.system;
 
 import java.util.List;
+
+import com.ruoyi.common.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -81,6 +83,11 @@ public class DiseaseXzbController extends BaseController
     @ResponseBody
     public AjaxResult addSave(DiseaseXzb diseaseXzb)
     {
+        String connectNumber = diseaseXzb.getConnectorPhone();
+        String connectPhone = diseaseXzb.getConnectorLandline();
+        if (StringUtils.isEmpty(connectPhone)||StringUtils.isEmpty(connectPhone)){
+            return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
+        }
         return toAjax(diseaseXzbService.insertDiseaseXzb(diseaseXzb));
     }
 
@@ -103,6 +110,11 @@ public class DiseaseXzbController extends BaseController
     @ResponseBody
     public AjaxResult editSave(DiseaseXzb diseaseXzb)
     {
+        String connectNumber = diseaseXzb.getConnectorPhone();
+        String connectPhone = diseaseXzb.getConnectorLandline();
+        if (StringUtils.isEmpty(connectPhone)||StringUtils.isEmpty(connectPhone)){
+            return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
+        }
         return toAjax(diseaseXzbService.updateDiseaseXzb(diseaseXzb));
     }
 

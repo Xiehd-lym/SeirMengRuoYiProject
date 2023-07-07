@@ -1,6 +1,8 @@
 package com.ruoyi.web.controller.system;
 
 import java.util.List;
+
+import com.ruoyi.common.utils.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -86,6 +88,11 @@ public class DiseaseTnbController extends BaseController
     @ResponseBody
     public AjaxResult addSave(DiseaseTnb diseaseTnb)
     {
+        String connectNumber = diseaseTnb.getConnectNumber();
+        String connectPhone = diseaseTnb.getConnectPhone();
+        if (StringUtils.isEmpty(connectPhone)||StringUtils.isEmpty(connectPhone)){
+            return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
+        }
         return toAjax(diseaseTnbService.insertDiseaseTnb(diseaseTnb));
     }
 
@@ -110,6 +117,11 @@ public class DiseaseTnbController extends BaseController
     @ResponseBody
     public AjaxResult editSave(DiseaseTnb diseaseTnb)
     {
+        String connectNumber = diseaseTnb.getConnectNumber();
+        String connectPhone = diseaseTnb.getConnectPhone();
+        if (StringUtils.isEmpty(connectPhone)||StringUtils.isEmpty(connectPhone)){
+            return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
+        }
         return toAjax(diseaseTnbService.updateDiseaseTnb(diseaseTnb));
     }
 
