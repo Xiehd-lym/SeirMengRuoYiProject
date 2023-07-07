@@ -212,6 +212,13 @@
                     field: 'menzheng',
                     title: '门诊号'
                 },
+                    {
+                        field: 'shifoushouci',
+                        title: '是否首次发病',
+                        formatter: function(value, row, index) {
+                            return $.table.selectDictLabel(shifoushouciDatas, value);
+                        }
+                    },
                 {
                     field: 'deadDate',
                     title: '死亡日期'

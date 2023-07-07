@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.system.mapper.DiseaseNczMapper">
-    
+
     <resultMap type="DiseaseNcz" id="DiseaseNczResult">
         <result property="id"    column="id"    />
         <result property="name"    column="name"    />
@@ -33,6 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="quezhTime"    column="quezh_time"    />
         <result property="zhuyuan"    column="zhuyuan"    />
         <result property="menzheng"    column="menzheng"    />
+        <result property="shifoushouci"    column="shifoushouci"    />
         <result property="deadDate"    column="dead_date"    />
         <result property="diseaseDeadReason"    column="disease_dead_reason"    />
         <result property="juti"    column="juti"    />
@@ -47,12 +48,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectDiseaseNczVo">
-        select id, name, generate, birthday, card_type, card_no, mingzu, guoji, edu, merry, work_type, work_address, connector_name, connector_guanxi, connect_phone, connect_number, changzhu_address, changzhu_address_code, changzhu_detail, liugeyue, huji_address_type, huji_address_code, huji_address, icd, zhengduanshijian, quezh_time, zhuyuan, menzheng, dead_date, disease_dead_reason, juti, zhengzhuang, zuigaoyiju, yishi, jiazushi, guanxi, guizhuan, zhiliao, zhijiaojigou from disease_ncz
+        select id, name, generate, birthday, card_type, card_no, mingzu, guoji, edu, merry, work_type, work_address, connector_name, connector_guanxi, connect_phone, connect_number, changzhu_address, changzhu_address_code, changzhu_detail, liugeyue, huji_address_type, huji_address_code, huji_address, icd, zhengduanshijian, quezh_time, zhuyuan, menzheng, shifoushouci, dead_date, disease_dead_reason, juti, zhengzhuang, zuigaoyiju, yishi, jiazushi, guanxi, guizhuan, zhiliao, zhijiaojigou from disease_ncz
     </sql>
 
     <select id="selectDiseaseNczList" parameterType="DiseaseNcz" resultMap="DiseaseNczResult">
         <include refid="selectDiseaseNczVo"/>
-        <where>  
+        <where>
             <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
             <if test="generate != null  and generate != ''"> and generate = #{generate}</if>
             <if test="birthday != null "> and birthday = #{birthday}</if>
@@ -80,6 +81,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="quezhTime != null "> and quezh_time = #{quezhTime}</if>
             <if test="zhuyuan != null  and zhuyuan != ''"> and zhuyuan = #{zhuyuan}</if>
             <if test="menzheng != null  and menzheng != ''"> and menzheng = #{menzheng}</if>
+            <if test="shifoushouci != null  and shifoushouci != ''"> and shifoushouci = #{shifoushouci}</if>
             <if test="deadDate != null "> and dead_date = #{deadDate}</if>
             <if test="diseaseDeadReason != null  and diseaseDeadReason != ''"> and disease_dead_reason = #{diseaseDeadReason}</if>
             <if test="juti != null  and juti != ''"> and juti = #{juti}</if>
@@ -93,12 +95,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="zhijiaojigou != null  and zhijiaojigou != ''"> and zhijiaojigou = #{zhijiaojigou}</if>
         </where>
     </select>
-    
+
     <select id="selectDiseaseNczById" parameterType="Long" resultMap="DiseaseNczResult">
         <include refid="selectDiseaseNczVo"/>
         where id = #{id}
     </select>
-        
+
     <insert id="insertDiseaseNcz" parameterType="DiseaseNcz" useGeneratedKeys="true" keyProperty="id">
         insert into disease_ncz
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -129,6 +131,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="quezhTime != null">quezh_time,</if>
             <if test="zhuyuan != null">zhuyuan,</if>
             <if test="menzheng != null">menzheng,</if>
+            <if test="shifoushouci != null">shifoushouci,</if>
             <if test="deadDate != null">dead_date,</if>
             <if test="diseaseDeadReason != null">disease_dead_reason,</if>
             <if test="juti != null">juti,</if>
@@ -140,7 +143,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="guizhuan != null">guizhuan,</if>
             <if test="zhiliao != null">zhiliao,</if>
             <if test="zhijiaojigou != null">zhijiaojigou,</if>
-         </trim>
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="name != null">#{name},</if>
             <if test="generate != null">#{generate},</if>
@@ -169,6 +172,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="quezhTime != null">#{quezhTime},</if>
             <if test="zhuyuan != null">#{zhuyuan},</if>
             <if test="menzheng != null">#{menzheng},</if>
+            <if test="shifoushouci != null">#{shifoushouci},</if>
             <if test="deadDate != null">#{deadDate},</if>
             <if test="diseaseDeadReason != null">#{diseaseDeadReason},</if>
             <if test="juti != null">#{juti},</if>
@@ -180,7 +184,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="guizhuan != null">#{guizhuan},</if>
             <if test="zhiliao != null">#{zhiliao},</if>
             <if test="zhijiaojigou != null">#{zhijiaojigou},</if>
-         </trim>
+        </trim>
     </insert>
 
     <update id="updateDiseaseNcz" parameterType="DiseaseNcz">
@@ -213,6 +217,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="quezhTime != null">quezh_time = #{quezhTime},</if>
             <if test="zhuyuan != null">zhuyuan = #{zhuyuan},</if>
             <if test="menzheng != null">menzheng = #{menzheng},</if>
+            <if test="shifoushouci != null">shifoushouci = #{shifoushouci},</if>
             <if test="deadDate != null">dead_date = #{deadDate},</if>
             <if test="diseaseDeadReason != null">disease_dead_reason = #{diseaseDeadReason},</if>
             <if test="juti != null">juti = #{juti},</if>
@@ -233,7 +238,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteDiseaseNczByIds" parameterType="String">
-        delete from disease_ncz where id in 
+        delete from disease_ncz where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

@@ -131,6 +131,18 @@ public class DiseaseNcz extends BaseEntity
     @Excel(name = "门诊号")
     private String menzheng;
 
+    /** 是否首次发病 */
+    @Excel(name = "是否首次发病")
+    private String shifoushouci;
+
+    public String getShifoushouci() {
+        return shifoushouci;
+    }
+
+    public void setShifoushouci(String shifoushouci) {
+        this.shifoushouci = shifoushouci;
+    }
+
     /** 死亡日期 */
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Excel(name = "死亡日期", width = 30, dateFormat = "yyyy-MM-dd")
