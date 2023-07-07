@@ -1,6 +1,11 @@
 package com.ruoyi.system.service.impl;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+
+import com.ruoyi.common.utils.IDCardUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.system.mapper.DiseaseTnbMapper;
@@ -53,6 +58,18 @@ public class DiseaseTnbServiceImpl implements IDiseaseTnbService
     @Override
     public int insertDiseaseTnb(DiseaseTnb diseaseTnb)
     {
+        //
+        String birthday = IDCardUtil.getBirthday(diseaseTnb.getCardNo());
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            diseaseTnb.setBirthday(sdf.parse(birthday));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        //
+        diseaseTnb.setGenerate(IDCardUtil.getSex(diseaseTnb.getCardNo()));
+
         return diseaseTnbMapper.insertDiseaseTnb(diseaseTnb);
     }
 
@@ -65,6 +82,18 @@ public class DiseaseTnbServiceImpl implements IDiseaseTnbService
     @Override
     public int updateDiseaseTnb(DiseaseTnb diseaseTnb)
     {
+        //
+        String birthday = IDCardUtil.getBirthday(diseaseTnb.getCardNo());
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            diseaseTnb.setBirthday(sdf.parse(birthday));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        //
+        diseaseTnb.setGenerate(IDCardUtil.getSex(diseaseTnb.getCardNo()));
+
         return diseaseTnbMapper.updateDiseaseTnb(diseaseTnb);
     }
 

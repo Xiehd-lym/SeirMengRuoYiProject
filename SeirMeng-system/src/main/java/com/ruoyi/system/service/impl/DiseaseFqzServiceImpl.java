@@ -94,6 +94,7 @@ public class DiseaseFqzServiceImpl implements IDiseaseFqzService
 
         //
         diseaseFqz.setGenerate(IDCardUtil.getSex(diseaseFqz.getCardNo()));
+
         return diseaseFqzMapper.updateDiseaseFqz(diseaseFqz);
     }
 

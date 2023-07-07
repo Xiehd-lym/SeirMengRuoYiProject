@@ -1,6 +1,11 @@
 package com.ruoyi.system.service.impl;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+
+import com.ruoyi.common.utils.IDCardUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.system.mapper.DiseaseXcMapper;
@@ -53,6 +58,18 @@ public class DiseaseXcServiceImpl implements IDiseaseXcService
     @Override
     public int insertDiseaseXc(DiseaseXc diseaseXc)
     {
+        //
+        String birthday = IDCardUtil.getBirthday(diseaseXc.getCardNo());
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            diseaseXc.setBirthday(sdf.parse(birthday));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        //
+        diseaseXc.setGenerate(IDCardUtil.getSex(diseaseXc.getCardNo()));
+
         return diseaseXcMapper.insertDiseaseXc(diseaseXc);
     }
 
@@ -65,6 +82,18 @@ public class DiseaseXcServiceImpl implements IDiseaseXcService
     @Override
     public int updateDiseaseXc(DiseaseXc diseaseXc)
     {
+        //
+        String birthday = IDCardUtil.getBirthday(diseaseXc.getCardNo());
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            diseaseXc.setBirthday(sdf.parse(birthday));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        //
+        diseaseXc.setGenerate(IDCardUtil.getSex(diseaseXc.getCardNo()));
+
         return diseaseXcMapper.updateDiseaseXc(diseaseXc);
     }
 
