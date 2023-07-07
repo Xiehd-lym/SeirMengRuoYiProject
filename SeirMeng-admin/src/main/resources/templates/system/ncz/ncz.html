@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:include="include :: header('脑卒中列表')" />
 </head>
@@ -15,174 +15,8 @@
                                 <input type="text" name="name"/>
                             </li>
                             <li>
-                                <label>性别：</label>
-                                <input type="text" name="generate"/>
-                            </li>
-                            <li>
-                                <label>出生日期：</label>
-                                <input type="text" class="time-input" placeholder="请选择出生日期" name="birthday"/>
-                            </li>
-                            <li>
-                                <label>身份证件类型：</label>
-                                <select name="cardType" th:with="type=${@dict.getType('zhengjianleixing')}">
-                                    <option value="">所有</option>
-                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
-                                </select>
-                            </li>
-                            <li>
                                 <label>身份证件号：</label>
                                 <input type="text" name="cardNo"/>
-                            </li>
-                            <li>
-                                <label>民族：</label>
-                                <select name="mingzu" th:with="type=${@dict.getType('mingzu')}">
-                                    <option value="">所有</option>
-                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
-                                </select>
-                            </li>
-                            <li>
-                                <label>国籍：</label>
-                                <input type="text" name="guoji"/>
-                            </li>
-                            <li>
-                                <label>学历：</label>
-                                <select name="edu" th:with="type=${@dict.getType('xueli')}">
-                                    <option value="">所有</option>
-                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
-                                </select>
-                            </li>
-                            <li>
-                                <label>婚姻状况：</label>
-                                <select name="merry" th:with="type=${@dict.getType('hunuying')}">
-                                    <option value="">所有</option>
-                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
-                                </select>
-                            </li>
-                            <li>
-                                <label>职业类型：</label>
-                                <select name="workType" th:with="type=${@dict.getType('zhuyeleixing')}">
-                                    <option value="">所有</option>
-                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
-                                </select>
-                            </li>
-                            <li>
-                                <label>工作单位名称：</label>
-                                <input type="text" name="workAddress"/>
-                            </li>
-                            <li>
-                                <label>联系人：</label>
-                                <input type="text" name="connectorName"/>
-                            </li>
-                            <li>
-                                <label>联系人/监护人与本人关系：</label>
-                                <select name="connectorGuanxi" th:with="type=${@dict.getType('lianxirnejianhurenguanxi')}">
-                                    <option value="">所有</option>
-                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
-                                </select>
-                            </li>
-                            <li>
-                                <label>联系电话(手机)：</label>
-                                <input type="text" name="connectPhone"/>
-                            </li>
-                            <li>
-                                <label>联系电话(座机)：</label>
-                                <input type="text" name="connectNumber"/>
-                            </li>
-                            <li>
-                                <label>现住址类型：</label>
-                                <select name="changzhuAddress" th:with="type=${@dict.getType('changzhuleixing')}">
-                                    <option value="">所有</option>
-                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
-                                </select>
-                            </li>
-                            <li>
-                                <label>现住址(编码)：</label>
-                                <input type="text" name="changzhuAddressCode"/>
-                            </li>
-                            <li>
-                                <label>现住详细地址：</label>
-                                <input type="text" name="changzhuDetail"/>
-                            </li>
-                            <li>
-                                <label>本县区居住6个月以上：</label>
-                                <input type="text" name="liugeyue"/>
-                            </li>
-                            <li>
-                                <label>户籍地址类型：</label>
-                                <select name="hujiAddressType" th:with="type=${@dict.getType('changzhuleixing')}">
-                                    <option value="">所有</option>
-                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
-                                </select>
-                            </li>
-                            <li>
-                                <label>户籍地址(编码)：</label>
-                                <input type="text" name="hujiAddressCode"/>
-                            </li>
-                            <li>
-                                <label>户籍详细地址：</label>
-                                <input type="text" name="hujiAddress"/>
-                            </li>
-                            <li>
-                                <label>首次诊断日期：</label>
-                                <input type="text" class="time-input" placeholder="请选择首次诊断日期" name="zhengduanshijian"/>
-                            </li>
-                            <li>
-                                <label>确诊时间：</label>
-                                <input type="text" class="time-input" placeholder="请选择确诊时间" name="quezhTime"/>
-                            </li>
-                            <li>
-                                <label>住院号：</label>
-                                <input type="text" name="zhuyuan"/>
-                            </li>
-                            <li>
-                                <label>门诊号：</label>
-                                <input type="text" name="menzheng"/>
-                            </li>
-                            <li>
-                                <label>死亡日期：</label>
-                                <input type="text" class="time-input" placeholder="请选择死亡日期" name="deadDate"/>
-                            </li>
-                            <li>
-                                <label>死亡原因：</label>
-                                <input type="text" name="diseaseDeadReason"/>
-                            </li>
-                            <li>
-                                <label>具体死亡原因：</label>
-                                <input type="text" name="juti"/>
-                            </li>
-                            <li>
-                                <label>诊断依据：</label>
-                                <input type="text" name="zhengzhuang"/>
-                            </li>
-                            <li>
-                                <label>报告医师：</label>
-                                <input type="text" name="yishi"/>
-                            </li>
-                            <li>
-                                <label>家族史：</label>
-                                <select name="jiazushi" th:with="type=${@dict.getType('shifou')}">
-                                    <option value="">所有</option>
-                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
-                                </select>
-                            </li>
-                            <li>
-                                <label>与患者关系：</label>
-                                <select name="guanxi" th:with="type=${@dict.getType('lianxirnejianhurenguanxi')}">
-                                    <option value="">所有</option>
-                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
-                                </select>
-                            </li>
-                            <li>
-                                <label>病情转归：</label>
-                                <input type="text" name="guizhuan"/>
-                            </li>
-                            <li>
-                                <label>治疗地区(编码)：</label>
-                                <input type="text" name="zhiliao"/>
-                            </li>
-                            <li>
-                                <label>治疗机构(编码)：</label>
-                                <input type="text" name="zhijiaojigou"/>
                             </li>
                             <li>
                                 <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -194,16 +28,16 @@
             </div>
 
             <div class="btn-group-sm" id="toolbar" role="group">
-                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="system:ncz:add">
+                <a class="btn btn-success" onclick="$.operate.add()" >
                     <i class="fa fa-plus"></i> 添加
                 </a>
-                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="system:ncz:edit">
+                <a class="btn btn-primary single disabled" onclick="$.operate.edit()"  >
                     <i class="fa fa-edit"></i> 修改
                 </a>
-                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="system:ncz:remove">
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()"  >
                     <i class="fa fa-remove"></i> 删除
                 </a>
-                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:ncz:export">
+                <a class="btn btn-warning" onclick="$.table.exportExcel()"  >
                     <i class="fa fa-download"></i> 导出
                 </a>
             </div>
@@ -214,8 +48,6 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var editFlag = [[${@permission.hasPermi('system:ncz:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('system:ncz:remove')}]];
         var cardTypeDatas = [[${@dict.getType('zhengjianleixing')}]];
         var mingzuDatas = [[${@dict.getType('mingzu')}]];
         var eduDatas = [[${@dict.getType('xueli')}]];
@@ -435,8 +267,8 @@
                     align: 'center',
                     formatter: function(value, row, index) {
                         var actions = [];
-                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
-                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        actions.push('<a class="btn btn-success btn-xs '  + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs '   + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
                         return actions.join('');
                     }
                 }]
