@@ -90,7 +90,7 @@ public class DiseaseGxyController extends BaseController
     {
         String connectNumber = diseaseGxy.getConnectNumber();
         String connectPhone = diseaseGxy.getConnectPhone();
-        if (StringUtils.isEmpty(connectPhone)||StringUtils.isEmpty(connectPhone)){
+        if (StringUtils.isBlank(connectPhone) && StringUtils.isBlank(connectNumber)){
             return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
         }
         return toAjax(diseaseGxyService.insertDiseaseGxy(diseaseGxy));
@@ -119,7 +119,7 @@ public class DiseaseGxyController extends BaseController
     {
         String connectNumber = diseaseGxy.getConnectNumber();
         String connectPhone = diseaseGxy.getConnectPhone();
-        if (StringUtils.isEmpty(connectPhone)||StringUtils.isEmpty(connectPhone)){
+        if (StringUtils.isBlank(connectPhone) && StringUtils.isBlank(connectNumber)){
             return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
         }
         return toAjax(diseaseGxyService.updateDiseaseGxy(diseaseGxy));

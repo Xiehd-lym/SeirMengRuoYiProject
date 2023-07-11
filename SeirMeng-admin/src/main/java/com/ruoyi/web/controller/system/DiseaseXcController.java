@@ -85,7 +85,7 @@ public class DiseaseXcController extends BaseController
     {
         String connectNumber = diseaseXc.getConnectNumber();
         String connectPhone = diseaseXc.getConnectPhone();
-        if (StringUtils.isEmpty(connectPhone)||StringUtils.isEmpty(connectPhone)){
+        if (StringUtils.isBlank(connectPhone) && StringUtils.isBlank(connectNumber)){
             return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
         }
         return toAjax(diseaseXcService.insertDiseaseXc(diseaseXc));
@@ -114,7 +114,7 @@ public class DiseaseXcController extends BaseController
     {
         String connectNumber = diseaseXc.getConnectNumber();
         String connectPhone = diseaseXc.getConnectPhone();
-        if (StringUtils.isEmpty(connectPhone)||StringUtils.isEmpty(connectPhone)){
+        if (StringUtils.isBlank(connectPhone) && StringUtils.isBlank(connectNumber)){
             return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
         }
         return toAjax(diseaseXcService.updateDiseaseXc(diseaseXc));

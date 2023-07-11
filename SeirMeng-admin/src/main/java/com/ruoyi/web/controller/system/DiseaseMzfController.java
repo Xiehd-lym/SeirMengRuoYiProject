@@ -85,7 +85,7 @@ public class DiseaseMzfController extends BaseController
     {
         String connectNumber = diseaseMzf.getConnectNumber();
         String connectPhone = diseaseMzf.getConnectPhone();
-        if (StringUtils.isEmpty(connectPhone)||StringUtils.isEmpty(connectPhone)){
+        if (StringUtils.isBlank(connectPhone) && StringUtils.isBlank(connectNumber)){
             return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
         }
         return toAjax(diseaseMzfService.insertDiseaseMzf(diseaseMzf));
@@ -114,7 +114,7 @@ public class DiseaseMzfController extends BaseController
     {
         String connectNumber = diseaseMzf.getConnectNumber();
         String connectPhone = diseaseMzf.getConnectPhone();
-        if (StringUtils.isEmpty(connectPhone)||StringUtils.isEmpty(connectPhone)){
+        if (StringUtils.isBlank(connectPhone) && StringUtils.isBlank(connectNumber)){
             return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
         }
         return toAjax(diseaseMzfService.updateDiseaseMzf(diseaseMzf));

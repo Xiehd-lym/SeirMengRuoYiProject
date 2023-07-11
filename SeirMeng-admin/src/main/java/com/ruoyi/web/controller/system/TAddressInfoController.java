@@ -50,6 +50,14 @@ public class TAddressInfoController extends BaseController
         return getDataTable(list);
     }
 
+    @PostMapping("/adressResource")
+    @ResponseBody
+    public AjaxResult adressResource(TAddressInfo tAddressInfo)
+    {
+        List<TAddressInfo> list = tAddressInfoService.selectTAddressInfoList(tAddressInfo);
+        return AjaxResult.success(list);
+    }
+
     /**
      * 导出地区编码列表
      */
