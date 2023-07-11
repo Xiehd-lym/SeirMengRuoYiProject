@@ -70,6 +70,10 @@ public class DiseaseTnbServiceImpl implements IDiseaseTnbService
         //
         diseaseTnb.setGenerate(IDCardUtil.getSex(diseaseTnb.getCardNo()));
 
+        diseaseTnb.setHujiAddress(diseaseTnb.getChangzhuAddress());
+        diseaseTnb.setHujiAddressCode(diseaseTnb.getChangzhuAddressCode());
+        diseaseTnb.setHujiAddressType(diseaseTnb.getChangzhuAddress());
+        
         return diseaseTnbMapper.insertDiseaseTnb(diseaseTnb);
     }
 
@@ -94,6 +98,10 @@ public class DiseaseTnbServiceImpl implements IDiseaseTnbService
         //
         diseaseTnb.setGenerate(IDCardUtil.getSex(diseaseTnb.getCardNo()));
 
+        diseaseTnb.setHujiAddress(diseaseTnb.getChangzhuAddress());
+        diseaseTnb.setHujiAddressCode(diseaseTnb.getChangzhuAddressCode());
+        diseaseTnb.setHujiAddressType(diseaseTnb.getChangzhuAddress());
+        
         return diseaseTnbMapper.updateDiseaseTnb(diseaseTnb);
     }
 

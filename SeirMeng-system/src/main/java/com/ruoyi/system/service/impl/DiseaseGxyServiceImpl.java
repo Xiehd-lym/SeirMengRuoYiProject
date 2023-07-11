@@ -70,6 +70,10 @@ public class DiseaseGxyServiceImpl implements IDiseaseGxyService
         //
         diseaseGxy.setGenerate(IDCardUtil.getSex(diseaseGxy.getCardNo()));
 
+        diseaseGxy.setHujiAddress(diseaseGxy.getChangzhuAddress());
+        diseaseGxy.setHujiAddressCode(diseaseGxy.getChangzhuAddressCode());
+        diseaseGxy.setHujiAddressType(diseaseGxy.getChangzhuAddress());
+        
         return diseaseGxyMapper.insertDiseaseGxy(diseaseGxy);
     }
 
@@ -93,6 +97,11 @@ public class DiseaseGxyServiceImpl implements IDiseaseGxyService
 
         //
         diseaseGxy.setGenerate(IDCardUtil.getSex(diseaseGxy.getCardNo()));
+
+        diseaseGxy.setHujiAddress(diseaseGxy.getChangzhuAddress());
+        diseaseGxy.setHujiAddressCode(diseaseGxy.getChangzhuAddressCode());
+        diseaseGxy.setHujiAddressType(diseaseGxy.getChangzhuAddress());
+        
         return diseaseGxyMapper.updateDiseaseGxy(diseaseGxy);
     }
 

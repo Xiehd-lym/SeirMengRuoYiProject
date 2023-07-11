@@ -70,6 +70,10 @@ public class DiseaseMzfServiceImpl implements IDiseaseMzfService
         //
         diseaseMzf.setGenerate(IDCardUtil.getSex(diseaseMzf.getCardNo()));
 
+        diseaseMzf.setHujiAddress(diseaseMzf.getChangzhuAddress());
+        diseaseMzf.setHujiAddressCode(diseaseMzf.getChangzhuAddressCode());
+        diseaseMzf.setHujiAddressType(diseaseMzf.getChangzhuAddress());
+        
         return diseaseMzfMapper.insertDiseaseMzf(diseaseMzf);
     }
 
@@ -94,6 +98,10 @@ public class DiseaseMzfServiceImpl implements IDiseaseMzfService
         //
         diseaseMzf.setGenerate(IDCardUtil.getSex(diseaseMzf.getCardNo()));
 
+        diseaseMzf.setHujiAddress(diseaseMzf.getChangzhuAddress());
+        diseaseMzf.setHujiAddressCode(diseaseMzf.getChangzhuAddressCode());
+        diseaseMzf.setHujiAddressType(diseaseMzf.getChangzhuAddress());
+        
         return diseaseMzfMapper.updateDiseaseMzf(diseaseMzf);
     }
 

@@ -70,6 +70,10 @@ public class DiseaseMxzqgyServiceImpl implements IDiseaseMxzqgyService
         //
         diseaseMxzqgy.setGenerate(IDCardUtil.getSex(diseaseMxzqgy.getCardNo()));
 
+        diseaseMxzqgy.setHujiAddress(diseaseMxzqgy.getChangzhuAddress());
+        diseaseMxzqgy.setHujiAddressCode(diseaseMxzqgy.getChangzhuAddressCode());
+        diseaseMxzqgy.setHujiAddressType(diseaseMxzqgy.getChangzhuAddress());
+        
         return diseaseMxzqgyMapper.insertDiseaseMxzqgy(diseaseMxzqgy);
     }
 
@@ -93,6 +97,11 @@ public class DiseaseMxzqgyServiceImpl implements IDiseaseMxzqgyService
 
         //
         diseaseMxzqgy.setGenerate(IDCardUtil.getSex(diseaseMxzqgy.getCardNo()));
+
+        diseaseMxzqgy.setHujiAddress(diseaseMxzqgy.getChangzhuAddress());
+        diseaseMxzqgy.setHujiAddressCode(diseaseMxzqgy.getChangzhuAddressCode());
+        diseaseMxzqgy.setHujiAddressType(diseaseMxzqgy.getChangzhuAddress());
+        
         return diseaseMxzqgyMapper.updateDiseaseMxzqgy(diseaseMxzqgy);
     }
 

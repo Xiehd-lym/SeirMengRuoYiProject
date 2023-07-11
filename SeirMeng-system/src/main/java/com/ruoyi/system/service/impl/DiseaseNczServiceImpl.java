@@ -70,6 +70,10 @@ public class DiseaseNczServiceImpl implements IDiseaseNczService
         //
         diseaseNcz.setGenerate(IDCardUtil.getSex(diseaseNcz.getCardNo()));
 
+        diseaseNcz.setHujiAddress(diseaseNcz.getChangzhuAddress());
+        diseaseNcz.setHujiAddressCode(diseaseNcz.getChangzhuAddressCode());
+        diseaseNcz.setHujiAddressType(diseaseNcz.getChangzhuAddress());
+        
         return diseaseNczMapper.insertDiseaseNcz(diseaseNcz);
     }
 
@@ -94,6 +98,10 @@ public class DiseaseNczServiceImpl implements IDiseaseNczService
         //
         diseaseNcz.setGenerate(IDCardUtil.getSex(diseaseNcz.getCardNo()));
 
+        diseaseNcz.setHujiAddress(diseaseNcz.getChangzhuAddress());
+        diseaseNcz.setHujiAddressCode(diseaseNcz.getChangzhuAddressCode());
+        diseaseNcz.setHujiAddressType(diseaseNcz.getChangzhuAddress());
+        
         return diseaseNczMapper.updateDiseaseNcz(diseaseNcz);
     }
 

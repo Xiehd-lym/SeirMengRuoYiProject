@@ -71,6 +71,10 @@ public class DiseaseFqzServiceImpl implements IDiseaseFqzService
         //
         diseaseFqz.setGenerate(IDCardUtil.getSex(diseaseFqz.getCardNo()));
 
+        diseaseFqz.setHujiAddress(diseaseFqz.getChangzhuAddress());
+        diseaseFqz.setHujiAddressCode(diseaseFqz.getChangzhuAddressCode());
+        diseaseFqz.setHujiAddressType(diseaseFqz.getChangzhuAddress());
+
         return diseaseFqzMapper.insertDiseaseFqz(diseaseFqz);
     }
 
@@ -94,6 +98,10 @@ public class DiseaseFqzServiceImpl implements IDiseaseFqzService
 
         //
         diseaseFqz.setGenerate(IDCardUtil.getSex(diseaseFqz.getCardNo()));
+
+        diseaseFqz.setHujiAddress(diseaseFqz.getChangzhuAddress());
+        diseaseFqz.setHujiAddressCode(diseaseFqz.getChangzhuAddressCode());
+        diseaseFqz.setHujiAddressType(diseaseFqz.getChangzhuAddress());
 
         return diseaseFqzMapper.updateDiseaseFqz(diseaseFqz);
     }
