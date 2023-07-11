@@ -1,23 +1,19 @@
 package com.ruoyi.web.controller.system;
 
-import java.util.List;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
+import com.ruoyi.common.annotation.Log;
+import com.ruoyi.common.core.controller.BaseController;
+import com.ruoyi.common.core.domain.AjaxResult;
+import com.ruoyi.common.core.page.TableDataInfo;
+import com.ruoyi.common.enums.BusinessType;
+import com.ruoyi.common.utils.poi.ExcelUtil;
+import com.ruoyi.system.domain.TAddressInfo;
+import com.ruoyi.system.service.ITAddressInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import com.ruoyi.common.annotation.Log;
-import com.ruoyi.common.enums.BusinessType;
-import com.ruoyi.system.domain.TAddressInfo;
-import com.ruoyi.system.service.ITAddressInfoService;
-import com.ruoyi.common.core.controller.BaseController;
-import com.ruoyi.common.core.domain.AjaxResult;
-import com.ruoyi.common.utils.poi.ExcelUtil;
-import com.ruoyi.common.core.page.TableDataInfo;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 地区编码Controller
@@ -34,7 +30,7 @@ public class TAddressInfoController extends BaseController
     @Autowired
     private ITAddressInfoService tAddressInfoService;
 
-    @RequiresPermissions("system:info:view")
+
     @GetMapping()
     public String info()
     {
@@ -44,7 +40,7 @@ public class TAddressInfoController extends BaseController
     /**
      * 查询地区编码列表
      */
-    @RequiresPermissions("system:info:list")
+
     @PostMapping("/list")
     @ResponseBody
     public TableDataInfo list(TAddressInfo tAddressInfo)
@@ -57,7 +53,7 @@ public class TAddressInfoController extends BaseController
     /**
      * 导出地区编码列表
      */
-    @RequiresPermissions("system:info:export")
+
     @Log(title = "地区编码", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     @ResponseBody
@@ -80,7 +76,7 @@ public class TAddressInfoController extends BaseController
     /**
      * 新增保存地区编码
      */
-    @RequiresPermissions("system:info:add")
+
     @Log(title = "地区编码", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
@@ -92,7 +88,7 @@ public class TAddressInfoController extends BaseController
     /**
      * 修改地区编码
      */
-    @RequiresPermissions("system:info:edit")
+
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, ModelMap mmap)
     {
@@ -104,7 +100,7 @@ public class TAddressInfoController extends BaseController
     /**
      * 修改保存地区编码
      */
-    @RequiresPermissions("system:info:edit")
+
     @Log(title = "地区编码", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
@@ -116,7 +112,7 @@ public class TAddressInfoController extends BaseController
     /**
      * 删除地区编码
      */
-    @RequiresPermissions("system:info:remove")
+
     @Log(title = "地区编码", businessType = BusinessType.DELETE)
     @PostMapping( "/remove")
     @ResponseBody
