@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="form-group">    
-                <label class="col-sm-3 control-label">常住地址类型：</label>
+                <label class="col-sm-3 control-label is-required">常住地址类型：</label>
                 <div class="col-sm-8">
                     <select name="changzhuAddress" class="form-control m-b" th:with="type=${@dict.getType('changzhuleixing')}">
                         <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">常住地址：</label>
+                <label class="col-sm-3 control-label is-required">常住地址：</label>
                 <div class="col-sm-8">
                     <select name="changzhuAddressCode" class="form-control" id="changzhuAddressCode">
                         <option value=""></option>
@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="form-group">    
-                <label class="col-sm-3 control-label">常住详细地址：</label>
+                <label class="col-sm-3 control-label is-required">常住详细地址：</label>
                 <div class="col-sm-8">
                     <input name="changzhuDetail" class="form-control" type="text">
                 </div>
