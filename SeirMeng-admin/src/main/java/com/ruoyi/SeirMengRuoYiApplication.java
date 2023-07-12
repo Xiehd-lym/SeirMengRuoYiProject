@@ -6,7 +6,15 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 /**
  * 启动程序
- * http://localhost:18090/SeirMeng/swagger-ui/index.html
+ *
+ * 首页设置
+ * /system/main
+ *
+ * 主页面
+ * http://localhost:18090/SeirMengRuoYi/index
+ *
+ * swagger
+ * http://localhost:18090/SeirMengRuoYi/swagger-ui/index.html
  * 
  * @author ruoyi
  */

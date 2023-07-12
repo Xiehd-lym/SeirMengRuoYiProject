@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.DiseaseTnbMapper">
+    
+    <resultMap type="DiseaseTnb" id="DiseaseTnbResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="generate"    column="generate"    />
+        <result property="birthday"    column="birthday"    />
+        <result property="cardType"    column="card_type"    />
+        <result property="cardNo"    column="card_no"    />
+        <result property="mingzu"    column="mingzu"    />
+        <result property="guoji"    column="guoji"    />
+        <result property="edu"    column="edu"    />
+        <result property="merry"    column="merry"    />
+        <result property="workType"    column="work_type"    />
+        <result property="workAddress"    column="work_address"    />
+        <result property="connectorName"    column="connector_name"    />
+        <result property="connectorGuanxi"    column="connector_guanxi"    />
+        <result property="connectPhone"    column="connect_phone"    />
+        <result property="connectNumber"    column="connect_number"    />
+        <result property="changzhuAddress"    column="changzhu_address"    />
+        <result property="changzhuAddressCode"    column="changzhu_address_code"    />
+        <result property="changzhuDetail"    column="changzhu_detail"    />
+        <result property="liugeyue"    column="liugeyue"    />
+        <result property="hujiAddressType"    column="huji_address_type"    />
+        <result property="hujiAddressCode"    column="huji_address_code"    />
+        <result property="hujiAddress"    column="huji_address"    />
+        <result property="icd"    column="icd"    />
+        <result property="zhengduanshijian"    column="zhengduanshijian"    />
+        <result property="quezhTime"    column="quezh_time"    />
+        <result property="jiazushi"    column="jiazushi"    />
+        <result property="yuhuanzheguanzi"    column="yuhuanzheguanzi"    />
+        <result property="zhuyuan"    column="zhuyuan"    />
+        <result property="menzheng"    column="menzheng"    />
+        <result property="shousuo"    column="shousuo"    />
+        <result property="shuzhang"    column="shuzhang"    />
+        <result property="guizhuan"    column="guizhuan"    />
+        <result property="deadDate"    column="dead_date"    />
+        <result property="diseaseDeadReason"    column="disease_dead_reason"    />
+        <result property="juti"    column="juti"    />
+        <result property="zuigaoyiju"    column="zuigaoyiju"    />
+        <result property="zhengzhuang"    column="zhengzhuang"    />
+        <result property="zdAreaCode"    column="zd_area_code"    />
+        <result property="zdUnitCode"    column="zd_unit_code"    />
+        <result property="zhiliaoshijian"    column="zhiliaoshijian"    />
+        <result property="kaishi"    column="kaishi"    />
+        <result property="zhilaioleix"    column="zhilaioleix"    />
+        <result property="buliangchuxian"    column="buliangchuxian"    />
+        <result property="buliangquezh"    column="buliangquezh"    />
+        <result property="buliangfany"    column="buliangfany"    />
+        <result property="buliangyaowu"    column="buliangyaowu"    />
+        <result property="tingzhizhiliaoshijian"    column="tingzhizhiliaoshijian"    />
+        <result property="tingzhizhikiaoyuany"    column="tingzhizhikiaoyuany"    />
+        <result property="yuyuejiancha"    column="yuyuejiancha"    />
+        <result property="shijiancha"    column="shijiancha"    />
+        <result property="zhiliao"    column="zhiliao"    />
+        <result property="zhijiaojigou"    column="zhijiaojigou"    />
+        <result property="baogao"    column="baogao"    />
+    </resultMap>
+
+    <sql id="selectDiseaseTnbVo">
+        select id, name, generate, birthday, card_type, card_no, mingzu, guoji, edu, merry, work_type, work_address, connector_name, connector_guanxi, connect_phone, connect_number, changzhu_address, changzhu_address_code, changzhu_detail, liugeyue, huji_address_type, huji_address_code, huji_address, icd, zhengduanshijian, quezh_time, jiazushi, yuhuanzheguanzi, zhuyuan, menzheng, shousuo, shuzhang, guizhuan, dead_date, disease_dead_reason, juti, zuigaoyiju, zhengzhuang, zd_area_code, zd_unit_code, zhiliaoshijian, kaishi, zhilaioleix, buliangchuxian, buliangquezh, buliangfany, buliangyaowu, tingzhizhiliaoshijian, tingzhizhikiaoyuany, yuyuejiancha, shijiancha, zhiliao, zhijiaojigou, baogao from disease_tnb
+    </sql>
+
+    <select id="selectDiseaseTnbList" parameterType="DiseaseTnb" resultMap="DiseaseTnbResult">
+        <include refid="selectDiseaseTnbVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="generate != null  and generate != ''"> and generate = #{generate}</if>
+            <if test="birthday != null "> and birthday = #{birthday}</if>
+            <if test="cardType != null  and cardType != ''"> and card_type = #{cardType}</if>
+            <if test="cardNo != null  and cardNo != ''"> and card_no = #{cardNo}</if>
+            <if test="mingzu != null  and mingzu != ''"> and mingzu = #{mingzu}</if>
+            <if test="guoji != null  and guoji != ''"> and guoji = #{guoji}</if>
+            <if test="edu != null  and edu != ''"> and edu = #{edu}</if>
+            <if test="merry != null  and merry != ''"> and merry = #{merry}</if>
+            <if test="workType != null  and workType != ''"> and work_type = #{workType}</if>
+            <if test="workAddress != null  and workAddress != ''"> and work_address = #{workAddress}</if>
+            <if test="connectorName != null  and connectorName != ''"> and connector_name like concat('%', #{connectorName}, '%')</if>
+            <if test="connectorGuanxi != null  and connectorGuanxi != ''"> and connector_guanxi = #{connectorGuanxi}</if>
+            <if test="connectPhone != null  and connectPhone != ''"> and connect_phone = #{connectPhone}</if>
+            <if test="connectNumber != null  and connectNumber != ''"> and connect_number = #{connectNumber}</if>
+            <if test="changzhuAddress != null  and changzhuAddress != ''"> and changzhu_address = #{changzhuAddress}</if>
+            <if test="changzhuAddressCode != null  and changzhuAddressCode != ''"> and changzhu_address_code = #{changzhuAddressCode}</if>
+            <if test="changzhuDetail != null  and changzhuDetail != ''"> and changzhu_detail = #{changzhuDetail}</if>
+            <if test="liugeyue != null  and liugeyue != ''"> and liugeyue = #{liugeyue}</if>
+            <if test="hujiAddressType != null  and hujiAddressType != ''"> and huji_address_type = #{hujiAddressType}</if>
+            <if test="hujiAddressCode != null  and hujiAddressCode != ''"> and huji_address_code = #{hujiAddressCode}</if>
+            <if test="hujiAddress != null  and hujiAddress != ''"> and huji_address = #{hujiAddress}</if>
+            <if test="icd != null  and icd != ''"> and icd = #{icd}</if>
+            <if test="zhengduanshijian != null "> and zhengduanshijian = #{zhengduanshijian}</if>
+            <if test="quezhTime != null "> and quezh_time = #{quezhTime}</if>
+            <if test="jiazushi != null  and jiazushi != ''"> and jiazushi = #{jiazushi}</if>
+            <if test="yuhuanzheguanzi != null  and yuhuanzheguanzi != ''"> and yuhuanzheguanzi = #{yuhuanzheguanzi}</if>
+            <if test="zhuyuan != null  and zhuyuan != ''"> and zhuyuan = #{zhuyuan}</if>
+            <if test="menzheng != null  and menzheng != ''"> and menzheng = #{menzheng}</if>
+            <if test="shousuo != null  and shousuo != ''"> and shousuo = #{shousuo}</if>
+            <if test="shuzhang != null  and shuzhang != ''"> and shuzhang = #{shuzhang}</if>
+            <if test="guizhuan != null  and guizhuan != ''"> and guizhuan = #{guizhuan}</if>
+            <if test="deadDate != null "> and dead_date = #{deadDate}</if>
+            <if test="diseaseDeadReason != null  and diseaseDeadReason != ''"> and disease_dead_reason = #{diseaseDeadReason}</if>
+            <if test="juti != null  and juti != ''"> and juti = #{juti}</if>
+            <if test="zuigaoyiju != null  and zuigaoyiju != ''"> and zuigaoyiju = #{zuigaoyiju}</if>
+            <if test="zhengzhuang != null  and zhengzhuang != ''"> and zhengzhuang = #{zhengzhuang}</if>
+            <if test="zdAreaCode != null  and zdAreaCode != ''"> and zd_area_code = #{zdAreaCode}</if>
+            <if test="zdUnitCode != null  and zdUnitCode != ''"> and zd_unit_code = #{zdUnitCode}</if>
+            <if test="zhiliaoshijian != null "> and zhiliaoshijian = #{zhiliaoshijian}</if>
+            <if test="kaishi != null "> and kaishi = #{kaishi}</if>
+            <if test="zhilaioleix != null  and zhilaioleix != ''"> and zhilaioleix = #{zhilaioleix}</if>
+            <if test="buliangchuxian != null "> and buliangchuxian = #{buliangchuxian}</if>
+            <if test="buliangquezh != null "> and buliangquezh = #{buliangquezh}</if>
+            <if test="buliangfany != null  and buliangfany != ''"> and buliangfany = #{buliangfany}</if>
+            <if test="buliangyaowu != null  and buliangyaowu != ''"> and buliangyaowu = #{buliangyaowu}</if>
+            <if test="tingzhizhiliaoshijian != null "> and tingzhizhiliaoshijian = #{tingzhizhiliaoshijian}</if>
+            <if test="tingzhizhikiaoyuany != null  and tingzhizhikiaoyuany != ''"> and tingzhizhikiaoyuany = #{tingzhizhikiaoyuany}</if>
+            <if test="yuyuejiancha != null "> and yuyuejiancha = #{yuyuejiancha}</if>
+            <if test="shijiancha != null "> and shijiancha = #{shijiancha}</if>
+            <if test="zhiliao != null  and zhiliao != ''"> and zhiliao = #{zhiliao}</if>
+            <if test="zhijiaojigou != null  and zhijiaojigou != ''"> and zhijiaojigou = #{zhijiaojigou}</if>
+            <if test="baogao != null  and baogao != ''"> and baogao = #{baogao}</if>
+        </where>
+    </select>
+    
+    <select id="selectDiseaseTnbById" parameterType="Long" resultMap="DiseaseTnbResult">
+        <include refid="selectDiseaseTnbVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertDiseaseTnb" parameterType="DiseaseTnb" useGeneratedKeys="true" keyProperty="id">
+        insert into disease_tnb
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="generate != null">generate,</if>
+            <if test="birthday != null">birthday,</if>
+            <if test="cardType != null">card_type,</if>
+            <if test="cardNo != null">card_no,</if>
+            <if test="mingzu != null">mingzu,</if>
+            <if test="guoji != null">guoji,</if>
+            <if test="edu != null">edu,</if>
+            <if test="merry != null">merry,</if>
+            <if test="workType != null">work_type,</if>
+            <if test="workAddress != null">work_address,</if>
+            <if test="connectorName != null">connector_name,</if>
+            <if test="connectorGuanxi != null">connector_guanxi,</if>
+            <if test="connectPhone != null">connect_phone,</if>
+            <if test="connectNumber != null">connect_number,</if>
+            <if test="changzhuAddress != null">changzhu_address,</if>
+            <if test="changzhuAddressCode != null">changzhu_address_code,</if>
+            <if test="changzhuDetail != null">changzhu_detail,</if>
+            <if test="liugeyue != null">liugeyue,</if>
+            <if test="hujiAddressType != null">huji_address_type,</if>
+            <if test="hujiAddressCode != null">huji_address_code,</if>
+            <if test="hujiAddress != null">huji_address,</if>
+            <if test="icd != null">icd,</if>
+            <if test="zhengduanshijian != null">zhengduanshijian,</if>
+            <if test="quezhTime != null">quezh_time,</if>
+            <if test="jiazushi != null">jiazushi,</if>
+            <if test="yuhuanzheguanzi != null">yuhuanzheguanzi,</if>
+            <if test="zhuyuan != null">zhuyuan,</if>
+            <if test="menzheng != null">menzheng,</if>
+            <if test="shousuo != null">shousuo,</if>
+            <if test="shuzhang != null">shuzhang,</if>
+            <if test="guizhuan != null">guizhuan,</if>
+            <if test="deadDate != null">dead_date,</if>
+            <if test="diseaseDeadReason != null">disease_dead_reason,</if>
+            <if test="juti != null">juti,</if>
+            <if test="zuigaoyiju != null">zuigaoyiju,</if>
+            <if test="zhengzhuang != null">zhengzhuang,</if>
+            <if test="zdAreaCode != null">zd_area_code,</if>
+            <if test="zdUnitCode != null">zd_unit_code,</if>
+            <if test="zhiliaoshijian != null">zhiliaoshijian,</if>
+            <if test="kaishi != null">kaishi,</if>
+            <if test="zhilaioleix != null">zhilaioleix,</if>
+            <if test="buliangchuxian != null">buliangchuxian,</if>
+            <if test="buliangquezh != null">buliangquezh,</if>
+            <if test="buliangfany != null">buliangfany,</if>
+            <if test="buliangyaowu != null">buliangyaowu,</if>
+            <if test="tingzhizhiliaoshijian != null">tingzhizhiliaoshijian,</if>
+            <if test="tingzhizhikiaoyuany != null">tingzhizhikiaoyuany,</if>
+            <if test="yuyuejiancha != null">yuyuejiancha,</if>
+            <if test="shijiancha != null">shijiancha,</if>
+            <if test="zhiliao != null">zhiliao,</if>
+            <if test="zhijiaojigou != null">zhijiaojigou,</if>
+            <if test="baogao != null">baogao,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="generate != null">#{generate},</if>
+            <if test="birthday != null">#{birthday},</if>
+            <if test="cardType != null">#{cardType},</if>
+            <if test="cardNo != null">#{cardNo},</if>
+            <if test="mingzu != null">#{mingzu},</if>
+            <if test="guoji != null">#{guoji},</if>
+            <if test="edu != null">#{edu},</if>
+            <if test="merry != null">#{merry},</if>
+            <if test="workType != null">#{workType},</if>
+            <if test="workAddress != null">#{workAddress},</if>
+            <if test="connectorName != null">#{connectorName},</if>
+            <if test="connectorGuanxi != null">#{connectorGuanxi},</if>
+            <if test="connectPhone != null">#{connectPhone},</if>
+            <if test="connectNumber != null">#{connectNumber},</if>
+            <if test="changzhuAddress != null">#{changzhuAddress},</if>
+            <if test="changzhuAddressCode != null">#{changzhuAddressCode},</if>
+            <if test="changzhuDetail != null">#{changzhuDetail},</if>
+            <if test="liugeyue != null">#{liugeyue},</if>
+            <if test="hujiAddressType != null">#{hujiAddressType},</if>
+            <if test="hujiAddressCode != null">#{hujiAddressCode},</if>
+            <if test="hujiAddress != null">#{hujiAddress},</if>
+            <if test="icd != null">#{icd},</if>
+            <if test="zhengduanshijian != null">#{zhengduanshijian},</if>
+            <if test="quezhTime != null">#{quezhTime},</if>
+            <if test="jiazushi != null">#{jiazushi},</if>
+            <if test="yuhuanzheguanzi != null">#{yuhuanzheguanzi},</if>
+            <if test="zhuyuan != null">#{zhuyuan},</if>
+            <if test="menzheng != null">#{menzheng},</if>
+            <if test="shousuo != null">#{shousuo},</if>
+            <if test="shuzhang != null">#{shuzhang},</if>
+            <if test="guizhuan != null">#{guizhuan},</if>
+            <if test="deadDate != null">#{deadDate},</if>
+            <if test="diseaseDeadReason != null">#{diseaseDeadReason},</if>
+            <if test="juti != null">#{juti},</if>
+            <if test="zuigaoyiju != null">#{zuigaoyiju},</if>
+            <if test="zhengzhuang != null">#{zhengzhuang},</if>
+            <if test="zdAreaCode != null">#{zdAreaCode},</if>
+            <if test="zdUnitCode != null">#{zdUnitCode},</if>
+            <if test="zhiliaoshijian != null">#{zhiliaoshijian},</if>
+            <if test="kaishi != null">#{kaishi},</if>
+            <if test="zhilaioleix != null">#{zhilaioleix},</if>
+            <if test="buliangchuxian != null">#{buliangchuxian},</if>
+            <if test="buliangquezh != null">#{buliangquezh},</if>
+            <if test="buliangfany != null">#{buliangfany},</if>
+            <if test="buliangyaowu != null">#{buliangyaowu},</if>
+            <if test="tingzhizhiliaoshijian != null">#{tingzhizhiliaoshijian},</if>
+            <if test="tingzhizhikiaoyuany != null">#{tingzhizhikiaoyuany},</if>
+            <if test="yuyuejiancha != null">#{yuyuejiancha},</if>
+            <if test="shijiancha != null">#{shijiancha},</if>
+            <if test="zhiliao != null">#{zhiliao},</if>
+            <if test="zhijiaojigou != null">#{zhijiaojigou},</if>
+            <if test="baogao != null">#{baogao},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDiseaseTnb" parameterType="DiseaseTnb">
+        update disease_tnb
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="generate != null">generate = #{generate},</if>
+            <if test="birthday != null">birthday = #{birthday},</if>
+            <if test="cardType != null">card_type = #{cardType},</if>
+            <if test="cardNo != null">card_no = #{cardNo},</if>
+            <if test="mingzu != null">mingzu = #{mingzu},</if>
+            <if test="guoji != null">guoji = #{guoji},</if>
+            <if test="edu != null">edu = #{edu},</if>
+            <if test="merry != null">merry = #{merry},</if>
+            <if test="workType != null">work_type = #{workType},</if>
+            <if test="workAddress != null">work_address = #{workAddress},</if>
+            <if test="connectorName != null">connector_name = #{connectorName},</if>
+            <if test="connectorGuanxi != null">connector_guanxi = #{connectorGuanxi},</if>
+            <if test="connectPhone != null">connect_phone = #{connectPhone},</if>
+            <if test="connectNumber != null">connect_number = #{connectNumber},</if>
+            <if test="changzhuAddress != null">changzhu_address = #{changzhuAddress},</if>
+            <if test="changzhuAddressCode != null">changzhu_address_code = #{changzhuAddressCode},</if>
+            <if test="changzhuDetail != null">changzhu_detail = #{changzhuDetail},</if>
+            <if test="liugeyue != null">liugeyue = #{liugeyue},</if>
+            <if test="hujiAddressType != null">huji_address_type = #{hujiAddressType},</if>
+            <if test="hujiAddressCode != null">huji_address_code = #{hujiAddressCode},</if>
+            <if test="hujiAddress != null">huji_address = #{hujiAddress},</if>
+            <if test="icd != null">icd = #{icd},</if>
+            <if test="zhengduanshijian != null">zhengduanshijian = #{zhengduanshijian},</if>
+            <if test="quezhTime != null">quezh_time = #{quezhTime},</if>
+            <if test="jiazushi != null">jiazushi = #{jiazushi},</if>
+            <if test="yuhuanzheguanzi != null">yuhuanzheguanzi = #{yuhuanzheguanzi},</if>
+            <if test="zhuyuan != null">zhuyuan = #{zhuyuan},</if>
+            <if test="menzheng != null">menzheng = #{menzheng},</if>
+            <if test="shousuo != null">shousuo = #{shousuo},</if>
+            <if test="shuzhang != null">shuzhang = #{shuzhang},</if>
+            <if test="guizhuan != null">guizhuan = #{guizhuan},</if>
+            <if test="deadDate != null">dead_date = #{deadDate},</if>
+            <if test="diseaseDeadReason != null">disease_dead_reason = #{diseaseDeadReason},</if>
+            <if test="juti != null">juti = #{juti},</if>
+            <if test="zuigaoyiju != null">zuigaoyiju = #{zuigaoyiju},</if>
+            <if test="zhengzhuang != null">zhengzhuang = #{zhengzhuang},</if>
+            <if test="zdAreaCode != null">zd_area_code = #{zdAreaCode},</if>
+            <if test="zdUnitCode != null">zd_unit_code = #{zdUnitCode},</if>
+            <if test="zhiliaoshijian != null">zhiliaoshijian = #{zhiliaoshijian},</if>
+            <if test="kaishi != null">kaishi = #{kaishi},</if>
+            <if test="zhilaioleix != null">zhilaioleix = #{zhilaioleix},</if>
+            <if test="buliangchuxian != null">buliangchuxian = #{buliangchuxian},</if>
+            <if test="buliangquezh != null">buliangquezh = #{buliangquezh},</if>
+            <if test="buliangfany != null">buliangfany = #{buliangfany},</if>
+            <if test="buliangyaowu != null">buliangyaowu = #{buliangyaowu},</if>
+            <if test="tingzhizhiliaoshijian != null">tingzhizhiliaoshijian = #{tingzhizhiliaoshijian},</if>
+            <if test="tingzhizhikiaoyuany != null">tingzhizhikiaoyuany = #{tingzhizhikiaoyuany},</if>
+            <if test="yuyuejiancha != null">yuyuejiancha = #{yuyuejiancha},</if>
+            <if test="shijiancha != null">shijiancha = #{shijiancha},</if>
+            <if test="zhiliao != null">zhiliao = #{zhiliao},</if>
+            <if test="zhijiaojigou != null">zhijiaojigou = #{zhijiaojigou},</if>
+            <if test="baogao != null">baogao = #{baogao},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteDiseaseTnbById" parameterType="Long">
+        delete from disease_tnb where id = #{id}
+    </delete>
+
+    <delete id="deleteDiseaseTnbByIds" parameterType="String">
+        delete from disease_tnb where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

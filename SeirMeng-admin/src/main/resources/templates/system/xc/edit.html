@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('修改哮喘')" />
+    <th:block th:include="include :: datetimepicker-css" />
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-xc-edit" th:object="${diseaseXc}">
+            <input name="id" th:field="*{id}" type="hidden">
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">患者姓名：</label>
+                <div class="col-sm-8">
+                    <input name="name" th:field="*{name}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">身份证件号：</label>
+                <div class="col-sm-8">
+                    <input name="cardNo" th:field="*{cardNo}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">民族：</label>
+                <div class="col-sm-8">
+                    <input name="mingzu" th:field="*{mingzu}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">学历：</label>
+                <div class="col-sm-8">
+                    <select name="edu" class="form-control m-b" th:with="type=${@dict.getType('xueli')}">
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}" th:field="*{edu}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">婚姻状况：</label>
+                <div class="col-sm-8">
+                    <select name="merry" class="form-control m-b" th:with="type=${@dict.getType('hunuying')}">
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}" th:field="*{merry}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">职业类型：</label>
+                <div class="col-sm-8">
+                    <select name="workType" class="form-control m-b" th:with="type=${@dict.getType('zhuyeleixing')}">
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}" th:field="*{workType}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">联系电话(手机)：</label>
+                <div class="col-sm-8">
+                    <input name="connectPhone" th:field="*{connectPhone}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">联系电话(座机)：</label>
+                <div class="col-sm-8">
+                    <input name="connectNumber" th:field="*{connectNumber}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">现住址类型：</label>
+                <div class="col-sm-8">
+                    <select name="changzhuAddress" class="form-control m-b" th:with="type=${@dict.getType('changzhuleixing')}">
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}" th:field="*{changzhuAddress}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">现住址(编码)：</label>
+                <div class="col-sm-8">
+                    <input name="changzhuAddressCode" th:field="*{changzhuAddressCode}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">现住详细地址：</label>
+                <div class="col-sm-8">
+                    <input name="changzhuDetail" th:field="*{changzhuDetail}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">诊断日期：</label>
+                <div class="col-sm-8">
+                    <div class="input-group date">
+                        <input name="zhengduanshijian" th:value="${#dates.format(diseaseXc.zhengduanshijian, 'yyyy-MM-dd')}" class="form-control" placeholder="yyyy-MM-dd" type="text">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">死亡日期：</label>
+                <div class="col-sm-8">
+                    <div class="input-group date">
+                        <input name="deadDate" th:value="${#dates.format(diseaseXc.deadDate, 'yyyy-MM-dd')}" class="form-control" placeholder="yyyy-MM-dd" type="text">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">死亡原因：</label>
+                <div class="col-sm-8">
+                    <input name="diseaseDeadReason" th:field="*{diseaseDeadReason}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">使用支气管扩张剂前：FEV1/FVC：</label>
+                <div class="col-sm-8">
+                    <input name="qian" th:field="*{qian}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">使用支气管扩张剂后：FEV1/FVC：</label>
+                <div class="col-sm-8">
+                    <input name="hou" th:field="*{hou}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">症状：</label>
+                <div class="col-sm-8">
+                    <input name="zhengzhuang" th:field="*{zhengzhuang}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">诊断地区(编码)：</label>
+                <div class="col-sm-8">
+                    <input name="zdAreaCode" th:field="*{zdAreaCode}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">诊断机构(编码)：</label>
+                <div class="col-sm-8">
+                    <input name="zdUnitCode" th:field="*{zdUnitCode}" class="form-control" type="text">
+                </div>
+            </div>
+        </form>
+    </div>
+    <th:block th:include="include :: footer" />
+    <th:block th:include="include :: datetimepicker-js" />
+    <script th:inline="javascript">
+        var prefix = ctx + "system/xc";
+        $("#form-xc-edit").validate({
+            focusCleanup: true
+        });
+
+        function submitHandler() {
+            if ($.validate.form()) {
+                $.operate.save(prefix + "/edit", $('#form-xc-edit').serialize());
+            }
+        }
+
+        $("input[name='birthday']").datetimepicker({
+            format: "yyyy-mm-dd",
+            minView: "month",
+            autoclose: true
+        });
+
+        $("input[name='zhengduanshijian']").datetimepicker({
+            format: "yyyy-mm-dd",
+            minView: "month",
+            autoclose: true
+        });
+
+        $("input[name='deadDate']").datetimepicker({
+            format: "yyyy-mm-dd",
+            minView: "month",
+            autoclose: true
+        });
+    </script>
+</body>
+</html>
