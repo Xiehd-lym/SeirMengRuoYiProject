@@ -88,6 +88,7 @@ public class DiseaseNczController extends BaseController
         if (StringUtils.isBlank(connectPhone) && StringUtils.isBlank(connectNumber)){
             return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
         }
+        diseaseNcz.setZuigaoyiju("木兰县人民医院");
         return toAjax(diseaseNczService.insertDiseaseNcz(diseaseNcz));
     }
 
