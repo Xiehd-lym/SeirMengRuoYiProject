@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="addressName != null  and addressName != ''"> and address_name like concat('%', #{addressName}, '%')</if>
             <if test="addressWholeName != null  and addressWholeName != ''"> and address_whole_name like concat('%', #{addressWholeName}, '%')</if>
         </where>
-        order by id desc
+        order by id asc
     </select>
     
     <select id="selectTAddressInfoById" parameterType="Long" resultMap="TAddressInfoResult">
