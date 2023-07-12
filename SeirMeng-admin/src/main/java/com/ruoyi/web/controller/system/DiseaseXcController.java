@@ -83,11 +83,7 @@ public class DiseaseXcController extends BaseController
     @ResponseBody
     public AjaxResult addSave(DiseaseXc diseaseXc)
     {
-        String connectNumber = diseaseXc.getConnectNumber();
-        String connectPhone = diseaseXc.getConnectPhone();
-        if (StringUtils.isBlank(connectPhone) && StringUtils.isBlank(connectNumber)){
-            return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
-        }
+
         return toAjax(diseaseXcService.insertDiseaseXc(diseaseXc));
     }
 

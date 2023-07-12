@@ -83,11 +83,7 @@ public class DiseaseMzfController extends BaseController
     @ResponseBody
     public AjaxResult addSave(DiseaseMzf diseaseMzf)
     {
-        String connectNumber = diseaseMzf.getConnectNumber();
-        String connectPhone = diseaseMzf.getConnectPhone();
-        if (StringUtils.isBlank(connectPhone) && StringUtils.isBlank(connectNumber)){
-            return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
-        }
+
         return toAjax(diseaseMzfService.insertDiseaseMzf(diseaseMzf));
     }
 

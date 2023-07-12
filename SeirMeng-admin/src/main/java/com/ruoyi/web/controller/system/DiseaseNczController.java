@@ -83,11 +83,7 @@ public class DiseaseNczController extends BaseController
     @ResponseBody
     public AjaxResult addSave(DiseaseNcz diseaseNcz)
     {
-        String connectNumber = diseaseNcz.getConnectNumber();
-        String connectPhone = diseaseNcz.getConnectPhone();
-        if (StringUtils.isBlank(connectPhone) && StringUtils.isBlank(connectNumber)){
-            return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
-        }
+
         diseaseNcz.setZuigaoyiju("木兰县人民医院");
         return toAjax(diseaseNczService.insertDiseaseNcz(diseaseNcz));
     }
