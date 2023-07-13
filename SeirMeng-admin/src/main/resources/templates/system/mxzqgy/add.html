@@ -31,7 +31,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">民族：</label>
                 <div class="col-sm-8">
-                    <input name="mingzu" class="form-control" type="text" th:default="汉族" placeholder="汉族">
+                    <input name="mingzu" class="form-control" type="text" value="汉族" placeholder="汉族">
                 </div>
             </div>
             <div class="form-group">    
@@ -210,7 +210,7 @@
         });
 
         $("input[name='zhengduanshijian']").datetimepicker({
-            format: "yyyy-mm-dd",
+            format: "yyyy-mm-dd hh:ii:ss",
             minView: "month",
             autoclose: true
         });

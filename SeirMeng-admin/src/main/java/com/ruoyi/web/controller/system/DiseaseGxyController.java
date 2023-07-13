@@ -88,7 +88,6 @@ public class DiseaseGxyController extends BaseController
     @ResponseBody
     public AjaxResult addSave(DiseaseGxy diseaseGxy)
     {
-
         diseaseGxy.setZuigaoyiju("木兰县人民医院");
         diseaseGxy.setIcd("I10");
         return toAjax(diseaseGxyService.insertDiseaseGxy(diseaseGxy));
