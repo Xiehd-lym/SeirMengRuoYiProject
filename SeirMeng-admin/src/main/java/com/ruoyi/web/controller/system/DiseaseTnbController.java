@@ -88,7 +88,7 @@ public class DiseaseTnbController extends BaseController
     @ResponseBody
     public AjaxResult addSave(DiseaseTnb diseaseTnb)
     {
-
+        diseaseTnb.setIcd("E11");
         diseaseTnb.setZuigaoyiju("木兰县人民医院");
         return toAjax(diseaseTnbService.insertDiseaseTnb(diseaseTnb));
     }
