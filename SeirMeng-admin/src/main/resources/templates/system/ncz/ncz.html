@@ -59,6 +59,8 @@
         var hujiAddressTypeDatas = [[${@dict.getType('changzhuleixing')}]];
         var jiazushiDatas = [[${@dict.getType('shifou')}]];
         var guanxiDatas = [[${@dict.getType('lianxirnejianhurenguanxi')}]];
+        var shifoushouciDatas = [[${@dict.getType('shifou')}]];
+        var zhengzhuangDatas = [[${@dict.getType('ncz_zdyj')}]];
         var prefix = ctx + "system/ncz";
 
         $(function() {
@@ -231,10 +233,13 @@
                     field: 'juti',
                     title: '具体死亡原因'
                 },
-                {
-                    field: 'zhengzhuang',
-                    title: '诊断依据'
-                },
+                    {
+                        field: 'zhengzhuang',
+                        title: '诊断依据',
+                        formatter: function(value, row, index) {
+                            return $.table.selectDictLabel(zhengzhuangDatas, value);
+                        }
+                    },
                 {
                     field: 'zuigaoyiju',
                     title: '最高诊断单位'
