@@ -70,7 +70,7 @@ public class DiseaseNczServiceImpl implements IDiseaseNczService
         //
         diseaseNcz.setGenerate(IDCardUtil.getSex(diseaseNcz.getCardNo()));
 
-        diseaseNcz.setHujiAddress(diseaseNcz.getChangzhuAddress());
+        diseaseNcz.setHujiAddress(diseaseNcz.getChangzhuDetail());
         diseaseNcz.setHujiAddressCode(diseaseNcz.getChangzhuAddressCode());
         diseaseNcz.setHujiAddressType(diseaseNcz.getChangzhuAddress());
         

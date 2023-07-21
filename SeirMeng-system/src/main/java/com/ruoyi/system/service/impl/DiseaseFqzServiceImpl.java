@@ -71,8 +71,11 @@ public class DiseaseFqzServiceImpl implements IDiseaseFqzService
         //
         diseaseFqz.setGenerate(IDCardUtil.getSex(diseaseFqz.getCardNo()));
 
-        diseaseFqz.setHujiAddress(diseaseFqz.getChangzhuAddress());
+//        户籍详细地址
+        diseaseFqz.setHujiAddress(diseaseFqz.getChangzhuDetail());
+//        户籍地址(编码)
         diseaseFqz.setHujiAddressCode(diseaseFqz.getChangzhuAddressCode());
+//        户籍地址类型
         diseaseFqz.setHujiAddressType(diseaseFqz.getChangzhuAddress());
 
         return diseaseFqzMapper.insertDiseaseFqz(diseaseFqz);

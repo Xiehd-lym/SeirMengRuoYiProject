@@ -70,7 +70,7 @@ public class DiseaseMzfServiceImpl implements IDiseaseMzfService
         //
         diseaseMzf.setGenerate(IDCardUtil.getSex(diseaseMzf.getCardNo()));
 
-        diseaseMzf.setHujiAddress(diseaseMzf.getChangzhuAddress());
+        diseaseMzf.setHujiAddress(diseaseMzf.getChangzhuDetail());
         diseaseMzf.setHujiAddressCode(diseaseMzf.getChangzhuAddressCode());
         diseaseMzf.setHujiAddressType(diseaseMzf.getChangzhuAddress());
         

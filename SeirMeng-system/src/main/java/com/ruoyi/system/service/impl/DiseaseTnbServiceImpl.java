@@ -70,7 +70,7 @@ public class DiseaseTnbServiceImpl implements IDiseaseTnbService
         //
         diseaseTnb.setGenerate(IDCardUtil.getSex(diseaseTnb.getCardNo()));
 
-        diseaseTnb.setHujiAddress(diseaseTnb.getChangzhuAddress());
+        diseaseTnb.setHujiAddress(diseaseTnb.getChangzhuDetail());
         diseaseTnb.setHujiAddressCode(diseaseTnb.getChangzhuAddressCode());
         diseaseTnb.setHujiAddressType(diseaseTnb.getChangzhuAddress());
         

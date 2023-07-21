@@ -70,7 +70,7 @@ public class DiseaseMxzqgyServiceImpl implements IDiseaseMxzqgyService
         //
         diseaseMxzqgy.setGenerate(IDCardUtil.getSex(diseaseMxzqgy.getCardNo()));
 
-        diseaseMxzqgy.setHujiAddress(diseaseMxzqgy.getChangzhuAddress());
+        diseaseMxzqgy.setHujiAddress(diseaseMxzqgy.getChangzhuDetail());
         diseaseMxzqgy.setHujiAddressCode(diseaseMxzqgy.getChangzhuAddressCode());
         diseaseMxzqgy.setHujiAddressType(diseaseMxzqgy.getChangzhuAddress());
         

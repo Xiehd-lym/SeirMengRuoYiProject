@@ -24,6 +24,6 @@ public class SeirMengRuoYiApplication
     public static void main(String[] args)
     {
         SpringApplication.run(SeirMengRuoYiApplication.class, args);
-        System.out.println("(♥◠‿◠)ﾉﾞ  我🐉🐎 ，主人！您的项目启动成功   ლ(´ڡ`ლ)ﾞ");
+        System.out.println("您的木兰县人民医院慢性病数据管理项目启动成功");
     }
 }
