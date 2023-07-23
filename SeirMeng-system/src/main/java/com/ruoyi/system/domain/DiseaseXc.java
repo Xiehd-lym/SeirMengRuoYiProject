@@ -94,7 +94,7 @@ public class DiseaseXc extends BaseEntity
     private String icd;
 
     /** 诊断日期（确诊时间） */
-    @Excel(name = "诊断日期（确诊时间）", width = 30, dateFormat = "yyyy-mm-dd hh:mm:ss")
+    @Excel(name = "诊断日期（确诊时间）", width = 30, dateFormat = "yyyy-MM-dd hh:mm:ss")
     private Date zhengduanshijian;
 
     /** 病情转归 */

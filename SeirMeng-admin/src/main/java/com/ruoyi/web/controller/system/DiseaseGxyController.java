@@ -88,7 +88,7 @@ public class DiseaseGxyController extends BaseController
     @ResponseBody
     public AjaxResult addSave(DiseaseGxy diseaseGxy)
     {
-        diseaseGxy.setZuigaoyiju("木兰县人民医院");
+        diseaseGxy.setZuigaoyiju("县区级医院");
         diseaseGxy.setIcd("I10");
         return toAjax(diseaseGxyService.insertDiseaseGxy(diseaseGxy));
     }
@@ -114,11 +114,6 @@ public class DiseaseGxyController extends BaseController
     @ResponseBody
     public AjaxResult editSave(DiseaseGxy diseaseGxy)
     {
-        String connectNumber = diseaseGxy.getConnectNumber();
-        String connectPhone = diseaseGxy.getConnectPhone();
-        if (StringUtils.isBlank(connectPhone) && StringUtils.isBlank(connectNumber)){
-            return AjaxResult.error("对不起 ； 联系电话(手机) 联系电话(座机) 必填其一");
-        }
         return toAjax(diseaseGxyService.updateDiseaseGxy(diseaseGxy));
     }
 

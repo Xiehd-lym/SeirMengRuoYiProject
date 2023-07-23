@@ -89,7 +89,7 @@ public class DiseaseTnbController extends BaseController
     public AjaxResult addSave(DiseaseTnb diseaseTnb)
     {
         diseaseTnb.setIcd("E11");
-        diseaseTnb.setZuigaoyiju("木兰县人民医院");
+        diseaseTnb.setZuigaoyiju("县区级医院");
         return toAjax(diseaseTnbService.insertDiseaseTnb(diseaseTnb));
     }
 

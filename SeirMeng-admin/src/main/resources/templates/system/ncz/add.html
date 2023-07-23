@@ -149,7 +149,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 <label class="col-sm-3 control-label is-required">是否首次发病：</label>
                 <div class="col-sm-8">
@@ -158,13 +157,26 @@
                     </select>
                 </div>
             </div>
+
+
+
+
+
             <div class="form-group">
-                <label class="col-sm-3 control-label">诊断依据：</label>
+                <label class="col-sm-3 control-label is-required">诊断依据：</label>
+<!--                <div class="col-sm-8">-->
+<!--                    <select name="zhengzhuang" class="form-control m-b" th:with="type=${@dict.getType('ncz_zdyj')}">-->
+<!--                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>-->
+<!--                    </select>-->
+<!--                </div>-->
+
                 <div class="col-sm-8">
-                    <select name="zhengzhuang" class="form-control m-b" th:with="type=${@dict.getType('ncz_zdyj')}">
+                    <select name="zhengzhuang" id="zhengzhuang" class="form-control m-b" th:with="type=${@dict.getType('ncz_zdyj')}" multiple required>
+                        <option value=""></option>
                         <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
                     </select>
                 </div>
+
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">报告医师：</label>

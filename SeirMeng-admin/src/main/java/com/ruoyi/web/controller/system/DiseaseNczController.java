@@ -84,7 +84,7 @@ public class DiseaseNczController extends BaseController
     public AjaxResult addSave(DiseaseNcz diseaseNcz)
     {
 
-        diseaseNcz.setZuigaoyiju("木兰县人民医院");
+        diseaseNcz.setZuigaoyiju("县区级医院");
         return toAjax(diseaseNczService.insertDiseaseNcz(diseaseNcz));
     }
 
