@@ -120,7 +120,7 @@ public class DiseaseNcz extends BaseEntity
 
     /** 确诊时间 */
     @JsonFormat(pattern = "yyyy-MM-dd")
-    @Excel(name = "确诊时间", width = 30, dateFormat = "yyyy-mm-dd hh:mm:ss")
+    @Excel(name = "确诊时间", width = 30, dateFormat = "yyyy-MM-dd hh:mm:ss")
     private Date quezhTime;
 
     /** 住院号 */
