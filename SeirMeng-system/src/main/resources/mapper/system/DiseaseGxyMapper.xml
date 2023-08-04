@@ -58,7 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="zhiliao"    column="zhiliao"    />
         <result property="zhijiaojigou"    column="zhijiaojigou"    />
         <result property="baogao"    column="baogao"    />
-        <result property="connectNumber"    column="connect_number"    />
+        <result property="connectorName"    column="connector_name"    />
     </resultMap>
 
     <sql id="selectDiseaseGxyVo">

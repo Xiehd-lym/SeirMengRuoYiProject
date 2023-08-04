@@ -60,6 +60,7 @@
         var jiazushiDatas = [[${@dict.getType('shifou')}]];
         var guanxiDatas = [[${@dict.getType('lianxirnejianhurenguanxi')}]];
         var shifoushouciDatas = [[${@dict.getType('shifou')}]];
+        var guizhuanDatas = [[${@dict.getType('ncz_bqzg')}]];
         var zhengzhuangDatas = [[${@dict.getType('ncz_zdyj')}]];
         var prefix = ctx + "system/ncz";
 
@@ -262,10 +263,13 @@
                        return $.table.selectDictLabel(guanxiDatas, value);
                     }
                 },
-                {
-                    field: 'guizhuan',
-                    title: '病情转归'
-                },
+                    {
+                        field: 'guizhuan',
+                        title: '病情转归',
+                        formatter: function(value, row, index) {
+                            return $.table.selectDictLabel(guizhuanDatas, value);
+                        }
+                    },
                 {
                     field: 'zhiliao',
                     title: '治疗地区(编码)'

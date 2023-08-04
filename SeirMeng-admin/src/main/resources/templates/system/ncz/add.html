@@ -170,7 +170,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">病情转归：</label>
                 <div class="col-sm-8">
-                    <select name="guizhuan" class="form-control m-b" th:with="type=${@dict.getType('bingqingzhuangui')}">
+                    <select name="guizhuan" class="form-control m-b" th:with="type=${@dict.getType('ncz_bqzg')}">
                         <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
                     </select>
                 </div>
