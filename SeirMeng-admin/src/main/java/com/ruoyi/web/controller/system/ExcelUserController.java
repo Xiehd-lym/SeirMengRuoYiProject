@@ -2,7 +2,6 @@ package com.ruoyi.web.controller.system;
 
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.config.RuoYiConfig;
-import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.domain.entity.SysUser;
@@ -17,8 +16,6 @@ import com.ruoyi.framework.shiro.service.SysRegisterService;
 import com.ruoyi.system.domain.ExcelUser;
 import com.ruoyi.system.service.IExcelUserService;
 import com.ruoyi.system.service.ISysUserService;
-import org.apache.catalina.User;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,7 +24,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -47,14 +43,14 @@ public class ExcelUserController extends BaseController
     @Autowired
     private IExcelUserService excelUserService;
 
-    @RequiresPermissions("system:excelUser:view")
+
     @GetMapping()
     public String excelUser()
     {
         return prefix + "/excelUser";
     }
 
-    @RequiresPermissions("system:excelDownload:view")
+
     @GetMapping("excelDownload")
     public String excelDownload()
     {
@@ -64,7 +60,7 @@ public class ExcelUserController extends BaseController
     /**
      * 查询用户表格列表
      */
-    @RequiresPermissions("system:excelUser:list")
+
     @PostMapping("/list")
     @ResponseBody
     public TableDataInfo list(ExcelUser excelUser)
@@ -114,7 +110,7 @@ public class ExcelUserController extends BaseController
     /**
      * 导出用户表格列表
      */
-    @RequiresPermissions("system:excelUser:export")
+
     @Log(title = "用户表格", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     @ResponseBody
@@ -137,7 +133,7 @@ public class ExcelUserController extends BaseController
     /**
      * 新增保存用户表格
      */
-    @RequiresPermissions("system:excelUser:add")
+
     @Log(title = "用户表格", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
@@ -149,7 +145,7 @@ public class ExcelUserController extends BaseController
     /**
      * 修改用户表格
      */
-    @RequiresPermissions("system:excelUser:edit")
+
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, ModelMap mmap)
     {
@@ -166,7 +162,7 @@ public class ExcelUserController extends BaseController
     /**
      * 修改保存用户表格
      */
-    @RequiresPermissions("system:excelUser:edit")
+
     @Log(title = "用户表格", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
@@ -182,7 +178,7 @@ public class ExcelUserController extends BaseController
     /**
      * 删除用户表格
      */
-    @RequiresPermissions("system:excelUser:remove")
+
     @Log(title = "用户表格", businessType = BusinessType.DELETE)
     @PostMapping( "/remove")
     @ResponseBody

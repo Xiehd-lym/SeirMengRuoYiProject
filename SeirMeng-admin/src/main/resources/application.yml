@@ -9,10 +9,9 @@ ruoyi:
   # 实例演示开关
   demoEnabled: false
   # 文件路径 示例（ Windows配置D:/ruoyi/uploadPath，Linux配置 /home/ruoyi/uploadPath）
-  profile: D:/ruoyi/uploadPath
+  profile: D:/Acode/若依代码/不分离/SeirMengRuoYi/uploadPath
   # 获取ip地址开关
   addressEnabled: false
-
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为80
