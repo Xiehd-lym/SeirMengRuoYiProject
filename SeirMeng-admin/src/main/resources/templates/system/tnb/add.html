@@ -211,12 +211,12 @@
 
         function submitHandler() {
 
-            var stime = new Date( $("input[name='zhengduanshijian']").val() )
-            var etime = new Date( $("input[name='quezhTime']").val() )
-            if (stime>etime){
-                $.modal.alert("首次诊断时间不能大于确诊日期");
-                return;
-            }
+            // var stime = new Date( $("input[name='zhengduanshijian']").val() )
+            // var etime = new Date( $("input[name='quezhTime']").val() )
+            // if (stime>etime){
+            //     $.modal.alert("首次诊断时间不能大于确诊日期");
+            //     return;
+            // }
 
             if ($.validate.form()) {
                 $.operate.save(prefix + "/add", $('#form-tnb-add').serialize());
