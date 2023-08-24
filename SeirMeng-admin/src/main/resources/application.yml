@@ -34,7 +34,8 @@ server:
 # 日志配置
 logging:
   level:
-    com.ruoyi: fatal
+    com.ruoyi: warn
+    org.apache.shiro.cache.ehcache: error
     org.springframework: fatal
 
 # 用户配置

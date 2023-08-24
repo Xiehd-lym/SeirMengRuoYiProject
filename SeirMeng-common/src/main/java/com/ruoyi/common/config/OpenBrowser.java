@@ -3,6 +3,9 @@ package com.ruoyi.common.config;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+/**
+ * SpringBoot项目启动后自动打开浏览器网页
+ */
 @Component
 public class OpenBrowser implements CommandLineRunner {
 
