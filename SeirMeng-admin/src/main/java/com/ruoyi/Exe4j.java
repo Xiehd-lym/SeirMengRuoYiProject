@@ -1,7 +1,10 @@
 package com.ruoyi;
 
-
 import java.util.Properties;
+
+/**
+ * 打包程序
+ */
 public class Exe4j {
     public static void main(String[] args) {
         Properties properties = System.getProperties();
