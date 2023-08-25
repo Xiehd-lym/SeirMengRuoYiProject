@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('肺气肿列表')" />
+</head>
+<body class="gray-bg">
+     <div class="container-div">
+        <div class="row">
+            <div class="col-sm-12 search-collapse">
+                <form id="formId">
+                    <div class="select-list">
+                        <ul>
+                            <li>
+                                <label>患者姓名：</label>
+                                <input type="text" name="name"/>
+                            </li>
+                            <li>
+                                <label>身份证件号：</label>
+                                <input type="text" name="cardNo"/>
+                            </li>
+                            <li>
+                                <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                                <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+
+            <div class="btn-group-sm" id="toolbar" role="group">
+                <a class="btn btn-success" onclick="$.operate.add()" >
+                    <i class="fa fa-plus"></i> 添加
+                </a>
+<!--                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" >-->
+<!--                    <i class="fa fa-edit"></i> 修改-->
+<!--                </a>-->
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" >
+                    <i class="fa fa-remove"></i> 删除
+                </a>
+                <a class="btn btn-warning" onclick="$.table.exportExcel()">
+                    <i class="fa fa-download"></i> 导出
+                </a>
+            </div>
+            <div class="col-sm-12 select-table table-striped">
+                <table id="bootstrap-table"></table>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var generateDatas = [[${@dict.getType('sys_user_sex')}]];
+        var cardTypeDatas = [[${@dict.getType('zhengjianleixing')}]];
+        var mingzuDatas = [[${@dict.getType('mingzu')}]];
+        var eduDatas = [[${@dict.getType('xueli')}]];
+        var merryDatas = [[${@dict.getType('hunuying')}]];
+        var icdDatas = [[${@dict.getType('fqz_icd')}]];
+        var workTypeDatas = [[${@dict.getType('zhuyeleixing')}]];
+        var changzhuAddressDatas = [[${@dict.getType('changzhuleixing')}]];
+        var hujiAddressTypeDatas = [[${@dict.getType('hujileixing')}]];
+        var guizhuanDatas = [[${@dict.getType('bingqingzhuangui')}]];
+        var zuigaoyijuDatas = [[${@dict.getType('zuigaozhduanyiju')}]];
+        var prefix = ctx + "system/fqz";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                exportUrl: prefix + "/export",
+                modalName: "肺气肿",
+                columns: [{
+                    checkbox: true
+                },
+                {
+                    field: 'id',
+                    title: '',
+                    visible: false
+                },
+                {
+                    field: 'name',
+                    title: '患者姓名'
+                },
+                {
+                    field: 'generate',
+                    title: '性别',
+                    formatter: function(value, row, index) {
+                       return $.table.selectDictLabel(generateDatas, value);
+                    }
+                },
+                {
+                    field: 'birthday',
+                    title: '出生日期'
+                },
+                {
+                    field: 'cardType',
+                    title: '身份证件类型',
+                    formatter: function(value, row, index) {
+                       return $.table.selectDictLabel(cardTypeDatas, value);
+                    }
+                },
+                {
+                    field: 'cardNo',
+                    title: '身份证件号'
+                },
+                {
+                    field: 'mingzu',
+                    title: '民族',
+                    formatter: function(value, row, index) {
+                       return $.table.selectDictLabel(mingzuDatas, value);
+                    }
+                },
+                {
+                    field: 'edu',
+                    title: '学历',
+                    formatter: function(value, row, index) {
+                       return $.table.selectDictLabel(eduDatas, value);
+                    }
+                },
+                {
+                    field: 'merry',
+                    title: '婚姻状况',
+                    formatter: function(value, row, index) {
+                       return $.table.selectDictLabel(merryDatas, value);
+                    }
+                },
+                {
+                    field: 'workType',
+                    title: '职业类型',
+                    formatter: function(value, row, index) {
+                       return $.table.selectDictLabel(workTypeDatas, value);
+                    }
+                },
+                {
+                    field: 'connectPhone',
+                    title: '联系电话(手机)'
+                },
+                {
+                    field: 'connectNumber',
+                    title: '联系电话(座机)'
+                },
+                {
+                    field: 'changzhuAddress',
+                    title: '常住地址类型',
+                    formatter: function(value, row, index) {
+                       return $.table.selectDictLabel(changzhuAddressDatas, value);
+                    }
+                },
+                {
+                    field: 'changzhuAddressCode',
+                    title: '常住地址(编码)'
+                },
+                {
+                    field: 'changzhuDetail',
+                    title: '常住详细地址'
+                },
+                {
+                    field: 'hujiAddressType',
+                    title: '户籍地址类型',
+                    formatter: function(value, row, index) {
+                       return $.table.selectDictLabel(hujiAddressTypeDatas, value);
+                    }
+                },
+                {
+                    field: 'hujiAddressCode',
+                    title: '户籍地址(编码)'
+                },
+                {
+                    field: 'hujiAddress',
+                    title: '户籍详细地址'
+                },
+                    {
+                        field: 'icd',
+                        title: '疾病icd',
+                        formatter: function(value, row, index) {
+                            return $.table.selectDictLabel(icdDatas, value);
+                        }
+                    },
+                {
+                    field: 'zhengduanshijian',
+                    title: '诊断日期（确诊时间）'
+                },
+                {
+                    field: 'guizhuan',
+                    title: '病情转归',
+                    formatter: function(value, row, index) {
+                       return $.table.selectDictLabel(guizhuanDatas, value);
+                    }
+                },
+                {
+                    field: 'deadDate',
+                    title: '死亡日期'
+                },
+                {
+                    field: 'diseaseDeadReason',
+                    title: '死亡原因'
+                },
+                {
+                    field: 'hou',
+                    title: '使用支气管扩张剂前：FEV1/FVC'
+                },
+                {
+                    field: 'qian',
+                    title: '使用支气管扩张剂后：FEV1/FVC'
+                },
+                {
+                    field: 'zuigaoyiju',
+                    title: '最高诊断依据',
+                    formatter: function(value, row, index) {
+                       return $.table.selectDictLabel(zuigaoyijuDatas, value);
+                    }
+                },
+                {
+                    field: 'zhengzhuang',
+                    title: '症状'
+                },
+                {
+                    field: 'zdAreaCode',
+                    title: '诊断地区(编码)'
+                },
+                {
+                    field: 'zdUnitCode',
+                    title: '诊断机构(编码)'
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-danger btn-xs ' + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

@@ -1,7 +1,9 @@
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">SeirMeng</h1>
 <h4 align="center">SeirMeng——基于SpringBoot开发的轻量级Java快速开发框架</h4>
 
-##母版
+## 母版
+
+## 子项目包括但是不限于：高考志愿填报系统、工业出货决策系统、学生信息管理系统、员工薪资管理系统、慢性病管理系统等
 
 ## 内置功能
 

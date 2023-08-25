@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.TAddressInfoMapper">
+    
+    <resultMap type="TAddressInfo" id="TAddressInfoResult">
+        <result property="id"    column="id"    />
+        <result property="addressCode"    column="address_code"    />
+        <result property="addressName"    column="address_name"    />
+        <result property="addressWholeName"    column="address_whole_name"    />
+    </resultMap>
+
+    <sql id="selectTAddressInfoVo">
+        select id, address_code, address_name, address_whole_name from t_address_info
+    </sql>
+
+    <select id="selectTAddressInfoList" parameterType="TAddressInfo" resultMap="TAddressInfoResult">
+        <include refid="selectTAddressInfoVo"/>
+        <where>  
+            <if test="addressCode != null  and addressCode != ''"> and address_code = #{addressCode}</if>
+            <if test="addressName != null  and addressName != ''"> and address_name like concat('%', #{addressName}, '%')</if>
+            <if test="addressWholeName != null  and addressWholeName != ''"> and address_whole_name like concat('%', #{addressWholeName}, '%')</if>
+        </where>
+        order by id asc
+    </select>
+    
+    <select id="selectTAddressInfoById" parameterType="Long" resultMap="TAddressInfoResult">
+        <include refid="selectTAddressInfoVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTAddressInfo" parameterType="TAddressInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into t_address_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="addressCode != null">address_code,</if>
+            <if test="addressName != null">address_name,</if>
+            <if test="addressWholeName != null">address_whole_name,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="addressCode != null">#{addressCode},</if>
+            <if test="addressName != null">#{addressName},</if>
+            <if test="addressWholeName != null">#{addressWholeName},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTAddressInfo" parameterType="TAddressInfo">
+        update t_address_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="addressCode != null">address_code = #{addressCode},</if>
+            <if test="addressName != null">address_name = #{addressName},</if>
+            <if test="addressWholeName != null">address_whole_name = #{addressWholeName},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTAddressInfoById" parameterType="Long">
+        delete from t_address_info where id = #{id}
+    </delete>
+
+    <delete id="deleteTAddressInfoByIds" parameterType="String">
+        delete from t_address_info where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

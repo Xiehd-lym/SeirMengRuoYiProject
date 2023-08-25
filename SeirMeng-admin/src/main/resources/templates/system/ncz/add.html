@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('新增脑卒中')" />
+    <th:block th:include="include :: datetimepicker-css" />
+    <th:block th:include="include::select2-css"/>
+</head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-ncz-add">
+            <div class="form-group">    
+                <label class="col-sm-3 control-label is-required">患者姓名：</label>
+                <div class="col-sm-8">
+                    <input name="name" class="form-control" type="text" required>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label is-required">身份证件类型：</label>
+                <div class="col-sm-8">
+                    <select name="cardType" class="form-control m-b" th:with="type=${@dict.getType('zhengjianleixing')}" required>
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label is-required">身份证件号：</label>
+                <div class="col-sm-8">
+                    <input name="cardNo" class="form-control" type="text" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">民族：</label>
+                <div class="col-sm-8">
+                    <input name="mingzu" class="form-control" type="text" value="汉族" placeholder="汉族">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">国籍：</label>
+                <div class="col-sm-8">
+                    <input name="guoji" class="form-control" type="text" value="中国" placeholder="中国">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">学历：</label>
+                <div class="col-sm-8">
+                    <select name="edu" class="form-control m-b" th:with="type=${@dict.getType('xueli')}">
+                        <option selected th:text=null></option>
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">婚姻状况：</label>
+                <div class="col-sm-8">
+                    <select name="merry" class="form-control m-b" th:with="type=${@dict.getType('hunuying')}">
+                        <option selected th:text=null></option>
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">职业类型：</label>
+                <div class="col-sm-8">
+                    <select name="workType" class="form-control m-b" th:with="type=${@dict.getType('zhuyeleixing')}">
+                        <option selected th:text="农民"></option>
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label">工作单位名称：</label>
+                <div class="col-sm-8">
+                    <input name="workAddress" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label is-required">联系人：</label>
+                <div class="col-sm-8">
+                    <input name="connectorName" class="form-control" type="text" required>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label is-required">联系电话(手机)：</label>
+                <div class="col-sm-8">
+                    <input name="connectPhone" class="form-control" type="text" placeholder="请输入手机号" title="请输入正确的手机号" required>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label is-required">现住址类型：</label>
+                <div class="col-sm-8">
+                    <select name="changzhuAddress" class="form-control m-b" th:with="type=${@dict.getType('changzhuleixing')}" required>
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label is-required">现住址：</label>
+                <div class="col-sm-8">
+                    <select name="changzhuAddressCode" class="form-control" id="changzhuAddressCode" required>
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label is-required">现住详细地址：</label>
+                <div class="col-sm-8">
+                    <input id="changzhuDetail" name="changzhuDetail" class="form-control" type="text" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label is-required">本县区居住6个月以上：</label>
+                <div class="col-sm-8">
+                    <select name="liugeyue" class="form-control m-b" th:with="type=${@dict.getType('shifou')}" required>
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label is-required">疾病icd：</label>
+                <div class="col-sm-8">
+                    <select name="icd" class="form-control m-b" th:with="type=${@dict.getType('ncz_icd')}" required>
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label is-required">首次诊断日期：</label>
+                <div class="col-sm-8">
+                    <div class="input-group date">
+                        <input name="zhengduanshijian" class="form-control" placeholder="yyyy-MM-dd" type="text" required>
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label is-required">确诊时间：</label>
+                <div class="col-sm-8">
+                    <div class="input-group date">
+                        <input name="quezhTime" class="form-control" placeholder="yyyy-MM-dd hh:mm:ss" type="text" required>
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label is-required">是否首次发病：</label>
+                <div class="col-sm-8">
+                    <select name="shifoushouci" class="form-control m-b" th:with="type=${@dict.getType('shifou')}" required>
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label is-required">诊断依据：</label>
+
+                <div class="col-sm-8">
+                    <select name="zhengzhuang" id="zhengzhuang" class="form-control m-b" th:with="type=${@dict.getType('ncz_zdyj')}" multiple required>
+                        <option value=""></option>
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="form-group">    
+                <label class="col-sm-3 control-label is-required">报告医师：</label>
+                <div class="col-sm-8">
+                    <input name="yishi" class="form-control" type="text" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">病情转归：</label>
+                <div class="col-sm-8">
+                    <select name="guizhuan" class="form-control m-b" th:with="type=${@dict.getType('ncz_bqzg')}">
+                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <th:block th:include="include :: footer" />
+    <th:block th:include="include :: datetimepicker-js" />
+    <th:block th:include="include::select2-js"/>
+    <script th:inline="javascript">
+        var prefix = ctx + "system/ncz"
+
+        $(function (){
+            adressResource();
+        });
+
+        function adressResource(){
+            $.ajax({
+                type : "POST",
+                url : ctx + "/system/info" + "/adressResource",
+                dataType : "JSON",
+                success : function (result) {
+                    var str = '<option value=""></option>';
+                    for (var i = 0;i<result.data.length;i++){
+                        str += '<option value="'+result.data[i].addressCode+'">'+result.data[i].addressWholeName+'</option>'
+                    }
+                    $("#changzhuAddressCode").html(str);
+                },
+                error : function (error) {
+                    $.modal.alertWarning("查询失败");
+                }
+            });
+        }
+
+        // jquery 处理select选择change事件
+        $("#changzhuAddressCode").on("change", function () {
+            $("#changzhuDetail").val(  $("#changzhuAddressCode option:selected" ).text()  );
+        });
+        //
+
+        $("#form-ncz-add").validate({
+            focusCleanup: true
+        });
+
+        function submitHandler() {
+
+            // var stime = new Date( $("input[name='zhengduanshijian']").val() )
+            // var etime = new Date( $("input[name='quezhTime']").val() )
+            // if (stime>etime){
+            //     $.modal.alert("首次诊断时间不能大于确诊日期");
+            //     return;
+            // }
+
+            if ($.validate.form()) {
+                $.operate.save(prefix + "/add", $('#form-ncz-add').serialize());
+            }
+        }
+
+        $("input[name='birthday']").datetimepicker({
+            format: "yyyy-mm-dd",
+            minView: "month",
+            autoclose: true
+        });
+
+        $("input[name='zhengduanshijian']").datetimepicker({
+            format: "yyyy-mm-dd",
+            minView: "month",
+            autoclose: true
+        });
+
+        $("input[name='quezhTime']").datetimepicker({
+            format: "yyyy-mm-dd hh:ii:ss",
+            minView: "hour",
+            autoclose: true
+        });
+
+        $("input[name='deadDate']").datetimepicker({
+            format: "yyyy-mm-dd",
+            minView: "month",
+            autoclose: true
+        });
+    </script>
+</body>
+</html>
